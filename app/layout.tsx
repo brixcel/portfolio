@@ -30,14 +30,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="light"
       suppressHydrationWarning
       className={`${caprasimo.variable} ${figtree.variable}`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-      </head>
-      <body>{children}</body>
+      <body suppressHydrationWarning>
+        <script
+          id="theme-init"
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+          suppressHydrationWarning
+        />
+        {children}
+      </body>
     </html>
   );
 }

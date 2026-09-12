@@ -45,14 +45,8 @@ export default function Reveal({
   return (
     <div
       ref={ref}
-      className={className ? `reveal ${className}` : "reveal"}
-      style={{
-        ...style,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : "translateY(22px)",
-        transition:
-          "opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)",
-      }}
+      className={`reveal ${visible ? "is-visible" : ""} ${className || ""}`.trim()}
+      style={style}
     >
       {children}
     </div>

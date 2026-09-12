@@ -48,18 +48,11 @@ export default function Header() {
         zIndex: 60,
         background: "var(--color-bg)",
         borderBottom: "1px solid var(--color-divider)",
+        width: "100%",
       }}
     >
-      <style>{`
-        #lamp-shade { background: var(--color-accent-600); }
-        :root[data-theme="dark"] #lamp-shade { background: var(--color-neutral-500); }
-        #lamp-beam { opacity: 1; }
-        :root[data-theme="dark"] #lamp-beam { opacity: 0; }
-        .lamp-label-dark { display: none; }
-        :root[data-theme="dark"] .lamp-label-light { display: none; }
-        :root[data-theme="dark"] .lamp-label-dark { display: inline; }
-      `}</style>
       <div
+        className="header-inner"
         style={{
           maxWidth: 1180,
           margin: "0 auto",
@@ -67,22 +60,32 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: 24,
+          gap: 20,
         }}
       >
         <a
           href="#home"
+          className="header-logo"
           style={{
             fontFamily: "var(--font-heading)",
             fontSize: 19,
             color: "var(--color-text)",
             textDecoration: "none",
             letterSpacing: "-.01em",
+            flexShrink: 0,
           }}
         >
           brexcel<span style={{ color: "var(--color-accent)" }}>.</span>
         </a>
-        <nav style={{ display: "flex", alignItems: "center", gap: 6 }}>
+        <nav
+          className="nav-menu"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+            flexWrap: "nowrap",
+          }}
+        >
           <a href="#home" className="nav-link">
             Home
           </a>
@@ -105,23 +108,24 @@ export default function Header() {
           style={{
             display: "flex",
             alignItems: "flex-end",
-            gap: 10,
+            gap: 8,
             background: "transparent",
             border: 0,
             cursor: "pointer",
-            padding: "4px 6px 0",
+            padding: "2px 4px 0",
             borderRadius: 14,
             color: "var(--color-text)",
+            flexShrink: 0,
           }}
         >
-          <span style={{ position: "relative", display: "block", width: 52, height: 44 }}>
+          <span style={{ position: "relative", display: "block", width: 46, height: 40 }}>
             <span
               style={{
                 position: "absolute",
-                left: 6,
+                left: 5,
                 bottom: 0,
-                width: 26,
-                height: 5,
+                width: 24,
+                height: 4.5,
                 borderRadius: 999,
                 background: "var(--color-neutral-400)",
               }}
@@ -129,10 +133,10 @@ export default function Header() {
             <span
               style={{
                 position: "absolute",
-                left: 17,
+                left: 15,
                 bottom: 3,
-                width: 5,
-                height: 26,
+                width: 4.5,
+                height: 24,
                 borderRadius: 999,
                 background: "var(--color-neutral-400)",
                 transform: "rotate(-16deg)",
@@ -142,10 +146,10 @@ export default function Header() {
             <span
               style={{
                 position: "absolute",
-                left: 20,
+                left: 18,
                 top: 2,
-                width: 6,
-                height: 16,
+                width: 5.5,
+                height: 14,
                 borderRadius: 999,
                 background: "var(--color-neutral-400)",
                 transform: "rotate(52deg)",
@@ -157,9 +161,9 @@ export default function Header() {
               style={{
                 position: "absolute",
                 right: 1,
-                top: 9,
-                width: 26,
-                height: 17,
+                top: 8,
+                width: 24,
+                height: 15,
                 clipPath: "polygon(0 100%, 22% 0, 78% 0, 100% 100%)",
                 transform: "rotate(14deg)",
               }}
@@ -169,9 +173,9 @@ export default function Header() {
               style={{
                 position: "absolute",
                 right: -4,
-                top: 24,
-                width: 44,
-                height: 34,
+                top: 22,
+                width: 40,
+                height: 30,
                 background:
                   "radial-gradient(120% 90% at 42% 0%, color-mix(in srgb, #ffd9a0 78%, transparent), transparent 72%)",
                 clipPath: "polygon(30% 0, 62% 0, 100% 100%, 0 100%)",
@@ -180,6 +184,7 @@ export default function Header() {
             />
           </span>
           <span
+            className="lamp-label-container"
             style={{
               fontSize: 11,
               fontWeight: 700,
@@ -187,6 +192,7 @@ export default function Header() {
               textTransform: "uppercase",
               color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
               paddingBottom: 2,
+              whiteSpace: "nowrap",
             }}
           >
             <span className="lamp-label-light">Lights on</span>

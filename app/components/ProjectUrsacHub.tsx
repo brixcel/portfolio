@@ -9,6 +9,7 @@ export default function ProjectUrsacHub() {
   const carousel = useCarousel(ursachubSlides.length);
   return (
     <section
+      className="section-margin-top"
       style={{
         marginTop: 110,
         background: "var(--color-accent-2-100)",
@@ -16,7 +17,10 @@ export default function ProjectUrsacHub() {
         borderBottom: "1px solid var(--color-divider)",
       }}
     >
-      <div style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px 110px" }}>
+      <div
+        className="section-pad"
+        style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px 110px" }}
+      >
         <Reveal style={{ display: "flex", alignItems: "baseline", gap: 20, marginBottom: 14 }}>
           <span
             style={{
@@ -29,10 +33,13 @@ export default function ProjectUrsacHub() {
             02
           </span>
           <div>
-            <h2 style={{ fontSize: "clamp(34px, 4.4vw, 54px)", margin: "0 0 6px", letterSpacing: "-.02em" }}>
-              UrsacHub
-            </h2>
+            <div className="text-mask-reveal">
+              <h2 style={{ fontSize: "clamp(34px, 4.4vw, 54px)", margin: "0 0 6px", letterSpacing: "-.02em" }}>
+                UrsacHub
+              </h2>
+            </div>
             <p
+              className="stagger-1"
               style={{
                 margin: 0,
                 fontSize: 12,
@@ -135,6 +142,7 @@ export default function ProjectUrsacHub() {
           ].map((img) => (
             <figure
               key={img.src}
+              className="project-img-frame"
               style={{
                 margin: 0,
                 borderRadius: "var(--radius-md)",

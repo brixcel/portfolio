@@ -35,14 +35,15 @@ export function CarouselTrack({
         }}
       >
         {slides.map((slide) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            draggable={false}
-            style={{ flex: "0 0 100%", width: "100%", display: "block" }}
-          />
+          <div key={slide.src} className="project-img-frame" style={{ flex: "0 0 100%", width: "100%" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              draggable={false}
+              style={{ width: "100%", display: "block" }}
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -53,7 +54,7 @@ export function CarouselControls({
   slides,
   state,
   accentColor,
-  thumbWidth = 62,
+  thumbWidth = 60,
 }: {
   slides: Slide[];
   state: CarouselState;
@@ -65,50 +66,67 @@ export function CarouselControls({
   const pad = (x: number) => String(x).padStart(2, "0");
 
   return (
-    <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 14, marginTop: 18 }}>
-      <button
-        type="button"
-        className="btn btn-secondary"
-        aria-label="Previous screenshot"
-        onClick={() => go(index - 1)}
-        style={{ width: 42, height: 42, padding: 0, borderRadius: 999 }}
-      >
-        ‹
-      </button>
-      <button
-        type="button"
-        className="btn btn-secondary"
-        aria-label="Next screenshot"
-        onClick={() => go(index + 1)}
-        style={{ width: 42, height: 42, padding: 0, borderRadius: 999 }}
-      >
-        ›
-      </button>
-      <span
-        style={{
-          fontSize: 13,
-          fontWeight: 700,
-          letterSpacing: ".1em",
-          color: "color-mix(in srgb, var(--color-text) 60%, transparent)",
-        }}
-      >
-        {pad(index + 1)} / {pad(n)}
-      </span>
-      <div style={{ display: "flex", gap: 8, marginLeft: "auto", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 12,
+        marginTop: 16,
+        width: "100%",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          aria-label="Previous screenshot"
+          onClick={() => go(index - 1)}
+          style={{ width: 38, height: 38, padding: 0, borderRadius: 999 }}
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          aria-label="Next screenshot"
+          onClick={() => go(index + 1)}
+          style={{ width: 38, height: 38, padding: 0, borderRadius: 999 }}
+        >
+          ›
+        </button>
+        <span
+          style={{
+            fontSize: 12.5,
+            fontWeight: 700,
+            letterSpacing: ".08em",
+            color: "color-mix(in srgb, var(--color-text) 60%, transparent)",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {pad(index + 1)} / {pad(n)}
+        </span>
+      </div>
+
+      <div className="carousel-thumbs">
         {slides.map((slide, i) => (
           <button
             key={slide.src}
             type="button"
+            aria-label={`Go to slide ${i + 1}`}
             onClick={() => go(i)}
             style={{
               width: thumbWidth,
+              minWidth: thumbWidth,
               padding: 0,
               border: `2px solid ${i === index ? accentColor : "transparent"}`,
-              borderRadius: 8,
+              borderRadius: 7,
               overflow: "hidden",
               background: "none",
               cursor: "pointer",
-              opacity: i === index ? 1 : 0.6,
+              opacity: i === index ? 1 : 0.55,
+              transition: "opacity 0.2s ease, border-color 0.2s ease",
+              flexShrink: 0,
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}

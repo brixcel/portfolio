@@ -8,7 +8,11 @@ import { synctaskSlides, synctaskStack } from "../data";
 export default function ProjectSynctask() {
   const carousel = useCarousel(synctaskSlides.length);
   return (
-    <section id="projects" style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px 0" }}>
+    <section
+      id="projects"
+      className="section-pad-top"
+      style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px 0" }}
+    >
       <Reveal style={{ display: "flex", alignItems: "baseline", gap: 20, marginBottom: 36 }}>
         <span
           style={{
@@ -21,10 +25,13 @@ export default function ProjectSynctask() {
           01
         </span>
         <div>
-          <h2 style={{ fontSize: "clamp(34px, 4.4vw, 54px)", margin: "0 0 6px", letterSpacing: "-.02em" }}>
-            Synctask
-          </h2>
+          <div className="text-mask-reveal">
+            <h2 style={{ fontSize: "clamp(34px, 4.4vw, 54px)", margin: "0 0 6px", letterSpacing: "-.02em" }}>
+              Synctask
+            </h2>
+          </div>
           <p
+            className="stagger-1"
             style={{
               margin: 0,
               fontSize: 12,
