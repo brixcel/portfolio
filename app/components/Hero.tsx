@@ -50,7 +50,7 @@ export default function Hero() {
                   maxWidth: "15ch",
                 }}
               >
-                Computer Engineering Student &amp; Software Developer
+                Software Developer
               </h1>
             </div>
             <p

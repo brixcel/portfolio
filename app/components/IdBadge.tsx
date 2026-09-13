@@ -25,7 +25,7 @@ export default function IdBadge() {
     const fitRig = () => {
       const isMobile = window.innerWidth <= 900;
       const topOffset = isMobile ? 110 : 180;
-      const naturalHeight = 320 + 52 + 410; // strap + clip + card
+      const naturalHeight = 600 + 52 + 410; // strap + clip + card
       const availableHeight = Math.max(300, window.innerHeight - 74 - 80);
       const scaleByHeight = Math.min(1, (availableHeight + topOffset) / naturalHeight);
       const scaleByWidth =
@@ -306,7 +306,7 @@ export default function IdBadge() {
           style={{
             position: "relative",
             width: 44,
-            height: 320,
+            height: 600,
             margin: "0 auto",
             borderRadius: 3,
             background:
@@ -316,7 +316,7 @@ export default function IdBadge() {
             transformOrigin: "50% 0%",
             overflow: "hidden",
             display: "flex",
-            alignItems: "center",
+            alignItems: "flex-start",
             justifyContent: "center",
             borderLeft: "1.5px solid #232918",
             borderRight: "1.5px solid #232918",
@@ -566,7 +566,7 @@ export default function IdBadge() {
                 margin: 0,
               }}
             >
-              Full Stack Developer
+              Software Developer
             </p>
           </div>
 

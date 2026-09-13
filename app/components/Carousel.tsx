@@ -55,11 +55,13 @@ export function CarouselControls({
   state,
   accentColor,
   thumbWidth = 60,
+  showThumbs = true,
 }: {
   slides: Slide[];
   state: CarouselState;
   accentColor: string;
   thumbWidth?: number;
+  showThumbs?: boolean;
 }) {
   const { index, go } = state;
   const n = slides.length;
@@ -70,7 +72,7 @@ export function CarouselControls({
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: showThumbs ? "space-between" : "flex-start",
         gap: 12,
         marginTop: 16,
         width: "100%",
@@ -108,32 +110,34 @@ export function CarouselControls({
         </span>
       </div>
 
-      <div className="carousel-thumbs">
-        {slides.map((slide, i) => (
-          <button
-            key={slide.src}
-            type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => go(i)}
-            style={{
-              width: thumbWidth,
-              minWidth: thumbWidth,
-              padding: 0,
-              border: `2px solid ${i === index ? accentColor : "transparent"}`,
-              borderRadius: 7,
-              overflow: "hidden",
-              background: "none",
-              cursor: "pointer",
-              opacity: i === index ? 1 : 0.55,
-              transition: "opacity 0.2s ease, border-color 0.2s ease",
-              flexShrink: 0,
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={slide.src} alt="" style={{ width: "100%", display: "block" }} />
-          </button>
-        ))}
-      </div>
+      {showThumbs && (
+        <div className="carousel-thumbs">
+          {slides.map((slide, i) => (
+            <button
+              key={slide.src}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => go(i)}
+              style={{
+                width: thumbWidth,
+                minWidth: thumbWidth,
+                padding: 0,
+                border: `2px solid ${i === index ? accentColor : "transparent"}`,
+                borderRadius: 7,
+                overflow: "hidden",
+                background: "none",
+                cursor: "pointer",
+                opacity: i === index ? 1 : 0.55,
+                transition: "opacity 0.2s ease, border-color 0.2s ease",
+                flexShrink: 0,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={slide.src} alt="" style={{ width: "100%", display: "block" }} />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
