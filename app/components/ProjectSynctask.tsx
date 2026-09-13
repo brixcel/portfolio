@@ -1,7 +1,7 @@
 "use client";
 
 import Reveal from "./Reveal";
-import { CarouselTrack, CarouselControls, useCarousel } from "./Carousel";
+import { CarouselTrack, useCarousel } from "./Carousel";
 import { TechChip } from "./TechChip";
 import { synctaskSlides, synctaskStack } from "../data";
 
@@ -11,7 +11,7 @@ export default function ProjectSynctask() {
     <section
       id="projects"
       className="section-pad-top"
-      style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px 0" }}
+      style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px 96px" }}
     >
       <Reveal style={{ display: "flex", alignItems: "baseline", gap: 20, marginBottom: 36 }}>
         <span
@@ -91,13 +91,6 @@ export default function ProjectSynctask() {
         </div>
       </Reveal>
 
-      <CarouselControls
-        slides={synctaskSlides}
-        state={carousel}
-        accentColor="var(--color-accent)"
-        thumbWidth={62}
-      />
-
       <Reveal
         className="two-col"
         style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 40, alignItems: "start", marginTop: 56 }}
@@ -151,6 +144,32 @@ export default function ProjectSynctask() {
             ))}
           </div>
         </div>
+      </Reveal>
+
+      <Reveal
+        className="project-collage"
+        style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginTop: 56 }}
+      >
+        {[
+          { src: "/assets/synctask-2.png", alt: "Synctask all-tasks board" },
+          { src: "/assets/synctask-7.png", alt: "Synctask new-task dialog with Create with AI" },
+          { src: "/assets/synctask-5.png", alt: "Synctask command palette" },
+        ].map((img) => (
+          <figure
+            key={img.src}
+            className="project-img-frame"
+            style={{
+              margin: 0,
+              borderRadius: "var(--radius-md)",
+              overflow: "hidden",
+              border: "1px solid var(--color-divider)",
+              boxShadow: "var(--shadow-sm)",
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={img.src} alt={img.alt} style={{ width: "100%", display: "block" }} />
+          </figure>
+        ))}
       </Reveal>
     </section>
   );

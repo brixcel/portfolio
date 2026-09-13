@@ -444,7 +444,7 @@ a {
     gap: 32px;
     padding-right: 32px;
   }
-  .uh-collage {
+  .project-collage {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }

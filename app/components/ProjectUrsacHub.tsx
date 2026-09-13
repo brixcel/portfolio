@@ -1,7 +1,7 @@
 "use client";
 
 import Reveal from "./Reveal";
-import { CarouselTrack, CarouselControls, useCarousel } from "./Carousel";
+import { CarouselTrack, useCarousel } from "./Carousel";
 import { TechChip } from "./TechChip";
 import { ursachubSlides, ursachubStack } from "../data";
 
@@ -11,7 +11,7 @@ export default function ProjectUrsacHub() {
     <section
       className="section-margin-top"
       style={{
-        marginTop: 110,
+        marginTop: 0,
         background: "var(--color-accent-2-100)",
         borderTop: "1px solid var(--color-divider)",
         borderBottom: "1px solid var(--color-divider)",
@@ -60,7 +60,7 @@ export default function ProjectUrsacHub() {
             display: "grid",
             gridTemplateColumns: "1fr 1.35fr",
             gap: 44,
-            alignItems: "center",
+            alignItems: "start",
             marginTop: 40,
           }}
         >
@@ -122,17 +122,11 @@ export default function ProjectUrsacHub() {
                 background: "var(--color-bg)",
               }}
             />
-            <CarouselControls
-              slides={ursachubSlides}
-              state={carousel}
-              accentColor="var(--color-accent-2-700)"
-              thumbWidth={52}
-            />
           </div>
         </Reveal>
 
         <Reveal
-          className="uh-collage"
+          className="project-collage"
           style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginTop: 56 }}
         >
           {[

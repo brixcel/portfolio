@@ -22,9 +22,9 @@ export default function Home() {
       <Header />
       <Hero />
       <Marquee />
+      <About />
       <ProjectSynctask />
       <ProjectUrsacHub />
-      <About />
       <Contact />
     </div>
   );
