@@ -9,10 +9,10 @@ export default function ProjectSynctask() {
       id="projects"
       containerClassName="section-pad-top"
       containerStyle={{ padding: "96px 24px 0" }}
-      number="01"
-      numberColor="var(--color-accent)"
+      accentTextColor="var(--color-accent-700)"
       title="Synctask"
       subtitle="Full-stack web application"
+      role="Full-Stack Developer"
       description="A full-stack task management platform with AI-powered natural-language workflows for organizing and managing projects."
       liveHref="https://synctask-proj.vercel.app/"
       githubHref="https://github.com/brixcel/taskflow"

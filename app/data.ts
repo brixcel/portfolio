@@ -18,6 +18,7 @@ export const techStack: Tech[] = [
   { name: "Laravel", slug: "laravel" },
   { name: "PHP", slug: "php" },
   { name: "MySQL", slug: "mysql" },
+  { name: "Firebase", slug: "firebase" },
   { name: "Bootstrap", slug: "bootstrap" },
   { name: "HTML", slug: "html5" },
   { name: "CSS", slug: "css3" },
@@ -51,6 +52,26 @@ export const ursachubStack: Tech[] = [
   { name: "Git", slug: "git" },
 ];
 
+export const ursachubSocialStack: Tech[] = [
+  { name: "Firebase", slug: "firebase" },
+  { name: "Laravel", slug: "laravel" },
+  { name: "PHP", slug: "php" },
+  { name: "Tailwind CSS", slug: "tailwindcss" },
+  { name: "JavaScript", slug: "javascript" },
+  { name: "HTML", slug: "html5" },
+  { name: "CSS", slug: "css3" },
+];
+
+export const photoboothStack: Tech[] = [
+  { name: "React", slug: "react" },
+  { name: "JavaScript", slug: "javascript" },
+  { name: "Vite", slug: "vitejs" },
+  { name: "Tailwind CSS", slug: "tailwindcss" },
+  { name: "HTML", slug: "html5" },
+  { name: "CSS", slug: "css3" },
+  { name: "Git", slug: "git" },
+];
+
 export const synctaskSlides = [
   { src: "/assets/synctask-1.png", alt: "Synctask landing and sign-in" },
   { src: "/assets/synctask-2.png", alt: "Synctask all-tasks board" },
@@ -71,3 +92,20 @@ export const ursachubSlides = [
   { src: "/assets/ursachub-2.png", alt: "UrsacHub news feed" },
   { src: "/assets/ursachub-9.png", alt: "UrsacHub about the developers" },
 ];
+
+export const ursachubSocialSlides = [
+  { src: "/assets/ursachub-social-1.png", alt: "UrsacHub Social student login and welcome screen" },
+  { src: "/assets/ursachub-social-2.png", alt: "UrsacHub Social campus feed with posts and interactions" },
+  { src: "/assets/ursachub-social-3.png", alt: "UrsacHub Social post creation modal" },
+  { src: "/assets/ursachub-social-4.png", alt: "UrsacHub Social student messages list" },
+  { src: "/assets/ursachub-social-5.png", alt: "UrsacHub Social real-time student chat conversation" },
+];
+
+export const photoboothSlides = [
+  { src: "/assets/photobooth-1.png", alt: "Photo Booth landing screen with photostrip preview" },
+  { src: "/assets/photobooth-2.png", alt: "Photo Booth Studio with 4-photo 2x2 classic grid and customization" },
+  { src: "/assets/photobooth-3.png", alt: "Photo Booth Studio with 3-photo vertical strip layout" },
+  { src: "/assets/photobooth-4.png", alt: "Photo Booth Studio with 6-photo 3x2 grid layout" },
+  { src: "/assets/photobooth-5.png", alt: "Photo Booth finished keepsake and standalone download" },
+];
+

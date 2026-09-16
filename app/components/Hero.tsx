@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import IdBadge from "./IdBadge";
+import IdBadge from "./id-badge/IdBadge";
 
 export default function Hero() {
   return (
@@ -30,10 +30,9 @@ export default function Hero() {
             <p
               className="stagger-1"
               style={{
-                fontSize: 12,
-                fontWeight: 700,
-                letterSpacing: ".16em",
-                textTransform: "uppercase",
+                fontFamily: "var(--font-heading)",
+                fontSize: 16,
+                letterSpacing: ".01em",
                 color: "var(--color-accent-700)",
                 margin: "0 0 18px",
               }}

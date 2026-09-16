@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 function toggleTheme() {
   const current =
     document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
@@ -40,6 +42,12 @@ function toggleTheme() {
 }
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header
       style={{
@@ -56,11 +64,11 @@ export default function Header() {
         style={{
           maxWidth: 1180,
           margin: "0 auto",
-          padding: "14px 24px",
+          padding: "12px 24px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: 20,
+          gap: 16,
         }}
       >
         <a
@@ -68,7 +76,7 @@ export default function Header() {
           className="header-logo"
           style={{
             fontFamily: "var(--font-heading)",
-            fontSize: 19,
+            fontSize: 20,
             color: "var(--color-text)",
             textDecoration: "none",
             letterSpacing: "-.01em",
@@ -77,8 +85,10 @@ export default function Header() {
         >
           brexcel<span style={{ color: "var(--color-accent)" }}>.</span>
         </a>
+
+        {/* Desktop Navigation */}
         <nav
-          className="nav-menu"
+          className="nav-menu desktop-nav"
           style={{
             display: "flex",
             alignItems: "center",
@@ -99,107 +109,211 @@ export default function Header() {
             Contact
           </a>
         </nav>
-        <button
-          id="lamp"
-          type="button"
-          onClick={toggleTheme}
-          aria-label="Desk lamp — switch between light and dark"
-          title="Desk lamp — switch between light and dark"
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            gap: 8,
-            background: "transparent",
-            border: 0,
-            cursor: "pointer",
-            padding: "2px 4px 0",
-            borderRadius: 14,
-            color: "var(--color-text)",
-            flexShrink: 0,
-          }}
-        >
-          <span style={{ position: "relative", display: "block", width: 46, height: 40 }}>
-            <span
-              style={{
-                position: "absolute",
-                left: 5,
-                bottom: 0,
-                width: 24,
-                height: 4.5,
-                borderRadius: 999,
-                background: "var(--color-neutral-400)",
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                left: 15,
-                bottom: 3,
-                width: 4.5,
-                height: 24,
-                borderRadius: 999,
-                background: "var(--color-neutral-400)",
-                transform: "rotate(-16deg)",
-                transformOrigin: "50% 100%",
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                left: 18,
-                top: 2,
-                width: 5.5,
-                height: 14,
-                borderRadius: 999,
-                background: "var(--color-neutral-400)",
-                transform: "rotate(52deg)",
-                transformOrigin: "0 0",
-              }}
-            />
-            <span
-              id="lamp-shade"
-              style={{
-                position: "absolute",
-                right: 1,
-                top: 8,
-                width: 24,
-                height: 15,
-                clipPath: "polygon(0 100%, 22% 0, 78% 0, 100% 100%)",
-                transform: "rotate(14deg)",
-              }}
-            />
-            <span
-              id="lamp-beam"
-              style={{
-                position: "absolute",
-                right: -4,
-                top: 22,
-                width: 40,
-                height: 30,
-                background:
-                  "radial-gradient(120% 90% at 42% 0%, color-mix(in srgb, #ffd9a0 78%, transparent), transparent 72%)",
-                clipPath: "polygon(30% 0, 62% 0, 100% 100%, 0 100%)",
-                transition: "opacity .35s ease",
-              }}
-            />
-          </span>
-          <span
-            className="lamp-label-container"
+
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+          {/* Desk Lamp Button */}
+          <button
+            id="lamp"
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Desk lamp — switch between light and dark"
+            title="Desk lamp — switch between light and dark"
             style={{
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
-              paddingBottom: 2,
-              whiteSpace: "nowrap",
+              display: "flex",
+              alignItems: "flex-end",
+              gap: 8,
+              background: "transparent",
+              border: 0,
+              cursor: "pointer",
+              padding: "2px 4px 0",
+              borderRadius: 14,
+              color: "var(--color-text)",
+              flexShrink: 0,
             }}
           >
-            <span className="lamp-label-light">Lights on</span>
-            <span className="lamp-label-dark">Lights off</span>
-          </span>
-        </button>
+            <span style={{ position: "relative", display: "block", width: 44, height: 38 }}>
+              <span
+                style={{
+                  position: "absolute",
+                  left: 5,
+                  bottom: 0,
+                  width: 23,
+                  height: 4,
+                  borderRadius: 999,
+                  background: "var(--color-neutral-400)",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: 14,
+                  bottom: 3,
+                  width: 4,
+                  height: 23,
+                  borderRadius: 999,
+                  background: "var(--color-neutral-400)",
+                  transform: "rotate(-16deg)",
+                  transformOrigin: "50% 100%",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: 17,
+                  top: 2,
+                  width: 5,
+                  height: 13,
+                  borderRadius: 999,
+                  background: "var(--color-neutral-400)",
+                  transform: "rotate(52deg)",
+                  transformOrigin: "0 0",
+                }}
+              />
+              <span
+                id="lamp-shade"
+                style={{
+                  position: "absolute",
+                  right: 1,
+                  top: 7,
+                  width: 23,
+                  height: 14,
+                  clipPath: "polygon(0 100%, 22% 0, 78% 0, 100% 100%)",
+                  transform: "rotate(14deg)",
+                }}
+              />
+              <span
+                id="lamp-beam"
+                style={{
+                  position: "absolute",
+                  right: -4,
+                  top: 21,
+                  width: 38,
+                  height: 28,
+                  background:
+                    "radial-gradient(120% 90% at 42% 0%, color-mix(in srgb, #ffd9a0 78%, transparent), transparent 72%)",
+                  clipPath: "polygon(30% 0, 62% 0, 100% 100%, 0 100%)",
+                  transition: "opacity .35s ease",
+                }}
+              />
+            </span>
+            <span
+              className="lamp-label-container"
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: ".1em",
+                textTransform: "uppercase",
+                color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
+                paddingBottom: 2,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span className="lamp-label-light">Lights on</span>
+              <span className="lamp-label-dark">Lights off</span>
+            </span>
+          </button>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            type="button"
+            className="mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            style={{
+              background: "transparent",
+              border: "1px solid var(--color-divider)",
+              borderRadius: "var(--radius-sm)",
+              padding: "7px 9px",
+              cursor: "pointer",
+              color: "var(--color-text)",
+              display: "none",
+              flexDirection: "column",
+              gap: 4,
+              alignItems: "center",
+              justifyContent: "center",
+              width: 38,
+              height: 36,
+            }}
+          >
+            <span
+              style={{
+                width: 18,
+                height: 2,
+                background: "currentColor",
+                borderRadius: 99,
+                transition: "transform 0.25s ease",
+                transform: mobileMenuOpen ? "rotate(45deg) translate(2px, 6px)" : "none",
+              }}
+            />
+            <span
+              style={{
+                width: 18,
+                height: 2,
+                background: "currentColor",
+                borderRadius: 99,
+                opacity: mobileMenuOpen ? 0 : 1,
+                transition: "opacity 0.2s ease",
+              }}
+            />
+            <span
+              style={{
+                width: 18,
+                height: 2,
+                background: "currentColor",
+                borderRadius: 99,
+                transition: "transform 0.25s ease",
+                transform: mobileMenuOpen ? "rotate(-45deg) translate(2px, -6px)" : "none",
+              }}
+            />
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Navigation Drawer */}
+      {mobileMenuOpen && (
+        <nav
+          className="mobile-nav-drawer"
+          style={{
+            borderTop: "1px solid var(--color-divider)",
+            background: "color-mix(in srgb, var(--color-bg) 96%, transparent)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            padding: "14px 18px 18px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 4,
+          }}
+        >
+          <a
+            href="#home"
+            onClick={handleLinkClick}
+            className="mobile-nav-link"
+          >
+            Home
+          </a>
+          <a
+            href="#about"
+            onClick={handleLinkClick}
+            className="mobile-nav-link"
+          >
+            About
+          </a>
+          <a
+            href="#projects"
+            onClick={handleLinkClick}
+            className="mobile-nav-link"
+          >
+            Projects
+          </a>
+          <a
+            href="#contact"
+            onClick={handleLinkClick}
+            className="mobile-nav-link"
+          >
+            Contact
+          </a>
+        </nav>
+      )}
     </header>
   );
 }

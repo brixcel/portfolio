@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
+const VISITED_KEY = "bjo-portfolio-visited";
+
 export default function LoadingScreen() {
   const loaderRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -22,17 +24,40 @@ export default function LoadingScreen() {
       window.dispatchEvent(new CustomEvent("portfolio:ready"));
     };
 
-    if (reduced) {
-      notifyReady();
+    // Already seen the intro this session (e.g. navigating back to "/") — skip
+    // straight to the badge drop instead of replaying the progress curtain.
+    let alreadyVisited = false;
+    try {
+      alreadyVisited = sessionStorage.getItem(VISITED_KEY) === "1";
+    } catch {
+      // sessionStorage unavailable (private mode, disabled storage) — fall through to full intro
+    }
+
+    if (reduced || alreadyVisited) {
+      // Defer to the next frame so sibling effects (e.g. IdBadge's own
+      // "portfolio:ready" listener) have mounted before this fires — dispatching
+      // synchronously here can race ahead of them and get missed entirely.
+      requestAnimationFrame(() => {
+        notifyReady();
+      });
       setRemoved(true);
       return;
     }
+
+    const markVisited = () => {
+      try {
+        sessionStorage.setItem(VISITED_KEY, "1");
+      } catch {
+        // ignore — first-run intro will just replay next time
+      }
+    };
 
     const progressObj = { value: 0 };
 
     const tl = gsap.timeline({
       onComplete: () => {
         notifyReady();
+        markVisited();
         // Smooth upward curtain exit
         gsap.to(loader, {
           yPercent: -100,

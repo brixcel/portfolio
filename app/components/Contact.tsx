@@ -1,5 +1,3 @@
-import Reveal from "./Reveal";
-
 export default function Contact() {
   return (
     <section
@@ -10,24 +8,22 @@ export default function Contact() {
         className="section-pad"
         style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px" }}
       >
-        <Reveal
+        <div
           className="two-col"
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 44, alignItems: "end" }}
         >
           <div>
-            <div className="text-mask-reveal">
-              <h2 style={{ fontSize: "clamp(34px, 4.6vw, 56px)", margin: "0 0 14px", letterSpacing: "-.02em" }}>
-                Let&rsquo;s build something.
-              </h2>
-            </div>
-            <p className="stagger-1" style={{ margin: 0, fontSize: 17, color: "color-mix(in srgb, var(--color-text) 72%, transparent)" }}>
+            <h2 style={{ fontSize: "clamp(34px, 4.6vw, 56px)", margin: "0 0 14px", letterSpacing: "-.02em" }}>
+              Let&rsquo;s build something.
+            </h2>
+            <p style={{ margin: 0, fontSize: 17, color: "color-mix(in srgb, var(--color-text) 72%, transparent)" }}>
               Open to internships, freelance work and collaboration.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <a href="mailto:brexcel14@gmail.com" className="contact-row">
               brexcel14@gmail.com
-              <span style={{ color: "var(--color-accent-700)" }}>Email →</span>
+              <span style={{ color: "var(--color-accent-700)" }}>Email</span>
             </a>
             <a
               href="https://github.com/brixcel"
@@ -36,10 +32,10 @@ export default function Contact() {
               className="contact-row"
             >
               github.com/brixcel
-              <span style={{ color: "var(--color-accent-700)" }}>GitHub →</span>
+              <span style={{ color: "var(--color-accent-700)" }}>GitHub</span>
             </a>
           </div>
-        </Reveal>
+        </div>
         <div
           style={{
             display: "flex",
@@ -55,7 +51,7 @@ export default function Contact() {
           }}
         >
           <span>Brexcel Joe M. Orias — Computer Engineering</span>
-          <span>Synctask · UrsacHub</span>
+          <span>Synctask, UrsacHub &amp; Photo Booth</span>
         </div>
       </div>
     </section>

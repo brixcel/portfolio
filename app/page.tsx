@@ -3,7 +3,9 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import ProjectSynctask from "./components/ProjectSynctask";
+import ProjectUrsacHubSocial from "./components/ProjectUrsacHubSocial";
 import ProjectUrsacHub from "./components/ProjectUrsacHub";
+import ProjectPhotoBooth from "./components/ProjectPhotoBooth";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
@@ -20,12 +22,16 @@ export default function Home() {
     >
       <LoadingScreen />
       <Header />
-      <Hero />
-      <Marquee />
-      <About />
-      <ProjectSynctask />
-      <ProjectUrsacHub />
-      <Contact />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <ProjectSynctask />
+        <ProjectUrsacHubSocial />
+        <ProjectUrsacHub />
+        <ProjectPhotoBooth />
+        <Contact />
+      </main>
     </div>
   );
 }
