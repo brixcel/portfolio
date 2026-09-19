@@ -7,6 +7,7 @@ export default function ProjectUrsacHub() {
   return (
     <ProjectShowcase
       id="ursachub"
+      projectNumber="03"
       sectionClassName="section-margin-top"
       sectionStyle={{
         marginTop: 110,

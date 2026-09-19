@@ -72,6 +72,13 @@ export const photoboothStack: Tech[] = [
   { name: "Git", slug: "git" },
 ];
 
+export const ursacdsaStack: Tech[] = [
+  { name: "JavaScript", slug: "javascript" },
+  { name: "HTML", slug: "html5" },
+  { name: "CSS", slug: "css3" },
+  { name: "Git", slug: "git" },
+];
+
 export const synctaskSlides = [
   { src: "/assets/synctask-1.png", alt: "Synctask landing and sign-in" },
   { src: "/assets/synctask-2.png", alt: "Synctask all-tasks board" },
@@ -107,5 +114,13 @@ export const photoboothSlides = [
   { src: "/assets/photobooth-3.png", alt: "Photo Booth Studio with 3-photo vertical strip layout" },
   { src: "/assets/photobooth-4.png", alt: "Photo Booth Studio with 6-photo 3x2 grid layout" },
   { src: "/assets/photobooth-5.png", alt: "Photo Booth finished keepsake and standalone download" },
+];
+
+export const ursacdsaSlides = [
+  { src: "/assets/ursacdsa-1.svg", alt: "DSA Workbench dashboard with 8 interactive abstract data type modules" },
+  { src: "/assets/ursacdsa-2.svg", alt: "Stack visualization with LIFO discipline, O(1) mutations, and runtime memory staging" },
+  { src: "/assets/ursacdsa-3.svg", alt: "Circular Queue visualization with ring buffer topology and modulo arithmetic wrap-around" },
+  { src: "/assets/ursacdsa-4.svg", alt: "AVL Tree self-balancing binary search tree with height balance factor and rotation engine" },
+  { src: "/assets/ursacdsa-5.svg", alt: "Doubly Linked List bidirectional pointer chain and dynamic memory heap addresses" },
 ];
 

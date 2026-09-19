@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dsaBg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#edf2f7" />
+    </linearGradient>
+    <filter id="llShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#dsaBg5)" rx="16" />
+
+  <!-- Browser Top Bar -->
+  <rect x="0" y="0" width="1200" height="42" fill="#ffffff" rx="16" />
+  <rect x="0" y="26" width="1200" height="16" fill="#ffffff" />
+  <line x1="0" y1="42" x2="1200" y2="42" stroke="#e2e8f0" stroke-width="1" />
+  <circle cx="28" cy="21" r="5.5" fill="#f87171" />
+  <circle cx="46" cy="21" r="5.5" fill="#fbbf24" />
+  <circle cx="64" cy="21" r="5.5" fill="#34d399" />
+  <rect x="360" y="10" width="480" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+  <text x="600" y="25" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">ursacdsa.vercel.app/doubly-linked-list.html</text>
+
+  <!-- Content -->
+  <g transform="translate(80, 56)">
+    <!-- Badge -->
+    <rect x="365" y="0" width="310" height="24" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
+    <text x="520" y="16" fill="#2563eb" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" letter-spacing="0.5">DYNAMIC MEMORY • BIDIRECTIONAL CHAIN</text>
+
+    <!-- Main Title -->
+    <text x="520" y="50" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" text-anchor="middle">Doubly Linked List Visualization</text>
+    <text x="520" y="72" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Bidirectional node structure maintaining explicit forward (next) and backward (prev) pointer references.</text>
+
+    <!-- Properties Card -->
+    <rect x="20" y="86" width="1000" height="60" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#llShadow)" />
+    <g transform="translate(45, 96)">
+      <text x="0" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">LINKAGE</text>
+      <text x="0" y="36" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Bidirectional (Prev ↔ Next)</text>
+
+      <text x="320" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">INSERTION / DELETION</text>
+      <text x="320" y="36" fill="#2563eb" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">O(1) at Head/Tail with pointer</text>
+
+      <text x="640" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">MEMORY ALLOCATION</text>
+      <text x="640" y="36" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Heap Dynamic Nodes</text>
+    </g>
+
+    <!-- Main Workspace -->
+    <rect x="20" y="160" width="1000" height="495" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#llShadow)" />
+    
+    <!-- Left Controls Panel -->
+    <g transform="translate(45, 185)">
+      <text x="0" y="16" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">Node Mutations</text>
+      
+      <rect x="0" y="34" width="160" height="34" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="12" y="56" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Value (e.g. 45)</text>
+
+      <g transform="translate(0, 80)">
+        <rect x="0" y="0" width="105" height="32" rx="6" fill="#2563eb" />
+        <text x="52" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Insert Head</text>
+
+        <rect x="115" y="0" width="105" height="32" rx="6" fill="#2563eb" />
+        <text x="167" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Insert Tail</text>
+
+        <rect x="230" y="0" width="110" height="32" rx="6" fill="#2563eb" />
+        <text x="285" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Insert At Index</text>
+      </g>
+
+      <g transform="translate(0, 122)">
+        <rect x="0" y="0" width="105" height="32" rx="6" fill="#dc2626" />
+        <text x="52" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Delete Head</text>
+
+        <rect x="115" y="0" width="105" height="32" rx="6" fill="#dc2626" />
+        <text x="167" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Delete Tail</text>
+
+        <rect x="230" y="0" width="110" height="32" rx="6" fill="#dc2626" />
+        <text x="285" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Delete Value</text>
+      </g>
+
+      <text x="0" y="180" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">LIST STATE</text>
+      <rect x="0" y="190" width="340" height="55" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="14" y="212" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Total Nodes: 4</text>
+      <text x="14" y="232" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">Head: [0x10A] 12  ↔  Tail: [0x42C] 88</text>
+    </g>
+
+    <!-- Right Node Chain Visualizer -->
+    <g transform="translate(480, 185)">
+      <rect x="0" y="0" width="510" height="440" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-dasharray="4 4" />
+      <text x="20" y="24" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">HEAP MEMORY POINTER CHAIN</text>
+
+      <!-- Head Pointer -->
+      <rect x="20" y="60" width="50" height="24" rx="4" fill="#0f172a" />
+      <text x="45" y="76" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">HEAD</text>
+      <line x1="70" y1="72" x2="100" y2="72" stroke="#0f172a" stroke-width="2" />
+
+      <!-- Node 1 -->
+      <g transform="translate(100, 45)">
+        <rect width="90" height="54" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" />
+        <line x1="25" y1="0" x2="25" y2="54" stroke="#e2e8f0" />
+        <line x1="65" y1="0" x2="65" y2="54" stroke="#e2e8f0" />
+        <text x="12" y="32" fill="#94a3b8" font-size="9" text-anchor="middle">null</text>
+        <text x="45" y="34" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" text-anchor="middle">12</text>
+        <text x="78" y="32" fill="#2563eb" font-size="9" text-anchor="middle">•</text>
+        <text x="45" y="70" fill="#64748b" font-family="monospace" font-size="9" text-anchor="middle">0x10A</text>
+      </g>
+
+      <!-- Arrows Node 1 <-> Node 2 -->
+      <g transform="translate(190, 60)">
+        <line x1="0" y1="5" x2="35" y2="5" stroke="#2563eb" stroke-width="2" />
+        <line x1="0" y1="20" x2="35" y2="20" stroke="#64748b" stroke-width="2" />
+      </g>
+
+      <!-- Node 2 -->
+      <g transform="translate(225, 45)">
+        <rect width="90" height="54" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" />
+        <line x1="25" y1="0" x2="25" y2="54" stroke="#e2e8f0" />
+        <line x1="65" y1="0" x2="65" y2="54" stroke="#e2e8f0" />
+        <text x="12" y="32" fill="#64748b" font-size="9" text-anchor="middle">•</text>
+        <text x="45" y="34" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" text-anchor="middle">34</text>
+        <text x="78" y="32" fill="#2563eb" font-size="9" text-anchor="middle">•</text>
+        <text x="45" y="70" fill="#64748b" font-family="monospace" font-size="9" text-anchor="middle">0x21B</text>
+      </g>
+
+      <!-- Arrows Node 2 <-> Node 3 -->
+      <g transform="translate(315, 60)">
+        <line x1="0" y1="5" x2="35" y2="5" stroke="#2563eb" stroke-width="2" />
+        <line x1="0" y1="20" x2="35" y2="20" stroke="#64748b" stroke-width="2" />
+      </g>
+
+      <!-- Node 3 -->
+      <g transform="translate(350, 45)">
+        <rect width="90" height="54" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" />
+        <line x1="25" y1="0" x2="25" y2="54" stroke="#e2e8f0" />
+        <line x1="65" y1="0" x2="65" y2="54" stroke="#e2e8f0" />
+        <text x="12" y="32" fill="#64748b" font-size="9" text-anchor="middle">•</text>
+        <text x="45" y="34" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" text-anchor="middle">88</text>
+        <text x="78" y="32" fill="#94a3b8" font-size="9" text-anchor="middle">null</text>
+        <text x="45" y="70" fill="#64748b" font-family="monospace" font-size="9" text-anchor="middle">0x42C</text>
+      </g>
+
+      <!-- Tail Pointer -->
+      <rect x="445" y="60" width="50" height="24" rx="4" fill="#0f172a" />
+      <text x="470" y="76" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">TAIL</text>
+
+      <!-- Animated Traversal Path Banner -->
+      <rect x="20" y="160" width="470" height="220" rx="8" fill="#ffffff" stroke="#e2e8f0" />
+      <text x="40" y="190" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">Pointer Dereference &amp; Traversal Engine</text>
+      <text x="40" y="215" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">Sequential address jumping enables dynamic resizing without memory fragmentation.</text>
+      
+      <g transform="translate(40, 240)">
+        <rect width="400" height="34" rx="6" fill="#eff6ff" stroke="#bfdbfe" />
+        <text x="15" y="22" fill="#1e40af" font-family="monospace" font-size="11.5">current = current-&gt;next; // [0x10A] → [0x21B] → [0x42C]</text>
+      </g>
+    </g>
+  </g>
+</svg>

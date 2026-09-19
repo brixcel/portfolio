@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: "Brexcel Joe M. Orias — Computer Engineering Student & Software Developer",
   description:
     "Building software to solve problems I actually encounter. Portfolio of Brexcel Joe M. Orias, a full-stack developer and Computer Engineering student.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/logo.svg",
+  },
 };
 
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("bjo-portfolio-theme");if(t)document.documentElement.setAttribute("data-theme",t);document.documentElement.style.setProperty("--icon-invert",document.documentElement.getAttribute("data-theme")==="dark"?"1":"0")}catch(e){}})()`;

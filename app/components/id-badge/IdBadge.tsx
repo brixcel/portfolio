@@ -71,8 +71,6 @@ export default function IdBadge() {
             willChange: "transform",
             transformOrigin: "50% 8px",
             transformStyle: "preserve-3d",
-            cursor: "grab",
-            touchAction: "none",
           }}
         >
           {/* Dynamic Cursor-Following Specular Glare */}

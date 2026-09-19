@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dsaBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#edf2f7" />
+    </linearGradient>
+    <filter id="cqShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#dsaBg3)" rx="16" />
+
+  <!-- Browser Top Bar -->
+  <rect x="0" y="0" width="1200" height="42" fill="#ffffff" rx="16" />
+  <rect x="0" y="26" width="1200" height="16" fill="#ffffff" />
+  <line x1="0" y1="42" x2="1200" y2="42" stroke="#e2e8f0" stroke-width="1" />
+  <circle cx="28" cy="21" r="5.5" fill="#f87171" />
+  <circle cx="46" cy="21" r="5.5" fill="#fbbf24" />
+  <circle cx="64" cy="21" r="5.5" fill="#34d399" />
+  <rect x="360" y="10" width="480" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+  <text x="600" y="25" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">ursacdsa.vercel.app/circular-queue.html</text>
+
+  <!-- Content -->
+  <g transform="translate(80, 56)">
+    <!-- Badge -->
+    <rect x="360" y="0" width="320" height="24" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
+    <text x="520" y="16" fill="#2563eb" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" letter-spacing="0.5">CYCLIC DATA STRUCTURE • RING BUFFER</text>
+
+    <!-- Main Title -->
+    <text x="520" y="50" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" text-anchor="middle">Circular Queue Visualization</text>
+    <text x="520" y="72" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">An optimized queue implementation utilizing a fixed-size ring buffer where wrap-around eliminates memory wastage.</text>
+
+    <!-- Properties Card -->
+    <rect x="20" y="86" width="1000" height="60" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cqShadow)" />
+    <g transform="translate(45, 96)">
+      <text x="0" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">TOPOLOGY</text>
+      <text x="0" y="36" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Ring Buffer (cyclic)</text>
+
+      <text x="320" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">MODULO ARITHMETIC</text>
+      <text x="320" y="36" fill="#2563eb" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">(index + 1) % capacity</text>
+
+      <text x="640" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">FULL CONDITION</text>
+      <text x="640" y="36" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">(rear + 1) % cap == front</text>
+    </g>
+
+    <!-- Success Feedback Bar -->
+    <rect x="20" y="156" width="1000" height="32" rx="6" fill="#fef9c3" stroke="#fde047" stroke-width="1" />
+    <text x="520" y="177" fill="#854d0e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">2 was added to the queue.</text>
+
+    <!-- Operations and Circular Stage -->
+    <rect x="20" y="198" width="1000" height="460" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cqShadow)" />
+    
+    <!-- Left Operations Controls -->
+    <g transform="translate(45, 218)">
+      <text x="0" y="16" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">Operations Panel</text>
+      
+      <text x="0" y="46" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">1. RING ALLOCATION &amp; RESET</text>
+      <rect x="0" y="56" width="90" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="45" y="77" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">4</text>
+      <rect x="100" y="56" width="110" height="32" rx="6" fill="#2563eb" />
+      <text x="155" y="76" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">Allocate Ring</text>
+      <rect x="220" y="56" width="95" height="32" rx="6" fill="#dc2626" />
+      <text x="267" y="76" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">Reset Queue</text>
+
+      <text x="0" y="116" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">2. ENQUEUE &amp; DEQUEUE MUTATIONS</text>
+      <rect x="0" y="126" width="160" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="12" y="146" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5">Enter integer to enqueue</text>
+      <rect x="170" y="126" width="80" height="32" rx="6" fill="#2563eb" />
+      <text x="210" y="146" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">Enqueue</text>
+      <rect x="260" y="126" width="80" height="32" rx="6" fill="#dc2626" />
+      <text x="300" y="146" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">Dequeue</text>
+
+      <text x="0" y="186" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">3. RING STATE QUERIES</text>
+      <rect x="0" y="196" width="80" height="28" rx="6" fill="#f1f5f9" />
+      <text x="40" y="214" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Peek (Front)</text>
+      <rect x="88" y="196" width="75" height="28" rx="6" fill="#f1f5f9" />
+      <text x="125" y="214" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Rear (Last)</text>
+      <rect x="171" y="196" width="80" height="28" rx="6" fill="#f1f5f9" />
+      <text x="211" y="214" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Queue Size</text>
+      <rect x="259" y="196" width="65" height="28" rx="6" fill="#f1f5f9" />
+      <text x="291" y="214" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">IsEmpty?</text>
+
+      <!-- Bottom Query Peek Output Banner -->
+      <rect x="0" y="250" width="345" height="42" rx="8" fill="#0f172a" />
+      <text x="172" y="276" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Peek: 3  |  Current Size: 4</text>
+    </g>
+
+    <!-- Right Ring Buffer Memory Stage -->
+    <g transform="translate(480, 220)">
+      <rect x="0" y="0" width="510" height="415" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-dasharray="4 4" />
+      <text x="20" y="24" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">CIRCULAR MEMORY STAGE</text>
+
+      <!-- Main Circle Ring -->
+      <circle cx="255" cy="215" r="140" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 4" />
+
+      <!-- Top Node [2]: 2 (Rear) -->
+      <g transform="translate(255, 75)">
+        <circle cx="0" cy="0" r="26" fill="#2563eb" />
+        <text x="0" y="5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">[3] 2</text>
+        <!-- Rear Pointer Tag -->
+        <rect x="-30" y="-40" width="60" height="20" rx="4" fill="#0f172a" />
+        <text x="0" y="-26" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Rear (R)</text>
+      </g>
+
+      <!-- Right Node [0]: 3 (Front) -->
+      <g transform="translate(395, 215)">
+        <circle cx="0" cy="0" r="26" fill="#2563eb" />
+        <text x="0" y="5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">[0] 3</text>
+        <!-- Front Pointer Tag -->
+        <rect x="32" y="-10" width="60" height="20" rx="4" fill="#0f172a" />
+        <text x="62" y="4" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Front (F)</text>
+      </g>
+
+      <!-- Bottom Node [1]: 5 -->
+      <g transform="translate(255, 355)">
+        <circle cx="0" cy="0" r="26" fill="#2563eb" />
+        <text x="0" y="5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">[1] 5</text>
+      </g>
+
+      <!-- Left Node [2]: 3 -->
+      <g transform="translate(115, 215)">
+        <circle cx="0" cy="0" r="26" fill="#2563eb" />
+        <text x="0" y="5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">[2] 3</text>
+      </g>
+    </g>
+  </g>
+</svg>

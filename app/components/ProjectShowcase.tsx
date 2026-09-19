@@ -10,6 +10,7 @@ type Slide = { src: string; alt: string };
 
 export type ProjectShowcaseProps = {
   id?: string;
+  projectNumber?: string;
   sectionClassName?: string;
   sectionStyle?: CSSProperties;
   containerClassName?: string;
@@ -35,6 +36,7 @@ export type ProjectShowcaseProps = {
 
 export default function ProjectShowcase({
   id,
+  projectNumber,
   sectionClassName,
   sectionStyle,
   containerClassName = "section-pad",
@@ -58,6 +60,7 @@ export default function ProjectShowcase({
   accentColor,
 }: ProjectShowcaseProps) {
   const carousel = useCarousel(slides.length);
+  const displayNum = projectNumber || monogram;
 
   return (
     <section id={id} className={sectionClassName} style={sectionStyle}>
@@ -71,37 +74,53 @@ export default function ProjectShowcase({
         }}
       >
         <div style={{ marginBottom: 36 }}>
-          <h2 style={{ fontSize: "clamp(34px, 4.4vw, 54px)", margin: "0 0 8px", letterSpacing: "-.02em" }}>
-            {title}
+          <h2
+            style={{
+              fontSize: "clamp(34px, 4.4vw, 54px)",
+              margin: "0 0 8px",
+              letterSpacing: "-.02em",
+              fontFamily: "var(--font-heading)",
+              display: "flex",
+              alignItems: "baseline",
+              flexWrap: "wrap",
+              gap: "12px 16px",
+            }}
+          >
+            {displayNum && (
+              <span style={{ color: accentTextColor, flexShrink: 0 }}>
+                {displayNum}
+              </span>
+            )}
+            <span>{title}</span>
           </h2>
           <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "8px 12px" }}>
-              <p
+            <p
+              style={{
+                margin: 0,
+                fontSize: 15,
+                color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
+              }}
+            >
+              {subtitle}
+            </p>
+            {role && (
+              <span
                 style={{
-                  margin: 0,
-                  fontSize: 15,
-                  color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  letterSpacing: ".04em",
+                  padding: "3px 9px",
+                  borderRadius: "999px",
+                  background: "color-mix(in srgb, var(--color-text) 8%, transparent)",
+                  border: "1px solid var(--color-divider)",
+                  color: accentTextColor,
                 }}
               >
-                {subtitle}
-              </p>
-              {role && (
-                <span
-                  style={{
-                    fontSize: 11.5,
-                    fontWeight: 700,
-                    letterSpacing: ".04em",
-                    padding: "3px 9px",
-                    borderRadius: "999px",
-                    background: "color-mix(in srgb, var(--color-text) 8%, transparent)",
-                    border: "1px solid var(--color-divider)",
-                    color: accentTextColor,
-                  }}
-                >
-                  Role: {role}
-                </span>
-              )}
-            </div>
+                Role: {role}
+              </span>
+            )}
           </div>
+        </div>
 
         <div
           className="two-col"

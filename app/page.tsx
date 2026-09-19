@@ -5,6 +5,7 @@ import Marquee from "./components/Marquee";
 import ProjectSynctask from "./components/ProjectSynctask";
 import ProjectUrsacHubSocial from "./components/ProjectUrsacHubSocial";
 import ProjectUrsacHub from "./components/ProjectUrsacHub";
+import ProjectUrsacDSA from "./components/ProjectUrsacDSA";
 import ProjectPhotoBooth from "./components/ProjectPhotoBooth";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -29,6 +30,7 @@ export default function Home() {
         <ProjectSynctask />
         <ProjectUrsacHubSocial />
         <ProjectUrsacHub />
+        <ProjectUrsacDSA />
         <ProjectPhotoBooth />
         <Contact />
       </main>

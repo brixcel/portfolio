@@ -270,18 +270,27 @@ export default function Sidebar() {
             <p className="sidebar-group-title">Featured Work</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <a href="#projects" className="sidebar-sub-item">
+                <span style={{ fontSize: 10.5, fontWeight: 700, opacity: 0.45, fontFamily: "var(--font-mono, monospace)", minWidth: 16 }}>01</span>
                 <span className="sidebar-dot" style={{ background: "var(--color-accent)" }} />
                 <span>Synctask</span>
               </a>
               <a href="#ursachub-social" className="sidebar-sub-item">
+                <span style={{ fontSize: 10.5, fontWeight: 700, opacity: 0.45, fontFamily: "var(--font-mono, monospace)", minWidth: 16 }}>02</span>
                 <span className="sidebar-dot" style={{ background: "#0284c7" }} />
                 <span>UrsacHub Social</span>
               </a>
               <a href="#ursachub" className="sidebar-sub-item">
+                <span style={{ fontSize: 10.5, fontWeight: 700, opacity: 0.45, fontFamily: "var(--font-mono, monospace)", minWidth: 16 }}>03</span>
                 <span className="sidebar-dot" style={{ background: "var(--color-accent-2)" }} />
                 <span>UrsacHub</span>
               </a>
+              <a href="#ursac-dsa" className="sidebar-sub-item">
+                <span style={{ fontSize: 10.5, fontWeight: 700, opacity: 0.45, fontFamily: "var(--font-mono, monospace)", minWidth: 16 }}>04</span>
+                <span className="sidebar-dot" style={{ background: "#2563eb" }} />
+                <span>DSA Workbench</span>
+              </a>
               <a href="#photobooth" className="sidebar-sub-item">
+                <span style={{ fontSize: 10.5, fontWeight: 700, opacity: 0.45, fontFamily: "var(--font-mono, monospace)", minWidth: 16 }}>05</span>
                 <span className="sidebar-dot" style={{ background: "#b83253" }} />
                 <span>Photo Booth</span>
               </a>

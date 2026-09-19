@@ -7,6 +7,7 @@ export default function ProjectSynctask() {
   return (
     <ProjectShowcase
       id="projects"
+      projectNumber="01"
       containerClassName="section-pad-top"
       containerStyle={{ padding: "96px 24px 0" }}
       accentTextColor="var(--color-accent-700)"

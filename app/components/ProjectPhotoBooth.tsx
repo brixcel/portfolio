@@ -7,6 +7,7 @@ export default function ProjectPhotoBooth() {
   return (
     <ProjectShowcase
       id="photobooth"
+      projectNumber="05"
       sectionClassName="section-margin-top"
       sectionStyle={{
         marginTop: 110,

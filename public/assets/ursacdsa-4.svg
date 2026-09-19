@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dsaBg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#edf2f7" />
+    </linearGradient>
+    <filter id="avlShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#dsaBg4)" rx="16" />
+
+  <!-- Browser Top Bar -->
+  <rect x="0" y="0" width="1200" height="42" fill="#ffffff" rx="16" />
+  <rect x="0" y="26" width="1200" height="16" fill="#ffffff" />
+  <line x1="0" y1="42" x2="1200" y2="42" stroke="#e2e8f0" stroke-width="1" />
+  <circle cx="28" cy="21" r="5.5" fill="#f87171" />
+  <circle cx="46" cy="21" r="5.5" fill="#fbbf24" />
+  <circle cx="64" cy="21" r="5.5" fill="#34d399" />
+  <rect x="360" y="10" width="480" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+  <text x="600" y="25" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">ursacdsa.vercel.app/avl-tree.html</text>
+
+  <!-- Content -->
+  <g transform="translate(80, 56)">
+    <!-- Badge -->
+    <rect x="350" y="0" width="340" height="24" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
+    <text x="520" y="16" fill="#2563eb" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" letter-spacing="0.5">SELF-BALANCING BINARY SEARCH TREE</text>
+
+    <!-- Main Title -->
+    <text x="520" y="50" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" text-anchor="middle">AVL Tree Visualization</text>
+    <text x="520" y="72" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Strictly balanced binary search tree maintaining Balance Factor BF ∈ {-1, 0, +1} through single &amp; double rotations.</text>
+
+    <!-- Properties Card -->
+    <rect x="20" y="86" width="1000" height="60" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#avlShadow)" />
+    <g transform="translate(45, 96)">
+      <text x="0" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">TREE HEIGHT</text>
+      <text x="0" y="36" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">O(log n) Strictly Balanced</text>
+
+      <text x="320" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">BALANCE FACTOR FORMULA</text>
+      <text x="320" y="36" fill="#2563eb" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">BF = height(left) - height(right)</text>
+
+      <text x="640" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">ROTATION TYPES</text>
+      <text x="640" y="36" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">LL, RR, LR, RL Rotations</text>
+    </g>
+
+    <!-- Main Workspace -->
+    <rect x="20" y="160" width="1000" height="495" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#avlShadow)" />
+    
+    <!-- Left Controls Panel -->
+    <g transform="translate(45, 180)">
+      <text x="0" y="16" fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">Tree Operations</text>
+      
+      <rect x="0" y="32" width="160" height="34" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="12" y="54" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Insert key value</text>
+      <rect x="170" y="32" width="80" height="34" rx="6" fill="#2563eb" />
+      <text x="210" y="53" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Insert</text>
+      <rect x="260" y="32" width="80" height="34" rx="6" fill="#dc2626" />
+      <text x="300" y="53" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Delete</text>
+
+      <text x="0" y="96" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">TREE TRAVERSALS</text>
+      <rect x="0" y="106" width="75" height="28" rx="6" fill="#f1f5f9" />
+      <text x="37" y="124" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">In-Order</text>
+      <rect x="83" y="106" width="75" height="28" rx="6" fill="#f1f5f9" />
+      <text x="120" y="124" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Pre-Order</text>
+      <rect x="166" y="106" width="85" height="28" rx="6" fill="#f1f5f9" />
+      <text x="208" y="124" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Post-Order</text>
+      <rect x="259" y="106" width="80" height="28" rx="6" fill="#f1f5f9" />
+      <text x="299" y="124" fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Level-Order</text>
+
+      <!-- Traversal output box -->
+      <rect x="0" y="150" width="340" height="40" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="12" y="174" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">In-Order: <tspan fill="#0f172a" font-weight="700">10 → 25 → 30 → 50 → 60 → 75 → 80</tspan></text>
+
+      <!-- Rotation event log -->
+      <text x="0" y="220" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">LAST ROTATION EVENT</text>
+      <rect x="0" y="230" width="340" height="54" rx="8" fill="#eff6ff" stroke="#bfdbfe" />
+      <text x="14" y="252" fill="#1e40af" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700">✓ RR Rotation performed at Node 50</text>
+      <text x="14" y="270" fill="#3b82f6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Tree balanced: Max height difference = 0</text>
+    </g>
+
+    <!-- Right Tree Hierarchy Diagram -->
+    <g transform="translate(480, 180)">
+      <rect x="0" y="0" width="510" height="450" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-dasharray="4 4" />
+      <text x="20" y="24" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">AVL TREE HIERARCHY (BALANCE FACTOR &amp; NODES)</text>
+
+      <!-- Edges -->
+      <!-- Root to Level 1 -->
+      <line x1="255" y1="75" x2="140" y2="165" stroke="#94a3b8" stroke-width="2.5" />
+      <line x1="255" y1="75" x2="370" y2="165" stroke="#94a3b8" stroke-width="2.5" />
+
+      <!-- Level 1 to Level 2 -->
+      <line x1="140" y1="165" x2="80" y2="260" stroke="#94a3b8" stroke-width="2" />
+      <line x1="140" y1="165" x2="200" y2="260" stroke="#94a3b8" stroke-width="2" />
+      <line x1="370" y1="165" x2="310" y2="260" stroke="#94a3b8" stroke-width="2" />
+      <line x1="370" y1="165" x2="430" y2="260" stroke="#94a3b8" stroke-width="2" />
+
+      <!-- Root Node 50 -->
+      <g transform="translate(255, 75)">
+        <circle cx="0" cy="0" r="26" fill="#2563eb" />
+        <text x="0" y="5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" text-anchor="middle">50</text>
+        <circle cx="18" cy="-18" r="10" fill="#10b981" />
+        <text x="18" y="-14" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" text-anchor="middle">0</text>
+      </g>
+
+      <!-- Left Child 25 -->
+      <g transform="translate(140, 165)">
+        <circle cx="0" cy="0" r="24" fill="#3b82f6" />
+        <text x="0" y="5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">25</text>
+        <circle cx="16" cy="-16" r="9" fill="#10b981" />
+        <text x="16" y="-12" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">0</text>
+      </g>
+
+      <!-- Right Child 75 -->
+      <g transform="translate(370, 165)">
+        <circle cx="0" cy="0" r="24" fill="#3b82f6" />
+        <text x="0" y="5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">75</text>
+        <circle cx="16" cy="-16" r="9" fill="#10b981" />
+        <text x="16" y="-12" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">0</text>
+      </g>
+
+      <!-- Leaves -->
+      <!-- 10 -->
+      <g transform="translate(80, 260)">
+        <circle cx="0" cy="0" r="20" fill="#60a5fa" />
+        <text x="0" y="4" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle">10</text>
+        <circle cx="14" cy="-14" r="8" fill="#10b981" />
+        <text x="14" y="-11" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">0</text>
+      </g>
+
+      <!-- 30 -->
+      <g transform="translate(200, 260)">
+        <circle cx="0" cy="0" r="20" fill="#60a5fa" />
+        <text x="0" y="4" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle">30</text>
+        <circle cx="14" cy="-14" r="8" fill="#10b981" />
+        <text x="14" y="-11" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">0</text>
+      </g>
+
+      <!-- 60 -->
+      <g transform="translate(310, 260)">
+        <circle cx="0" cy="0" r="20" fill="#60a5fa" />
+        <text x="0" y="4" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle">60</text>
+        <circle cx="14" cy="-14" r="8" fill="#10b981" />
+        <text x="14" y="-11" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">0</text>
+      </g>
+
+      <!-- 80 -->
+      <g transform="translate(430, 260)">
+        <circle cx="0" cy="0" r="20" fill="#60a5fa" />
+        <text x="0" y="4" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle">80</text>
+        <circle cx="14" cy="-14" r="8" fill="#10b981" />
+        <text x="14" y="-11" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">0</text>
+      </g>
+    </g>
+  </g>
+</svg>
