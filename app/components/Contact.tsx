@@ -1,58 +1,96 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { getGsap, prefersReducedMotion } from "../lib/motion";
+
+const EMAIL = "brexcel14@gmail.com";
+const HEADLINE = ["Let’s build", "something."];
+
 export default function Contact() {
+  const ref = useRef<HTMLElement>(null);
+  const [copied, setCopied] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  useEffect(() => {
+    const root = ref.current;
+    if (!root || prefersReducedMotion()) return;
+    const { gsap } = getGsap();
+    const q = gsap.utils.selector(root);
+    const ctx = gsap.context(() => {
+      // The closing card mirrors the hero's title sequence, once.
+      const tl = gsap.timeline({ scrollTrigger: { trigger: root, start: "top 70%", once: true } });
+      tl.fromTo(
+        q(".contact-title .mask > span"),
+        { yPercent: 110 },
+        { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.12 }
+      ).fromTo(
+        q(".contact-rise"),
+        { y: 20, autoAlpha: 0 },
+        { y: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out", stagger: 0.08 },
+        0.35
+      );
+    }, root);
+    return () => {
+      ctx.revert();
+      clearTimeout(resetTimer.current);
+    };
+  }, []);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      clearTimeout(resetTimer.current);
+      resetTimer.current = setTimeout(() => setCopied(false), 2200);
+    } catch {
+      window.location.href = `mailto:${EMAIL}`;
+    }
+  };
+
   return (
-    <section
-      id="contact"
-      style={{ background: "var(--color-surface)", borderTop: "1px solid var(--color-divider)" }}
-    >
-      <div
-        className="section-pad"
-        style={{ maxWidth: 1180, margin: "0 auto", padding: "96px 24px" }}
-      >
-        <div
-          className="two-col"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 44, alignItems: "end" }}
-        >
-          <div>
-            <h2 style={{ fontSize: "clamp(34px, 4.6vw, 56px)", margin: "0 0 14px", letterSpacing: "-.02em" }}>
-              Let&rsquo;s build something.
-            </h2>
-            <p style={{ margin: 0, fontSize: 17, color: "color-mix(in srgb, var(--color-text) 72%, transparent)" }}>
-              Open to internships, freelance work and collaboration.
-            </p>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            <a href="mailto:brexcel14@gmail.com" className="contact-row">
-              brexcel14@gmail.com
-              <span style={{ color: "var(--color-accent-700)" }}>Email</span>
-            </a>
-            <a
-              href="https://github.com/brixcel"
-              target="_blank"
-              rel="noopener"
-              className="contact-row"
-            >
-              github.com/brixcel
-              <span style={{ color: "var(--color-accent-700)" }}>GitHub</span>
-            </a>
-          </div>
+    <section id="contact" ref={ref} className="contact" aria-labelledby="contact-title">
+      <div className="container">
+        <h2 id="contact-title" className="contact-title">
+          {HEADLINE.map((line) => (
+            <span key={line} className="mask">
+              <span>{line}</span>
+            </span>
+          ))}
+        </h2>
+        <p className="contact-lede contact-rise">Open to internships, freelance work and collaboration.</p>
+
+        <div className="contact-actions contact-rise">
+          <a href={`mailto:${EMAIL}`} className="contact-email">
+            {EMAIL}
+          </a>
+          <button type="button" className={`copy-btn${copied ? " is-copied" : ""}`} onClick={copyEmail}>
+            <span className="copy-label">Copy email</span>
+            <span className="copy-done" aria-hidden={!copied}>
+              Copied
+            </span>
+          </button>
+          <span className="sr-only" aria-live="polite">
+            {copied ? "Email address copied to clipboard" : ""}
+          </span>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 12,
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: 72,
-            paddingTop: 26,
-            borderTop: "1px solid var(--color-divider)",
-            fontSize: 13,
-            color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
-          }}
-        >
-          <span>Brexcel Joe M. Orias — Computer Engineering</span>
-          <span>Synctask, UrsacHub &amp; Photo Booth</span>
-        </div>
+
+        <ul className="contact-links contact-rise">
+          <li>
+            <a href="https://github.com/brixcel" target="_blank" rel="noopener noreferrer">
+              <span>GitHub</span>
+              <span className="contact-link-value">
+                github.com/brixcel<span className="sr-only"> (opens in a new tab)</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <footer className="site-footer">
+          <span>Brexcel Joe M. Orias, Computer Engineering</span>
+          <a href="#home" className="back-top">
+            Back to top
+          </a>
+        </footer>
       </div>
     </section>
   );

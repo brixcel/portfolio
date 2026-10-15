@@ -2,19 +2,20 @@ import type { Tech } from "../data";
 
 const iconUrl = (slug: string) => `/icons/${slug}.svg`;
 
-export function TechChip({ tech, size = 20 }: { tech: Tech; size?: number }) {
+export function TechChip({ tech, size = 18 }: { tech: Tech; size?: number }) {
   return (
-    <span className="chip" style={{ background: "var(--color-neutral-100)" }}>
+    <li className="chip">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={iconUrl(tech.slug)}
         alt=""
         width={size}
         height={size}
-        style={{ width: size, height: size, filter: tech.invert ? "invert(var(--icon-invert, 0))" : undefined }}
+        loading="lazy"
+        className={tech.invert ? "icon-invert" : undefined}
       />
       {tech.name}
-    </span>
+    </li>
   );
 }
 
@@ -25,11 +26,11 @@ export function MarqueeItem({ tech }: { tech: Tech }) {
       <img
         src={iconUrl(tech.slug)}
         alt=""
-        width={34}
-        height={34}
-        style={{ width: 34, height: 34, filter: tech.invert ? "invert(var(--icon-invert, 0))" : undefined }}
+        width={30}
+        height={30}
+        className={tech.invert ? "icon-invert" : undefined}
       />
-      <span style={{ fontSize: 14, fontWeight: 700, whiteSpace: "nowrap" }}>{tech.name}</span>
+      <span>{tech.name}</span>
     </span>
   );
 }

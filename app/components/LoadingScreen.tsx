@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const VISITED_KEY = "bjo-portfolio-visited";
+const WORD = "BREXCEL";
 
 export default function LoadingScreen() {
   const loaderRef = useRef<HTMLDivElement>(null);
@@ -24,66 +25,56 @@ export default function LoadingScreen() {
       window.dispatchEvent(new CustomEvent("portfolio:ready"));
     };
 
-    // Already seen the intro this session (e.g. navigating back to "/") — skip
-    // straight to the badge drop instead of replaying the progress curtain.
+    // Already seen the intro this session — skip straight to the badge drop.
     let alreadyVisited = false;
     try {
       alreadyVisited = sessionStorage.getItem(VISITED_KEY) === "1";
     } catch {
-      // sessionStorage unavailable (private mode, disabled storage) — fall through to full intro
+      // sessionStorage unavailable — fall through to the full intro
     }
 
     if (reduced || alreadyVisited) {
-      // Defer to the next frame so sibling effects (e.g. IdBadge's own
-      // "portfolio:ready" listener) have mounted before this fires — dispatching
-      // synchronously here can race ahead of them and get missed entirely.
-      requestAnimationFrame(() => {
+      // Next frame, so sibling effects listening for "portfolio:ready" have mounted.
+      const frame = requestAnimationFrame(() => {
         notifyReady();
+        setRemoved(true);
       });
-      setRemoved(true);
-      return;
+      return () => cancelAnimationFrame(frame);
     }
 
     const markVisited = () => {
       try {
         sessionStorage.setItem(VISITED_KEY, "1");
-      } catch {
-        // ignore — first-run intro will just replay next time
-      }
+      } catch {}
     };
 
-    const progressObj = { value: 0 };
+    const progress = { value: 0 };
+    const letters = loader.querySelectorAll(".loader-word .ch");
 
-    const tl = gsap.timeline({
-      onComplete: () => {
+    const tl = gsap.timeline();
+    tl.fromTo(letters, { y: 0, yPercent: 110 }, { yPercent: 0, duration: 0.7, ease: "expo.out", stagger: 0.04 }, 0)
+      .to(
+        progress,
+        {
+          value: 100,
+          duration: 1.2,
+          ease: "power1.inOut",
+          onUpdate: () => {
+            num.textContent = `${Math.round(progress.value)}%`;
+            bar.style.transform = `scaleX(${progress.value / 100})`;
+          },
+        },
+        0.1
+      )
+      .add(() => {
         notifyReady();
         markVisited();
-        // Smooth upward curtain exit
-        gsap.to(loader, {
-          yPercent: -100,
-          duration: 0.55,
-          ease: "power3.inOut",
-          onComplete: () => {
-            setRemoved(true);
-          },
-        });
-      },
-    });
-
-    // 0% -> 100% smooth counter and bar growth
-    tl.to(progressObj, {
-      value: 100,
-      duration: 1.25,
-      ease: "power1.inOut",
-      onUpdate: () => {
-        const rounded = Math.round(progressObj.value);
-        if (num) num.textContent = `${rounded}%`;
-        if (bar) bar.style.width = `${progressObj.value}%`;
-      },
-    });
-
-    // Brief hold at 100% before exit
-    tl.to({}, { duration: 0.12 });
+      }, "+=0.1")
+      // Letters lift away a beat ahead of the curtain
+      .to(letters, { yPercent: -110, duration: 0.5, ease: "power3.in", stagger: 0.025 }, "<")
+      .to(".loader-meta", { autoAlpha: 0, duration: 0.3 }, "<")
+      .to(loader, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.7, ease: "expo.inOut" }, "<0.15")
+      .add(() => setRemoved(true));
 
     return () => {
       tl.kill();
@@ -93,74 +84,23 @@ export default function LoadingScreen() {
   if (removed) return null;
 
   return (
-    <div
-      ref={loaderRef}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 9999,
-        background: "var(--color-bg)",
-        color: "var(--color-text)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        userSelect: "none",
-        pointerEvents: "auto",
-        transition: "background-color 0.3s ease",
-      }}
-    >
-      <p
-        style={{
-          fontFamily: "var(--font-heading)",
-          fontSize: "clamp(30px, 5.5vw, 46px)",
-          letterSpacing: ".18em",
-          textTransform: "uppercase",
-          margin: "0 0 20px",
-          color: "var(--color-text)",
-        }}
-      >
-        BREXCEL<span style={{ color: "var(--color-accent)" }}>.</span>
+    <div ref={loaderRef} className="loader" aria-hidden="true">
+      <p className="loader-word mask">
+        {WORD.split("").map((ch, i) => (
+          <span key={i} className="ch">
+            {ch}
+          </span>
+        ))}
+        <span className="ch dot">.</span>
       </p>
-
-      {/* Progress Track */}
-      <div
-        style={{
-          width: 170,
-          maxWidth: "75vw",
-          height: 2.5,
-          background: "var(--color-divider)",
-          borderRadius: 999,
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        <div
-          ref={barRef}
-          style={{
-            height: "100%",
-            width: "0%",
-            background: "var(--color-accent)",
-            borderRadius: 999,
-            transition: "none",
-          }}
-        />
+      <div className="loader-meta">
+        <div className="loader-track">
+          <div ref={barRef} className="loader-bar" />
+        </div>
+        <span ref={numRef} className="loader-num">
+          0%
+        </span>
       </div>
-
-      {/* Numerical Indicator */}
-      <span
-        ref={numRef}
-        style={{
-          marginTop: 10,
-          fontFamily: "monospace",
-          fontSize: 12.5,
-          fontWeight: 700,
-          letterSpacing: ".1em",
-          color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
-        }}
-      >
-        0%
-      </span>
     </div>
   );
 }

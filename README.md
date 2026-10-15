@@ -24,8 +24,10 @@ Open [http://localhost:3000](http://localhost:3000).
 
 - `app/layout.tsx` — fonts (Caprasimo, Figtree) and the theme flash-prevention inline script
 - `app/globals.css` — design tokens (light/dark) and base styles
-- `app/data.ts` — tech stack lists and carousel slide data
-- `app/components/` — page sections and UI (Header/lamp, Hero/IdBadge, Marquee, Carousel,
-  the two project sections, About, Contact, Reveal-on-scroll)
+- `app/data.ts` — tech stacks, screenshot slides, and the `projects` list that drives every case study
+- `app/lib/` — GSAP/ScrollTrigger setup and the desk-lamp theme switch
+- `app/components/` — page sections (Header/lamp, Hero, Marquee, About, Projects → ProjectCase →
+  ProjectGallery, Contact) and the loading screen
+- `app/components/id-badge/` — the lanyard badge; all physics tuning lives in `constants.ts`
 - `public/assets/` — profile photo and project screenshots
 - `public/icons/` — vendored devicon SVGs for the tech stack chips/marquee

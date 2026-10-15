@@ -11,6 +11,7 @@ export default function IdBadge() {
   const stageRef = useRef<HTMLDivElement>(null);
   const rigRef = useRef<HTMLDivElement>(null);
   const strapRef = useRef<HTMLDivElement>(null);
+  const hardwareRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
   const profileFrameRef = useRef<HTMLDivElement>(null);
@@ -21,6 +22,7 @@ export default function IdBadge() {
     stageRef,
     rigRef,
     strapRef,
+    hardwareRef,
     cardRef,
     glareRef,
     profileFrameRef,
@@ -29,73 +31,37 @@ export default function IdBadge() {
   });
 
   return (
-    <div
-      ref={stageRef}
-      className="badge-stage"
-      style={{
-        position: "relative",
-        height: 520,
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        overflow: "visible", // Allows the long lanyard to extend seamlessly beyond the viewport ceiling
-        perspective: 1200,
-      }}
-    >
-      {/* Physics Rig (Pivot anchored at the ceiling: 50% 0%) */}
-      <div
-        ref={rigRef}
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: -920,
-          transform: "translateX(-50%)",
-          transformOrigin: "50% 0%",
-          width: 276,
-          willChange: "transform",
-          userSelect: "none",
-          transformStyle: "preserve-3d",
-        }}
-      >
-        <LanyardStrap ref={strapRef} />
-        <LanyardHardware />
+    <div className="badge-wrap">
+      <div ref={stageRef} className="badge-stage">
+        {/* Physics rig, pivoting at the ceiling (50% 0%) */}
+        <div ref={rigRef} className="badge-rig">
+          <LanyardStrap ref={strapRef} />
+          <div ref={hardwareRef} style={{ position: "relative", zIndex: 3 }}>
+            <LanyardHardware />
+          </div>
 
-        {/* ==================== DOUBLE-SIDED 3D PVC ID BADGE ==================== */}
-        <div
-          ref={cardRef}
-          style={{
-            position: "relative",
-            width: 276,
-            height: 410,
-            margin: "-8px auto 0",
-            willChange: "transform",
-            transformOrigin: "50% 8px",
-            transformStyle: "preserve-3d",
-          }}
-        >
-          {/* Dynamic Cursor-Following Specular Glare */}
+          {/* Double-sided PVC ID card */}
           <div
-            ref={glareRef}
-            style={{
-              position: "absolute",
-              inset: 0,
-              pointerEvents: "none",
-              zIndex: 30,
-              opacity: 0,
-              borderRadius: 16,
-              mixBlendMode: "overlay",
-              transition: "opacity 0.25s ease-out",
-            }}
-          />
-
-          <BadgeCardFront
-            profileFrameRef={profileFrameRef}
-            profileImgRef={profileImgRef}
-            profileGlareRef={profileGlareRef}
-          />
-          <BadgeCardBack />
+            ref={cardRef}
+            className="badge-card"
+            role="button"
+            tabIndex={0}
+            aria-label="ID card, front. Drag to swing it, or press to turn it over."
+          >
+            <div ref={glareRef} className="badge-glare" aria-hidden="true" />
+            <BadgeCardFront
+              profileFrameRef={profileFrameRef}
+              profileImgRef={profileImgRef}
+              profileGlareRef={profileGlareRef}
+            />
+            <BadgeCardBack />
+          </div>
         </div>
       </div>
+      <p className="badge-hint" aria-hidden="true">
+        <span className="badge-hint-fine">Drag to swing, click to flip</span>
+        <span className="badge-hint-touch">Swipe sideways to swing, tap to flip</span>
+      </p>
     </div>
   );
 }

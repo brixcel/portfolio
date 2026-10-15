@@ -124,3 +124,132 @@ export const ursacdsaSlides = [
   { src: "/assets/ursacdsa-5.svg", alt: "Doubly Linked List bidirectional pointer chain and dynamic memory heap addresses" },
 ];
 
+export type Slide = { src: string; alt: string };
+
+export type Project = {
+  id: string;
+  number: string;
+  title: string;
+  kind: string;
+  role: string;
+  description: string;
+  /** Only what the real interface shows (see the screenshots) — nothing invented. */
+  highlights?: string[];
+  liveHref?: string;
+  githubHref?: string;
+  note?: string;
+  stack: Tech[];
+  slides: Slide[];
+  /** Width / height of the screenshots, so the frame never crops them. */
+  aspect: string;
+  /** CSS custom property suffix: var(--project-<tone>) */
+  tone: "moss" | "clay" | "harbor" | "ink-blue" | "rose";
+  featured?: boolean;
+};
+
+export const projects: Project[] = [
+  {
+    id: "synctask",
+    number: "01",
+    title: "Synctask",
+    kind: "Full-stack web application",
+    role: "Full-Stack Developer",
+    description:
+      "A full-stack task management platform with AI-powered natural-language workflows for organizing and managing projects.",
+    highlights: [
+      "Create tasks with AI from the new-task dialog",
+      "Board, list, calendar and analytics views",
+      "Command palette and notifications panel",
+      "Task details with subtasks and properties",
+    ],
+    liveHref: "https://synctask-proj.vercel.app/",
+    githubHref: "https://github.com/brixcel/taskflow",
+    note: "The repository is named taskflow — the project was renamed to Synctask during development.",
+    stack: synctaskStack,
+    slides: synctaskSlides,
+    aspect: "1439 / 782",
+    tone: "moss",
+    featured: true,
+  },
+  {
+    id: "ursachub",
+    number: "02",
+    title: "UrsacHub",
+    kind: "Campus platform",
+    role: "Front-End Developer",
+    description:
+      "A web platform designed to connect users with services and resources through a centralized, user-friendly experience.",
+    highlights: [
+      "Campus merchandise shop",
+      "News and events feed",
+      "Student organizations directory",
+      "Student login",
+    ],
+    liveHref: "https://ursachub.onrender.com/student/home",
+    githubHref: "https://github.com/markPie29/ursachub",
+    note: "Built with a team — this repo covers my front-end work.",
+    stack: ursachubStack,
+    slides: ursachubSlides,
+    aspect: "1430 / 782",
+    tone: "clay",
+    featured: true,
+  },
+  {
+    id: "ursachub-social",
+    number: "03",
+    title: "UrsacHub Social",
+    kind: "Social networking & campus community platform",
+    role: "Lead Developer",
+    description:
+      "Reimagined URSAC Hub as a social networking platform inspired by Facebook. Students can create posts, interact through likes and comments, join conversations, and stay updated with organizations through a familiar social media experience.",
+    highlights: [
+      "Social media feed",
+      "Posts, likes & comments",
+      "Organization pages",
+      "Authentication & role management",
+    ],
+    note: "Lead Developer — led architecture, full-stack implementation, and real-time social interaction features.",
+    stack: ursachubSocialStack,
+    slides: ursachubSocialSlides,
+    aspect: "16 / 9",
+    tone: "harbor",
+  },
+  {
+    id: "ursac-dsa",
+    number: "04",
+    title: "DSA Workbench",
+    kind: "Interactive academic visualization suite",
+    role: "Lead Developer",
+    description:
+      "An interactive academic visualization suite developed for URS Antipolo Campus to demonstrate fundamental abstract data types, runtime memory layouts, algorithmic mutations, and asymptotic behavior across 8 core structures.",
+    highlights: [
+      "8 interactive abstract data types",
+      "Real-time memory & pointer stage",
+      "Ring buffer modulo mechanics",
+      "AVL tree rotations & balance factors",
+    ],
+    liveHref: "https://ursacdsa.vercel.app/index.html",
+    note: "Covers Stacks, Regular & Circular Queues, Priority Queues, Singly / Doubly / Circular Linked Lists, and AVL Trees.",
+    stack: ursacdsaStack,
+    slides: ursacdsaSlides,
+    aspect: "1200 / 750",
+    tone: "ink-blue",
+  },
+  {
+    id: "photobooth",
+    number: "05",
+    title: "Photo Booth",
+    kind: "Interactive camera & photostrip web app",
+    role: "Solo Developer",
+    description:
+      "An interactive web photobooth application featuring customizable strip layouts, real-time camera capture with countdowns, theme stickers, and standalone high-resolution photostrip downloads.",
+    liveHref: "https://simple-photobooth.vercel.app/",
+    githubHref: "https://github.com/brixcel/photo-booth",
+    note: "Dynamic layouts adapt automatically to the chosen photo count with isolated photostrip exports.",
+    stack: photoboothStack,
+    slides: photoboothSlides,
+    aspect: "1024 / 557",
+    tone: "rose",
+  },
+];
+

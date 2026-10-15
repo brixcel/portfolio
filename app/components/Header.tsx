@@ -1,319 +1,171 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { toggleTheme } from "../lib/theme";
 
-function toggleTheme() {
-  const current =
-    document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  const next = current === "light" ? "dark" : "light";
+const LINKS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
-  localStorage.setItem("bjo-portfolio-theme", next);
-  document.documentElement.setAttribute("data-theme", next);
-  document.documentElement.style.setProperty("--icon-invert", next === "dark" ? "1" : "0");
-
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduced) return;
-
-  document.querySelectorAll(".bjo-flash").forEach((n) => n.remove());
-  const lamp = document.querySelector("#lamp");
-  const flash = document.createElement("div");
-  flash.className = "bjo-flash";
-  flash.style.cssText = "position:fixed; inset:0; z-index:90; pointer-events:none";
-  document.body.appendChild(flash);
-
-  const r = lamp
-    ? lamp.getBoundingClientRect()
-    : { left: window.innerWidth - 60, top: 40, width: 40, height: 40 };
-  const cx = (((r.left + r.width / 2) / window.innerWidth) * 100).toFixed(1) + "%";
-  const cy = (((r.top + r.height / 2) / window.innerHeight) * 100).toFixed(1) + "%";
-  const bg = next === "light" ? "#f5ead8" : "#201e1d";
-  const glow = next === "light" ? "#fff6e6" : "#2e2b25";
-
-  flash.style.transition = "none";
-  flash.style.background = `radial-gradient(circle at ${cx} ${cy}, ${glow} 0%, ${bg} 55%)`;
-  flash.style.clipPath = `circle(0% at ${cx} ${cy})`;
-  flash.style.opacity = ".92";
-  setTimeout(() => {
-    flash.style.transition = "clip-path .62s cubic-bezier(.33,0,.2,1), opacity .62s ease-out";
-    flash.style.clipPath = `circle(150% at ${cx} ${cy})`;
-    flash.style.opacity = "0";
-    setTimeout(() => flash.remove(), 800);
-  }, 24);
+function DeskLamp() {
+  const ref = useRef<HTMLButtonElement>(null);
+  return (
+    <button
+      ref={ref}
+      id="lamp"
+      type="button"
+      className="lamp"
+      onClick={() => {
+        ref.current?.classList.remove("is-clicked");
+        // restart the little head-nod animation on every press
+        void ref.current?.offsetWidth;
+        ref.current?.classList.add("is-clicked");
+        toggleTheme(ref.current?.querySelector<HTMLElement>(".lamp-shade"));
+      }}
+      aria-label="Desk lamp: switch between light and dark"
+      title="Desk lamp: switch between light and dark"
+    >
+      <span className="lamp-figure" aria-hidden="true">
+        <span className="lamp-base" />
+        <span className="lamp-arm" />
+        <span className="lamp-head">
+          <span className="lamp-neck" />
+          <span className="lamp-shade" />
+          <span className="lamp-beam" />
+        </span>
+      </span>
+      <span className="lamp-label">
+        <span className="lamp-label-light">Lights on</span>
+        <span className="lamp-label-dark">Lights off</span>
+      </span>
+    </button>
+  );
 }
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("home");
+  const navRef = useRef<HTMLElement>(null);
+  const indicatorRef = useRef<HTMLSpanElement>(null);
+  const progressRef = useRef<HTMLSpanElement>(null);
 
-  const handleLinkClick = () => {
-    setMobileMenuOpen(false);
-  };
+  // Scroll spy: the section crossing the upper third of the viewport is "current".
+  useEffect(() => {
+    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(Boolean) as HTMLElement[];
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-30% 0px -65% 0px" }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
+
+  // Sliding indicator under the active link
+  useEffect(() => {
+    const nav = navRef.current;
+    const indicator = indicatorRef.current;
+    if (!nav || !indicator) return;
+    const place = () => {
+      const link = nav.querySelector<HTMLElement>(`a[href="#${active}"]`);
+      if (!link) return;
+      indicator.style.width = `${link.offsetWidth}px`;
+      indicator.style.transform = `translateX(${link.offsetLeft}px)`;
+    };
+    place();
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
+  }, [active]);
+
+  // Reading progress hairline
+  useEffect(() => {
+    const bar = progressRef.current;
+    if (!bar) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 60,
-        background: "var(--color-bg)",
-        borderBottom: "1px solid var(--color-divider)",
-        width: "100%",
-      }}
-    >
-      <div
-        className="header-inner"
-        style={{
-          maxWidth: 1180,
-          margin: "0 auto",
-          padding: "12px 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 16,
-        }}
-      >
-        <a
-          href="#home"
-          className="header-logo"
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontSize: 20,
-            color: "var(--color-text)",
-            textDecoration: "none",
-            letterSpacing: "-.01em",
-            flexShrink: 0,
-          }}
-        >
-          brexcel<span style={{ color: "var(--color-accent)" }}>.</span>
+    <header className="site-header">
+      <div className="header-inner">
+        <a href="#home" className="header-logo">
+          brexcel<span className="dot">.</span>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav
-          className="nav-menu desktop-nav"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 4,
-            flexWrap: "nowrap",
-          }}
-        >
-          <a href="#home" className="nav-link">
-            Home
-          </a>
-          <a href="#about" className="nav-link">
-            About
-          </a>
-          <a href="#projects" className="nav-link">
-            Projects
-          </a>
-          <a href="#contact" className="nav-link">
-            Contact
-          </a>
+        <nav ref={navRef} className="desktop-nav" aria-label="Sections">
+          {LINKS.map((l) => (
+            <a
+              key={l.id}
+              href={`#${l.id}`}
+              className={`nav-link${active === l.id ? " is-active" : ""}`}
+              aria-current={active === l.id ? "location" : undefined}
+            >
+              {l.label}
+            </a>
+          ))}
+          <span ref={indicatorRef} className="nav-indicator" aria-hidden="true" />
         </nav>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-          {/* Desk Lamp Button */}
-          <button
-            id="lamp"
-            type="button"
-            onClick={toggleTheme}
-            aria-label="Desk lamp — switch between light and dark"
-            title="Desk lamp — switch between light and dark"
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              gap: 8,
-              background: "transparent",
-              border: 0,
-              cursor: "pointer",
-              padding: "2px 4px 0",
-              borderRadius: 14,
-              color: "var(--color-text)",
-              flexShrink: 0,
-            }}
-          >
-            <span style={{ position: "relative", display: "block", width: 44, height: 38 }}>
-              <span
-                style={{
-                  position: "absolute",
-                  left: 5,
-                  bottom: 0,
-                  width: 23,
-                  height: 4,
-                  borderRadius: 999,
-                  background: "var(--color-neutral-400)",
-                }}
-              />
-              <span
-                style={{
-                  position: "absolute",
-                  left: 14,
-                  bottom: 3,
-                  width: 4,
-                  height: 23,
-                  borderRadius: 999,
-                  background: "var(--color-neutral-400)",
-                  transform: "rotate(-16deg)",
-                  transformOrigin: "50% 100%",
-                }}
-              />
-              <span
-                style={{
-                  position: "absolute",
-                  left: 17,
-                  top: 2,
-                  width: 5,
-                  height: 13,
-                  borderRadius: 999,
-                  background: "var(--color-neutral-400)",
-                  transform: "rotate(52deg)",
-                  transformOrigin: "0 0",
-                }}
-              />
-              <span
-                id="lamp-shade"
-                style={{
-                  position: "absolute",
-                  right: 1,
-                  top: 7,
-                  width: 23,
-                  height: 14,
-                  clipPath: "polygon(0 100%, 22% 0, 78% 0, 100% 100%)",
-                  transform: "rotate(14deg)",
-                }}
-              />
-              <span
-                id="lamp-beam"
-                style={{
-                  position: "absolute",
-                  right: -4,
-                  top: 21,
-                  width: 38,
-                  height: 28,
-                  background:
-                    "radial-gradient(120% 90% at 42% 0%, color-mix(in srgb, #ffd9a0 78%, transparent), transparent 72%)",
-                  clipPath: "polygon(30% 0, 62% 0, 100% 100%, 0 100%)",
-                  transition: "opacity .35s ease",
-                }}
-              />
-            </span>
-            <span
-              className="lamp-label-container"
-              style={{
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: ".1em",
-                textTransform: "uppercase",
-                color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
-                paddingBottom: 2,
-                whiteSpace: "nowrap",
-              }}
-            >
-              <span className="lamp-label-light">Lights on</span>
-              <span className="lamp-label-dark">Lights off</span>
-            </span>
-          </button>
-
-          {/* Mobile Hamburger Button */}
+        <div className="header-tools">
+          <DeskLamp />
           <button
             type="button"
-            className="mobile-menu-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            style={{
-              background: "transparent",
-              border: "1px solid var(--color-divider)",
-              borderRadius: "var(--radius-sm)",
-              padding: "7px 9px",
-              cursor: "pointer",
-              color: "var(--color-text)",
-              display: "none",
-              flexDirection: "column",
-              gap: 4,
-              alignItems: "center",
-              justifyContent: "center",
-              width: 38,
-              height: 36,
-            }}
+            className={`menu-btn${menuOpen ? " is-open" : ""}`}
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
-            <span
-              style={{
-                width: 18,
-                height: 2,
-                background: "currentColor",
-                borderRadius: 99,
-                transition: "transform 0.25s ease",
-                transform: mobileMenuOpen ? "rotate(45deg) translate(2px, 6px)" : "none",
-              }}
-            />
-            <span
-              style={{
-                width: 18,
-                height: 2,
-                background: "currentColor",
-                borderRadius: 99,
-                opacity: mobileMenuOpen ? 0 : 1,
-                transition: "opacity 0.2s ease",
-              }}
-            />
-            <span
-              style={{
-                width: 18,
-                height: 2,
-                background: "currentColor",
-                borderRadius: 99,
-                transition: "transform 0.25s ease",
-                transform: mobileMenuOpen ? "rotate(-45deg) translate(2px, -6px)" : "none",
-              }}
-            />
+            <span />
+            <span />
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
-      {mobileMenuOpen && (
-        <nav
-          className="mobile-nav-drawer"
-          style={{
-            borderTop: "1px solid var(--color-divider)",
-            background: "color-mix(in srgb, var(--color-bg) 96%, transparent)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            padding: "14px 18px 18px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 4,
-          }}
-        >
+      <nav id="mobile-nav" className={`mobile-nav${menuOpen ? " is-open" : ""}`} aria-label="Sections" hidden={!menuOpen}>
+        {LINKS.map((l, i) => (
           <a
-            href="#home"
-            onClick={handleLinkClick}
-            className="mobile-nav-link"
+            key={l.id}
+            href={`#${l.id}`}
+            onClick={() => setMenuOpen(false)}
+            className={`mobile-nav-link${active === l.id ? " is-active" : ""}`}
+            style={{ animationDelay: `${i * 45}ms` }}
           >
-            Home
+            {l.label}
           </a>
-          <a
-            href="#about"
-            onClick={handleLinkClick}
-            className="mobile-nav-link"
-          >
-            About
-          </a>
-          <a
-            href="#projects"
-            onClick={handleLinkClick}
-            className="mobile-nav-link"
-          >
-            Projects
-          </a>
-          <a
-            href="#contact"
-            onClick={handleLinkClick}
-            className="mobile-nav-link"
-          >
-            Contact
-          </a>
-        </nav>
-      )}
+        ))}
+      </nav>
+      <span ref={progressRef} className="read-progress" aria-hidden="true" />
     </header>
   );
 }
