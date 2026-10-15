@@ -185,36 +185,41 @@ export default function ProjectGallery({
           </span>
           <span className="gallery-alt">{slides[index].alt}</span>
         </p>
-        <div className="gallery-arrows">
-          <button type="button" className="icon-btn" aria-label="Previous screenshot" onClick={() => go(index - 1, -1)}>
-            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
-              <path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-          <button type="button" className="icon-btn" aria-label="Next screenshot" onClick={() => go(index + 1, 1)}>
-            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
-              <path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        </div>
+        {/* A single-slide project has nothing to browse */}
+        {n > 1 && (
+          <div className="gallery-arrows">
+            <button type="button" className="icon-btn" aria-label="Previous screenshot" onClick={() => go(index - 1, -1)}>
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                <path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button type="button" className="icon-btn" aria-label="Next screenshot" onClick={() => go(index + 1, 1)}>
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                <path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
 
-      <div ref={thumbsRef} className="gallery-thumbs">
-        {slides.map((slide, i) => (
-          <button
-            key={slide.src}
-            type="button"
-            data-thumb={i}
-            className={`gallery-thumb${i === index ? " is-active" : ""}`}
-            aria-label={`Show screenshot ${i + 1}: ${slide.alt}`}
-            aria-current={i === index ? "true" : undefined}
-            onClick={() => go(i)}
-            style={{ aspectRatio: aspect }}
-          >
-            <Image src={slide.src} alt="" fill sizes="96px" unoptimized={isSvg(slide.src)} />
-          </button>
-        ))}
-      </div>
+      {n > 1 && (
+        <div ref={thumbsRef} className="gallery-thumbs">
+          {slides.map((slide, i) => (
+            <button
+              key={slide.src}
+              type="button"
+              data-thumb={i}
+              className={`gallery-thumb${i === index ? " is-active" : ""}`}
+              aria-label={`Show screenshot ${i + 1}: ${slide.alt}`}
+              aria-current={i === index ? "true" : undefined}
+              onClick={() => go(i)}
+              style={{ aspectRatio: aspect }}
+            >
+              <Image src={slide.src} alt="" fill sizes="96px" unoptimized={isSvg(slide.src)} />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

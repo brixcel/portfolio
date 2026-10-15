@@ -23,6 +23,8 @@ export const techStack: Tech[] = [
   { name: "HTML", slug: "html5" },
   { name: "CSS", slug: "css3" },
   { name: "Docker", slug: "docker" },
+  { name: "GitHub Actions", slug: "githubactions" },
+  { name: "Cloudflare", slug: "cloudflare" },
   { name: "Git", slug: "git" },
   { name: "GitHub", slug: "github", invert: true },
 ];
@@ -77,6 +79,17 @@ export const ursacdsaStack: Tech[] = [
   { name: "HTML", slug: "html5" },
   { name: "CSS", slug: "css3" },
   { name: "Git", slug: "git" },
+];
+
+export const cicdStack: Tech[] = [
+  { name: "GitHub Actions", slug: "githubactions" },
+  { name: "Cloudflare Pages", slug: "cloudflare" },
+  { name: "pnpm", slug: "pnpm" },
+  { name: "Node.js", slug: "nodejs" },
+];
+
+export const cicdSlides = [
+  { src: "/assets/cicd-1.svg", alt: "Deploy pipeline: main, dev and pull requests each land in their own Cloudflare Pages environment" },
 ];
 
 export const synctaskSlides = [
@@ -172,13 +185,33 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "ursachub",
+    id: "egoist-cicd",
     number: "02",
+    title: "Egoist Labs CI/CD",
+    kind: "Frontend deploy pipelines",
+    role: "CI/CD, Egoist Labs",
+    description:
+      "GitHub Actions workflows that build the Capability Studio and Learning Platform frontends and deploy them to Cloudflare Pages with Wrangler.",
+    highlights: [
+      "main ships to production, dev to the dev site",
+      "Every pull request gets its own preview URL",
+      "Nothing deploys until the checks pass",
+      "Superseded runs cancel themselves",
+    ],
+    note: "Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys.",
+    stack: cicdStack,
+    slides: cicdSlides,
+    aspect: "1200 / 750",
+    tone: "harbor",
+  },
+  {
+    id: "ursachub",
+    number: "03",
     title: "UrsacHub",
     kind: "Campus platform",
     role: "Front-End Developer",
     description:
-      "A web platform designed to connect users with services and resources through a centralized, user-friendly experience.",
+      "A campus web platform that brings the student store, school news and student organizations together in one place.",
     highlights: [
       "Campus merchandise shop",
       "News and events feed",
@@ -196,7 +229,7 @@ export const projects: Project[] = [
   },
   {
     id: "ursachub-social",
-    number: "03",
+    number: "04",
     title: "UrsacHub Social",
     kind: "Social networking & campus community platform",
     role: "Lead Developer",
@@ -208,7 +241,7 @@ export const projects: Project[] = [
       "Organization pages",
       "Authentication & role management",
     ],
-    note: "Lead Developer — led architecture, full-stack implementation, and real-time social interaction features.",
+    note: "Led the architecture, the full-stack implementation and the real-time chat.",
     stack: ursachubSocialStack,
     slides: ursachubSocialSlides,
     aspect: "16 / 9",
@@ -216,12 +249,12 @@ export const projects: Project[] = [
   },
   {
     id: "ursac-dsa",
-    number: "04",
+    number: "05",
     title: "DSA Workbench",
     kind: "Interactive academic visualization suite",
     role: "Lead Developer",
     description:
-      "An interactive academic visualization suite developed for URS Antipolo Campus to demonstrate fundamental abstract data types, runtime memory layouts, algorithmic mutations, and asymptotic behavior across 8 core structures.",
+      "A teaching tool built for URS Antipolo Campus that shows what data structures actually do in memory as you push, pop, insert and rotate.",
     highlights: [
       "8 interactive abstract data types",
       "Real-time memory & pointer stage",
@@ -237,15 +270,15 @@ export const projects: Project[] = [
   },
   {
     id: "photobooth",
-    number: "05",
+    number: "06",
     title: "Photo Booth",
     kind: "Interactive camera & photostrip web app",
     role: "Solo Developer",
     description:
-      "An interactive web photobooth application featuring customizable strip layouts, real-time camera capture with countdowns, theme stickers, and standalone high-resolution photostrip downloads.",
+      "A browser photobooth: pick a strip layout, shoot with a countdown, decorate with theme stickers and download the finished strip in high resolution.",
     liveHref: "https://simple-photobooth.vercel.app/",
     githubHref: "https://github.com/brixcel/photo-booth",
-    note: "Dynamic layouts adapt automatically to the chosen photo count with isolated photostrip exports.",
+    note: "Layouts adapt automatically to the chosen photo count (3, 4 or 6).",
     stack: photoboothStack,
     slides: photoboothSlides,
     aspect: "1024 / 557",

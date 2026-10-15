@@ -4,12 +4,13 @@ import { useEffect, useRef } from "react";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
 
 const STATEMENT =
-  "4th-year Computer Engineering student working toward becoming a fullstack developer, sharpening that craft at Egoist Labs with the goal of ranking among the top 1% of software engineers.";
+  "I build web apps end to end, from the database schema to the deploy pipeline, and I'm sharpening that craft with one goal: ranking among the top 1% of software engineers.";
 
+// Each fact adds something the statement above doesn't already say.
 const FACTS = [
   { term: "Studying", detail: "Computer Engineering, 4th year" },
-  { term: "Practising at", detail: "Egoist Labs" },
-  { term: "Working toward", detail: "Full-stack development" },
+  { term: "Shipped", detail: "6 projects, incl. CI/CD at Egoist Labs" },
+  { term: "Main stack", detail: "React, TypeScript, Node.js, PostgreSQL" },
 ];
 
 export default function About() {

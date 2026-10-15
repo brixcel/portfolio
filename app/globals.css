@@ -707,8 +707,8 @@ button {
 }
 .hero-title {
   margin: 0 0 clamp(22px, 3.4vh, 36px);
-  /* DEVELOPER, the longer word, spans the copy column exactly */
-  font-size: clamp(44px, 15.4cqi, 152px);
+  /* The longest line spans the copy column; --title-chars is set from the copy */
+  font-size: clamp(28px, calc(138.6cqi / var(--title-chars, 9)), 152px);
   line-height: 0.86;
   letter-spacing: -0.015em;
 }
@@ -718,7 +718,7 @@ button {
 .hero-line .ch {
   display: inline-block;
 }
-.hero-line:nth-child(2) {
+.hero-line:last-child {
   color: var(--color-accent-700);
 }
 [data-motion="on"] .hero-name > span,
@@ -730,7 +730,7 @@ button {
   opacity: 0;
 }
 .hero-quote {
-  max-width: 34ch;
+  max-width: 42ch;
   margin-bottom: clamp(24px, 3.4vh, 34px);
   font-size: clamp(18px, 1.6vw, 21px);
   line-height: 1.5;
@@ -926,7 +926,7 @@ button {
    Sections
    ===================================================================== */
 .section {
-  padding: clamp(88px, 13vw, 168px) 0;
+  padding: clamp(64px, 8vw, 112px) 0;
 }
 .section-label {
   font-size: clamp(24px, 2.4vw, 32px);
@@ -952,7 +952,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  margin-top: clamp(40px, 6vw, 72px);
+  margin-top: clamp(32px, 4vw, 48px);
   padding-top: 22px;
   border-top: 1px solid var(--color-divider);
 }
@@ -976,8 +976,8 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
   gap: clamp(24px, 4vw, 64px);
-  padding-top: clamp(88px, 12vw, 150px);
-  padding-bottom: clamp(24px, 4vw, 48px);
+  padding-top: clamp(64px, 8vw, 112px);
+  padding-bottom: clamp(16px, 2.5vw, 32px);
 }
 .projects-index-wrap {
   position: relative;
@@ -1082,7 +1082,7 @@ button {
 /* Case study */
 .case {
   position: relative;
-  padding: clamp(72px, 10vw, 136px) 0;
+  padding: clamp(56px, 7vw, 96px) 0;
 }
 .case--clay {
   background: var(--color-accent-2-100);
@@ -1319,7 +1319,7 @@ button {
   --color-divider: var(--panel-line);
   background: var(--panel-bg);
   color: var(--panel-text);
-  padding-top: clamp(96px, 14vw, 180px);
+  padding-top: clamp(72px, 9vw, 128px);
 }
 .contact :focus-visible {
   outline-color: var(--panel-accent);
@@ -1425,7 +1425,7 @@ button {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
-  margin-top: clamp(80px, 12vw, 150px);
+  margin-top: clamp(56px, 7vw, 96px);
   padding: 24px 0 28px;
   border-top: 1px solid var(--panel-line);
   color: var(--panel-muted);

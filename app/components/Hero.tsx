@@ -4,7 +4,10 @@ import { useEffect, useRef } from "react";
 import IdBadge from "./id-badge/IdBadge";
 import { getGsap, onPortfolioReady, prefersReducedMotion } from "../lib/motion";
 
-const LINES = ["SOFTWARE", "DEVELOPER"];
+// Name and role already live on the ID badge, so the copy column leads with intent instead.
+// The title is sized so the longest line fills the copy column (see --title-chars).
+const LINES = ["I BUILD", "SOFTWARE THAT", "MATTERS."];
+const TITLE_CHARS = Math.max(...LINES.map((l) => l.length));
 
 export default function Hero() {
   const rootRef = useRef<HTMLElement>(null);
@@ -26,12 +29,13 @@ export default function Hero() {
 
     let intro: gsap.core.Timeline | null = null;
     const cancelReady = onPortfolioReady(() => {
-      intro = gsap.timeline({ defaults: { ease: "expo.out" } });
-      intro
-        .to(q(".hero-name > span"), { yPercent: 0, duration: 0.9 }, 0)
-        .to(q(".hero-line:nth-child(1) .ch"), { yPercent: 0, rotate: 0, duration: 1.1, stagger: 0.035 }, 0.08)
-        .to(q(".hero-line:nth-child(2) .ch"), { yPercent: 0, rotate: 0, duration: 1.1, stagger: 0.035 }, 0.26)
-        .to(q(".hero-rise"), { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.09, ease: "power3.out" }, 0.72)
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      intro = tl;
+      tl.to(q(".hero-name > span"), { yPercent: 0, duration: 0.9 }, 0);
+      q(".hero-line").forEach((line, i) => {
+        tl.to(line.querySelectorAll(".ch"), { yPercent: 0, rotate: 0, duration: 1.1, stagger: 0.035 }, 0.08 + i * 0.16);
+      });
+      tl.to(q(".hero-rise"), { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.09, ease: "power3.out" }, 0.8)
         .to(q(".badge-hint"), { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, 1.9);
     });
 
@@ -51,9 +55,10 @@ export default function Hero() {
       const tl = gsap.timeline({
         scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: 0.6 },
       });
-      tl.to(q(".hero-line:nth-child(1)"), { xPercent: -7, ease: "none" }, 0)
-        .to(q(".hero-line:nth-child(2)"), { xPercent: 5, ease: "none" }, 0)
-        .to(q(".hero-copy"), { yPercent: -14, ease: "none" }, 0);
+      q(".hero-line").forEach((line, i) => {
+        tl.to(line, { xPercent: i % 2 === 0 ? -7 : 5, ease: "none" }, 0);
+      });
+      tl.to(q(".hero-copy"), { yPercent: -14, ease: "none" }, 0);
     });
 
     return () => {
@@ -69,21 +74,27 @@ export default function Hero() {
       <div className="hero-grid">
         <div className="hero-copy">
           <p className="hero-name mask">
-            <span>Brexcel Joe M. Orias</span>
+            <span>A developer&rsquo;s notebook</span>
           </p>
-          <h1 className="hero-title" aria-label="SOFTWARE DEVELOPER">
+          <h1
+            className="hero-title"
+            aria-label="I build software that matters."
+            style={{ ["--title-chars" as string]: TITLE_CHARS }}
+          >
             {LINES.map((line) => (
               <span key={line} className="hero-line mask" aria-hidden="true">
                 {line.split("").map((ch, i) => (
                   <span key={i} className="ch">
-                    {ch}
+                    {/* inline-block spans collapse a plain space */}
+                    {ch === " " ? " " : ch}
                   </span>
                 ))}
               </span>
             ))}
           </h1>
           <p className="hero-quote hero-rise">
-            &ldquo;Building software to solve problems I actually encounter.&rdquo;
+            Building software to solve problems I actually encounter, from AI-assisted task management and
+            campus platforms to the pipelines that ship them.
           </p>
           <div className="hero-actions hero-rise">
             <a href="#projects" className="btn btn-primary">
@@ -97,7 +108,7 @@ export default function Hero() {
         <IdBadge />
       </div>
       <div className="hero-foot hero-rise">
-        <span>Computer Engineering student, full-stack developer</span>
+        <span>Open to internships, freelance work and collaboration</span>
         <a href="#about" className="scroll-cue">
           <span className="scroll-cue-line" aria-hidden="true" />
           Scroll

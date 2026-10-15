@@ -57,7 +57,7 @@ export default function Contact() {
             </span>
           ))}
         </h2>
-        <p className="contact-lede contact-rise">Open to internships, freelance work and collaboration.</p>
+        <p className="contact-lede contact-rise">Have a project, a role or a question? My inbox is open.</p>
 
         <div className="contact-actions contact-rise">
           <a href={`mailto:${EMAIL}`} className="contact-email">
@@ -86,7 +86,7 @@ export default function Contact() {
         </ul>
 
         <footer className="site-footer">
-          <span>Brexcel Joe M. Orias, Computer Engineering</span>
+          <span>&copy; {new Date().getFullYear()} Brexcel Joe M. Orias</span>
           <a href="#home" className="back-top">
             Back to top
           </a>
