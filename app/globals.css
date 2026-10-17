@@ -51,12 +51,12 @@
   --btn-primary: var(--color-accent-700);
   --on-tone: #f7f5f0;
 
-  /* The closing card: lights off, whichever theme you're in */
-  --panel-bg: #1c1b18;
-  --panel-text: #f5ead8;
-  --panel-muted: color-mix(in srgb, #f5ead8 60%, transparent);
-  --panel-line: color-mix(in srgb, #f5ead8 16%, transparent);
-  --panel-accent: #aebf92;
+  /* The closing card: a deeper paper tone in light mode, near-black in dark mode */
+  --panel-bg: #ebe7dc;
+  --panel-text: #1c1b18;
+  --panel-muted: color-mix(in srgb, #1c1b18 68%, transparent);
+  --panel-line: color-mix(in srgb, #1c1b18 16%, transparent);
+  --panel-accent: #56633f;
 
   --font-heading: var(--font-caprasimo), Georgia, serif;
   --font-body: var(--font-figtree), system-ui, sans-serif;
@@ -104,6 +104,10 @@
   --on-tone: #201e1d;
 
   --panel-bg: #161514;
+  --panel-text: #f5ead8;
+  --panel-muted: color-mix(in srgb, #f5ead8 66%, transparent);
+  --panel-line: color-mix(in srgb, #f5ead8 16%, transparent);
+  --panel-accent: #aebf92;
 
   --shadow-frame: 0 34px 60px -30px rgba(0, 0, 0, 0.7), 0 0 0 1px color-mix(in srgb, #f5ead8 12%, transparent);
 }
@@ -368,7 +372,7 @@ button {
   display: inline-block;
 }
 .loader-word .dot {
-  color: var(--color-accent);
+  color: var(--color-accent-700);
 }
 [data-motion="on"] .loader-word .ch {
   transform: translateY(110%);
@@ -430,7 +434,7 @@ button {
 }
 .header-logo .dot {
   display: inline-block;
-  color: var(--color-accent);
+  color: var(--color-accent-700);
   transition: transform 0.5s var(--ease-out);
 }
 .header-logo:hover .dot {
@@ -1400,19 +1404,30 @@ button {
   margin-top: clamp(40px, 6vw, 64px);
   max-width: 640px;
 }
-.contact-links a {
+.contact-links {
+  border-top: 1px solid var(--panel-line);
+}
+.contact-links a,
+.contact-links button {
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
   padding: 18px 0;
-  border-top: 1px solid var(--panel-line);
+  border: 0;
   border-bottom: 1px solid var(--panel-line);
+  background: none;
+  color: inherit;
+  font: inherit;
   font-size: 17px;
   font-weight: 600;
+  text-align: left;
   text-decoration: none;
+  cursor: pointer;
   transition: padding 0.45s var(--ease-out), color 0.25s ease;
 }
-.contact-links a:hover {
+.contact-links a:hover,
+.contact-links button:hover {
   padding-left: 10px;
   color: var(--panel-accent);
 }

@@ -103,6 +103,9 @@ export default function Hero() {
             <a href="#contact" className="btn btn-secondary">
               Get in touch
             </a>
+            <a href="/Brexcel-Orias-CV.pdf" download className="btn btn-secondary">
+              Download CV
+            </a>
           </div>
         </div>
         <IdBadge />

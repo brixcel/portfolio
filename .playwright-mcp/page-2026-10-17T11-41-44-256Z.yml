@@ -1,0 +1,572 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#about"
+  - generic [aria-hidden] [ref=e3]:
+    - paragraph [ref=e4]:
+      - generic [ref=e5]: B
+      - generic [ref=e6]: R
+      - generic [ref=e7]: E
+      - generic [ref=e8]: X
+      - generic [ref=e9]: C
+      - generic [ref=e10]: E
+      - generic [ref=e11]: L
+      - generic [ref=e12]: .
+    - generic [ref=e13]: 0%
+  - banner [ref=e16]:
+    - generic [ref=e17]:
+      - link "brexcel ." [ref=e18] [cursor=pointer]:
+        - /url: "#home"
+        - text: brexcel
+        - generic [ref=e19]: .
+      - navigation "Sections" [ref=e20]:
+        - link "Home" [ref=e21] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=e22] [cursor=pointer]:
+          - /url: "#about"
+        - link "Projects" [ref=e23] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Contact" [ref=e24] [cursor=pointer]:
+          - /url: "#contact"
+      - 'button "Desk lamp: switch between light and dark" [ref=e26] [cursor=pointer]':
+        - generic [ref=e34]: Lights on
+  - main [ref=e35]:
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]:
+            - generic [ref=e40]: A developer’s notebook
+          - heading "I build software that matters." [level=1] [ref=e41]:
+            - generic [aria-hidden] [ref=e42]:
+              - generic [ref=e43]: I
+              - generic [ref=e45]: B
+              - generic [ref=e46]: U
+              - generic [ref=e47]: I
+              - generic [ref=e48]: L
+              - generic [ref=e49]: D
+            - generic [aria-hidden] [ref=e50]:
+              - generic [ref=e51]: S
+              - generic [ref=e52]: O
+              - generic [ref=e53]: F
+              - generic [ref=e54]: T
+              - generic [ref=e55]: W
+              - generic [ref=e56]: A
+              - generic [ref=e57]: R
+              - generic [ref=e58]: E
+              - generic [ref=e60]: T
+              - generic [ref=e61]: H
+              - generic [ref=e62]: A
+              - generic [ref=e63]: T
+            - generic [aria-hidden] [ref=e64]:
+              - generic [ref=e65]: M
+              - generic [ref=e66]: A
+              - generic [ref=e67]: T
+              - generic [ref=e68]: T
+              - generic [ref=e69]: E
+              - generic [ref=e70]: R
+              - generic [ref=e71]: S
+              - generic [ref=e72]: .
+          - paragraph [ref=e73]: Building software to solve problems I actually encounter, from AI-assisted task management and campus platforms to the pipelines that ship them.
+          - generic [ref=e74]:
+            - link "See the projects" [ref=e75] [cursor=pointer]:
+              - /url: "#projects"
+            - link "Get in touch" [ref=e76] [cursor=pointer]:
+              - /url: "#contact"
+        - paragraph [aria-hidden] [ref=e79]: Drag to swing, click to flip
+      - generic [ref=e80]:
+        - generic [ref=e81]: Open to internships, freelance work and collaboration
+        - link "Scroll" [ref=e82] [cursor=pointer]:
+          - /url: "#about"
+    - region "Technologies I use" [ref=e84]:
+      - list [ref=e85]:
+        - listitem [ref=e86]: React
+        - listitem [ref=e87]: TypeScript
+        - listitem [ref=e88]: JavaScript
+        - listitem [ref=e89]: Node.js
+        - listitem [ref=e90]: Express
+        - listitem [ref=e91]: PostgreSQL
+        - listitem [ref=e92]: Prisma
+        - listitem [ref=e93]: Tailwind CSS
+        - listitem [ref=e94]: Next.js
+        - listitem [ref=e95]: Vite
+        - listitem [ref=e96]: Laravel
+        - listitem [ref=e97]: PHP
+        - listitem [ref=e98]: MySQL
+        - listitem [ref=e99]: Firebase
+        - listitem [ref=e100]: Bootstrap
+        - listitem [ref=e101]: HTML
+        - listitem [ref=e102]: CSS
+        - listitem [ref=e103]: Docker
+        - listitem [ref=e104]: GitHub Actions
+        - listitem [ref=e105]: Cloudflare
+        - listitem [ref=e106]: Git
+        - listitem [ref=e107]: GitHub
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - generic [ref=e111]: React
+          - generic [ref=e113]: TypeScript
+          - generic [ref=e115]: JavaScript
+          - generic [ref=e117]: Node.js
+          - generic [ref=e119]: Express
+          - generic [ref=e121]: PostgreSQL
+          - generic [ref=e123]: Prisma
+          - generic [ref=e125]: Tailwind CSS
+          - generic [ref=e127]: Next.js
+          - generic [ref=e129]: Vite
+          - generic [ref=e131]: Laravel
+          - generic [ref=e133]: PHP
+          - generic [ref=e135]: MySQL
+          - generic [ref=e137]: Firebase
+          - generic [ref=e139]: Bootstrap
+          - generic [ref=e141]: HTML
+          - generic [ref=e143]: CSS
+          - generic [ref=e145]: Docker
+          - generic [ref=e147]: GitHub Actions
+          - generic [ref=e149]: Cloudflare
+          - generic [ref=e151]: Git
+          - generic [ref=e153]: GitHub
+        - generic [ref=e155]:
+          - generic [ref=e156]: React
+          - generic [ref=e158]: TypeScript
+          - generic [ref=e160]: JavaScript
+          - generic [ref=e162]: Node.js
+          - generic [ref=e164]: Express
+          - generic [ref=e166]: PostgreSQL
+          - generic [ref=e168]: Prisma
+          - generic [ref=e170]: Tailwind CSS
+          - generic [ref=e172]: Next.js
+          - generic [ref=e174]: Vite
+          - generic [ref=e176]: Laravel
+          - generic [ref=e178]: PHP
+          - generic [ref=e180]: MySQL
+          - generic [ref=e182]: Firebase
+          - generic [ref=e184]: Bootstrap
+          - generic [ref=e186]: HTML
+          - generic [ref=e188]: CSS
+          - generic [ref=e190]: Docker
+          - generic [ref=e192]: GitHub Actions
+          - generic [ref=e194]: Cloudflare
+          - generic [ref=e196]: Git
+          - generic [ref=e198]: GitHub
+    - generic [ref=e201]:
+      - heading "About" [level=2] [ref=e202]
+      - generic [ref=e203]:
+        - paragraph [ref=e204]:
+          - generic [ref=e205]: I
+          - generic [ref=e206]: build
+          - generic [ref=e207]: web
+          - generic [ref=e208]: apps
+          - generic [ref=e209]: end
+          - generic [ref=e210]: to
+          - generic [ref=e211]: end,
+          - generic [ref=e212]: from
+          - generic [ref=e213]: the
+          - generic [ref=e214]: database
+          - generic [ref=e215]: schema
+          - generic [ref=e216]: to
+          - generic [ref=e217]: the
+          - generic [ref=e218]: deploy
+          - generic [ref=e219]: pipeline,
+          - generic [ref=e220]: and
+          - generic [ref=e221]: I'm
+          - generic [ref=e222]: sharpening
+          - generic [ref=e223]: that
+          - generic [ref=e224]: craft
+          - generic [ref=e225]: with
+          - generic [ref=e226]: one
+          - generic [ref=e227]: "goal:"
+          - generic [ref=e228]: ranking
+          - generic [ref=e229]: among
+          - generic [ref=e230]: the
+          - generic [ref=e231]: top
+          - generic [ref=e232]: 1%
+          - generic [ref=e233]: of
+          - generic [ref=e234]: software
+          - generic [ref=e235]: engineers.
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - term [ref=e238]: Studying
+            - definition [ref=e239]: Computer Engineering, 4th year
+          - generic [ref=e240]:
+            - term [ref=e241]: Shipped
+            - definition [ref=e242]: 6 projects, incl. CI/CD at Egoist Labs
+          - generic [ref=e243]:
+            - term [ref=e244]: Main stack
+            - definition [ref=e245]: React, TypeScript, Node.js, PostgreSQL
+    - region [ref=e246]:
+      - generic [ref=e247]:
+        - heading "Projects" [level=2] [ref=e248]
+        - list [ref=e250]:
+          - listitem [ref=e251]:
+            - link "01 Synctask Full-stack web application" [ref=e252] [cursor=pointer]:
+              - /url: "#synctask"
+              - generic [ref=e253]: "01"
+              - generic [ref=e254]: Synctask
+              - generic [ref=e255]: Full-stack web application
+          - listitem [ref=e258]:
+            - link "02 Egoist Labs CI/CD Frontend deploy pipelines" [ref=e259] [cursor=pointer]:
+              - /url: "#egoist-cicd"
+              - generic [ref=e260]: "02"
+              - generic [ref=e261]: Egoist Labs CI/CD
+              - generic [ref=e262]: Frontend deploy pipelines
+          - listitem [ref=e265]:
+            - link "03 UrsacHub Campus platform" [ref=e266] [cursor=pointer]:
+              - /url: "#ursachub"
+              - generic [ref=e267]: "03"
+              - generic [ref=e268]: UrsacHub
+              - generic [ref=e269]: Campus platform
+          - listitem [ref=e272]:
+            - link "04 UrsacHub Social Social networking & campus community platform" [ref=e273] [cursor=pointer]:
+              - /url: "#ursachub-social"
+              - generic [ref=e274]: "04"
+              - generic [ref=e275]: UrsacHub Social
+              - generic [ref=e276]: Social networking & campus community platform
+          - listitem [ref=e279]:
+            - link "05 DSA Workbench Interactive academic visualization suite" [ref=e280] [cursor=pointer]:
+              - /url: "#ursac-dsa"
+              - generic [ref=e281]: "05"
+              - generic [ref=e282]: DSA Workbench
+              - generic [ref=e283]: Interactive academic visualization suite
+          - listitem [ref=e286]:
+            - link "06 Photo Booth Interactive camera & photostrip web app" [ref=e287] [cursor=pointer]:
+              - /url: "#photobooth"
+              - generic [ref=e288]: "06"
+              - generic [ref=e289]: Photo Booth
+              - generic [ref=e290]: Interactive camera & photostrip web app
+      - article [ref=e293]:
+        - generic [ref=e294]:
+          - generic [ref=e295]:
+            - generic [ref=e296]: "01"
+            - heading "Synctask" [level=3] [ref=e297]
+            - paragraph [ref=e299]:
+              - text: Full-stack web application
+              - generic [ref=e300]: Full-Stack Developer
+          - generic [ref=e301]:
+            - generic [ref=e302]:
+              - region "Synctask screenshots. Use the arrow keys to browse." [ref=e303] [cursor=pointer]:
+                - generic [ref=e305]:
+                  - img "Synctask landing and sign-in"
+              - generic [ref=e306]:
+                - paragraph [ref=e307]:
+                  - generic [ref=e308]:
+                    - text: 01/
+                    - generic [ref=e309]: of
+                    - text: "07"
+                  - generic [ref=e310]: Synctask landing and sign-in
+                - generic [ref=e311]:
+                  - button "Previous screenshot" [ref=e312] [cursor=pointer]
+                  - button "Next screenshot" [ref=e315] [cursor=pointer]
+              - generic [ref=e318]:
+                - 'button "Show screenshot 1: Synctask landing and sign-in" [ref=e319] [cursor=pointer]'
+                - 'button "Show screenshot 2: Synctask all-tasks board" [ref=e320] [cursor=pointer]'
+                - 'button "Show screenshot 3: Synctask task detail with subtasks and properties" [ref=e321] [cursor=pointer]'
+                - 'button "Show screenshot 4: Synctask new-task dialog with Create with AI" [ref=e322] [cursor=pointer]'
+                - 'button "Show screenshot 5: Synctask command palette" [ref=e323] [cursor=pointer]'
+                - 'button "Show screenshot 6: Synctask notifications panel" [ref=e324] [cursor=pointer]'
+                - 'button "Show screenshot 7: Synctask empty My Tasks board" [ref=e325] [cursor=pointer]'
+            - generic [ref=e326]:
+              - paragraph [ref=e327]: A full-stack task management platform with AI-powered natural-language workflows for organizing and managing projects.
+              - list [ref=e328]:
+                - listitem [ref=e329]: Create tasks with AI from the new-task dialog
+                - listitem [ref=e330]: Board, list, calendar and analytics views
+                - listitem [ref=e331]: Command palette and notifications panel
+                - listitem [ref=e332]: Task details with subtasks and properties
+              - generic [ref=e333]:
+                - link "Open live project (opens in a new tab)" [ref=e334] [cursor=pointer]:
+                  - /url: https://synctask-proj.vercel.app/
+                  - text: Open live project
+                  - generic [ref=e335]: (opens in a new tab)
+                - link "View code on GitHub (opens in a new tab)" [ref=e336] [cursor=pointer]:
+                  - /url: https://github.com/brixcel/taskflow
+                  - text: View code
+                  - generic [ref=e337]: on GitHub (opens in a new tab)
+              - paragraph [ref=e338]: The repository is named taskflow — the project was renamed to Synctask during development.
+              - generic [ref=e339]:
+                - heading "Built with" [level=4] [ref=e341]
+                - list [ref=e359]:
+                  - listitem [ref=e360]: React
+                  - listitem [ref=e361]: TypeScript
+                  - listitem [ref=e362]: Next.js
+                  - listitem [ref=e363]: Node.js
+                  - listitem [ref=e364]: Express
+                  - listitem [ref=e365]: PostgreSQL
+                  - listitem [ref=e366]: Prisma
+                  - listitem [ref=e367]: Tailwind CSS
+                  - listitem [ref=e368]: Docker
+                  - listitem [ref=e369]: Vite
+      - article [ref=e370]:
+        - generic [ref=e371]:
+          - generic [ref=e372]:
+            - generic [ref=e373]: "02"
+            - heading "Egoist Labs CI/CD" [level=3] [ref=e374]
+            - paragraph [ref=e376]:
+              - text: Frontend deploy pipelines
+              - generic [ref=e377]: CI/CD, Egoist Labs
+          - generic [ref=e378]:
+            - generic [ref=e379]:
+              - region "Egoist Labs CI/CD screenshots. Use the arrow keys to browse." [ref=e380] [cursor=pointer]:
+                - generic [ref=e382]:
+                  - 'img "Deploy pipeline: main, dev and pull requests each land in their own Cloudflare Pages environment"'
+              - paragraph [ref=e384]:
+                - generic [ref=e385]:
+                  - text: 01/
+                  - generic [ref=e386]: of
+                  - text: "01"
+                - generic [ref=e387]: "Deploy pipeline: main, dev and pull requests each land in their own Cloudflare Pages environment"
+            - generic [ref=e388]:
+              - paragraph [ref=e389]: GitHub Actions workflows that build the Capability Studio and Learning Platform frontends and deploy them to Cloudflare Pages with Wrangler.
+              - list [ref=e390]:
+                - listitem [ref=e391]: main ships to production, dev to the dev site
+                - listitem [ref=e392]: Every pull request gets its own preview URL
+                - listitem [ref=e393]: Nothing deploys until the checks pass
+                - listitem [ref=e394]: Superseded runs cancel themselves
+              - paragraph [ref=e395]: Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys.
+              - generic [ref=e396]:
+                - heading "Built with" [level=4] [ref=e398]
+                - list [ref=e416]:
+                  - listitem [ref=e417]: GitHub Actions
+                  - listitem [ref=e418]: Cloudflare Pages
+                  - listitem [ref=e419]: pnpm
+                  - listitem [ref=e420]: Node.js
+      - article [ref=e421]:
+        - generic [ref=e422]:
+          - generic [ref=e423]:
+            - generic [ref=e424]: "03"
+            - heading "UrsacHub" [level=3] [ref=e425]
+            - paragraph [ref=e427]:
+              - text: Campus platform
+              - generic [ref=e428]: Front-End Developer
+          - generic [ref=e429]:
+            - generic [ref=e430]:
+              - region "UrsacHub screenshots. Use the arrow keys to browse." [ref=e431] [cursor=pointer]:
+                - generic [ref=e433]:
+                  - img "UrsacHub home"
+              - generic [ref=e434]:
+                - paragraph [ref=e435]:
+                  - generic [ref=e436]:
+                    - text: 01/
+                    - generic [ref=e437]: of
+                    - text: "08"
+                  - generic [ref=e438]: UrsacHub home
+                - generic [ref=e439]:
+                  - button "Previous screenshot" [ref=e440] [cursor=pointer]
+                  - button "Next screenshot" [ref=e443] [cursor=pointer]
+              - generic [ref=e446]:
+                - 'button "Show screenshot 1: UrsacHub home" [ref=e447] [cursor=pointer]'
+                - 'button "Show screenshot 2: UrsacHub campus merchandise products" [ref=e448] [cursor=pointer]'
+                - 'button "Show screenshot 3: UrsacHub news and events" [ref=e449] [cursor=pointer]'
+                - 'button "Show screenshot 4: UrsacHub student organizations directory" [ref=e450] [cursor=pointer]'
+                - 'button "Show screenshot 5: UrsacHub student login" [ref=e451] [cursor=pointer]'
+                - 'button "Show screenshot 6: UrsacHub buy products section" [ref=e452] [cursor=pointer]'
+                - 'button "Show screenshot 7: UrsacHub news feed" [ref=e453] [cursor=pointer]'
+                - 'button "Show screenshot 8: UrsacHub about the developers" [ref=e454] [cursor=pointer]'
+            - generic [ref=e455]:
+              - paragraph [ref=e456]: A campus web platform that brings the student store, school news and student organizations together in one place.
+              - list [ref=e457]:
+                - listitem [ref=e458]: Campus merchandise shop
+                - listitem [ref=e459]: News and events feed
+                - listitem [ref=e460]: Student organizations directory
+                - listitem [ref=e461]: Student login
+              - generic [ref=e462]:
+                - link "Open live project (opens in a new tab)" [ref=e463] [cursor=pointer]:
+                  - /url: https://ursachub.onrender.com/student/home
+                  - text: Open live project
+                  - generic [ref=e464]: (opens in a new tab)
+                - link "View code on GitHub (opens in a new tab)" [ref=e465] [cursor=pointer]:
+                  - /url: https://github.com/markPie29/ursachub
+                  - text: View code
+                  - generic [ref=e466]: on GitHub (opens in a new tab)
+              - paragraph [ref=e467]: Built with a team — this repo covers my front-end work.
+              - generic [ref=e468]:
+                - heading "Built with" [level=4] [ref=e470]
+                - list [ref=e488]:
+                  - listitem [ref=e489]: Laravel
+                  - listitem [ref=e490]: PHP
+                  - listitem [ref=e491]: MySQL
+                  - listitem [ref=e492]: Bootstrap
+                  - listitem [ref=e493]: Tailwind CSS
+                  - listitem [ref=e494]: JavaScript
+                  - listitem [ref=e495]: HTML
+                  - listitem [ref=e496]: CSS
+                  - listitem [ref=e497]: Git
+      - article [ref=e498]:
+        - generic [ref=e499]:
+          - generic [ref=e500]:
+            - generic [ref=e501]: "04"
+            - heading "UrsacHub Social" [level=3] [ref=e502]
+            - paragraph [ref=e504]:
+              - text: Social networking & campus community platform
+              - generic [ref=e505]: Lead Developer
+          - generic [ref=e506]:
+            - generic [ref=e507]:
+              - region "UrsacHub Social screenshots. Use the arrow keys to browse." [ref=e508] [cursor=pointer]:
+                - generic [ref=e510]:
+                  - img "UrsacHub Social student login and welcome screen"
+              - generic [ref=e511]:
+                - paragraph [ref=e512]:
+                  - generic [ref=e513]:
+                    - text: 01/
+                    - generic [ref=e514]: of
+                    - text: "05"
+                  - generic [ref=e515]: UrsacHub Social student login and welcome screen
+                - generic [ref=e516]:
+                  - button "Previous screenshot" [ref=e517] [cursor=pointer]
+                  - button "Next screenshot" [ref=e520] [cursor=pointer]
+              - generic [ref=e523]:
+                - 'button "Show screenshot 1: UrsacHub Social student login and welcome screen" [ref=e524] [cursor=pointer]'
+                - 'button "Show screenshot 2: UrsacHub Social campus feed with posts and interactions" [ref=e525] [cursor=pointer]'
+                - 'button "Show screenshot 3: UrsacHub Social post creation modal" [ref=e526] [cursor=pointer]'
+                - 'button "Show screenshot 4: UrsacHub Social student messages list" [ref=e527] [cursor=pointer]'
+                - 'button "Show screenshot 5: UrsacHub Social real-time student chat conversation" [ref=e528] [cursor=pointer]'
+            - generic [ref=e529]:
+              - paragraph [ref=e530]: Reimagined URSAC Hub as a social networking platform inspired by Facebook. Students can create posts, interact through likes and comments, join conversations, and stay updated with organizations through a familiar social media experience.
+              - list [ref=e531]:
+                - listitem [ref=e532]: Social media feed
+                - listitem [ref=e533]: Posts, likes & comments
+                - listitem [ref=e534]: Organization pages
+                - listitem [ref=e535]: Authentication & role management
+              - paragraph [ref=e536]: Led the architecture, the full-stack implementation and the real-time chat.
+              - generic [ref=e537]:
+                - heading "Built with" [level=4] [ref=e539]
+                - list [ref=e557]:
+                  - listitem [ref=e558]: Firebase
+                  - listitem [ref=e559]: Laravel
+                  - listitem [ref=e560]: PHP
+                  - listitem [ref=e561]: Tailwind CSS
+                  - listitem [ref=e562]: JavaScript
+                  - listitem [ref=e563]: HTML
+                  - listitem [ref=e564]: CSS
+      - article [ref=e565]:
+        - generic [ref=e566]:
+          - generic [ref=e567]:
+            - generic [ref=e568]: "05"
+            - heading "DSA Workbench" [level=3] [ref=e569]
+            - paragraph [ref=e571]:
+              - text: Interactive academic visualization suite
+              - generic [ref=e572]: Lead Developer
+          - generic [ref=e573]:
+            - generic [ref=e574]:
+              - region "DSA Workbench screenshots. Use the arrow keys to browse." [ref=e575] [cursor=pointer]:
+                - generic [ref=e577]:
+                  - img "DSA Workbench dashboard with 8 interactive abstract data type modules"
+              - generic [ref=e578]:
+                - paragraph [ref=e579]:
+                  - generic [ref=e580]:
+                    - text: 01/
+                    - generic [ref=e581]: of
+                    - text: "05"
+                  - generic [ref=e582]: DSA Workbench dashboard with 8 interactive abstract data type modules
+                - generic [ref=e583]:
+                  - button "Previous screenshot" [ref=e584] [cursor=pointer]
+                  - button "Next screenshot" [ref=e587] [cursor=pointer]
+              - generic [ref=e590]:
+                - 'button "Show screenshot 1: DSA Workbench dashboard with 8 interactive abstract data type modules" [ref=e591] [cursor=pointer]'
+                - 'button "Show screenshot 2: Stack visualization with LIFO discipline, O(1) mutations, and runtime memory staging" [ref=e592] [cursor=pointer]'
+                - 'button "Show screenshot 3: Circular Queue visualization with ring buffer topology and modulo arithmetic wrap-around" [ref=e593] [cursor=pointer]'
+                - 'button "Show screenshot 4: AVL Tree self-balancing binary search tree with height balance factor and rotation engine" [ref=e594] [cursor=pointer]'
+                - 'button "Show screenshot 5: Doubly Linked List bidirectional pointer chain and dynamic memory heap addresses" [ref=e595] [cursor=pointer]'
+            - generic [ref=e596]:
+              - paragraph [ref=e597]: A teaching tool built for URS Antipolo Campus that shows what data structures actually do in memory as you push, pop, insert and rotate.
+              - list [ref=e598]:
+                - listitem [ref=e599]: 8 interactive abstract data types
+                - listitem [ref=e600]: Real-time memory & pointer stage
+                - listitem [ref=e601]: Ring buffer modulo mechanics
+                - listitem [ref=e602]: AVL tree rotations & balance factors
+              - link "Open live project (opens in a new tab)" [ref=e604] [cursor=pointer]:
+                - /url: https://ursacdsa.vercel.app/index.html
+                - text: Open live project
+                - generic [ref=e605]: (opens in a new tab)
+              - paragraph [ref=e606]: Covers Stacks, Regular & Circular Queues, Priority Queues, Singly / Doubly / Circular Linked Lists, and AVL Trees.
+              - generic [ref=e607]:
+                - heading "Built with" [level=4] [ref=e609]
+                - list [ref=e627]:
+                  - listitem [ref=e628]: JavaScript
+                  - listitem [ref=e629]: HTML
+                  - listitem [ref=e630]: CSS
+                  - listitem [ref=e631]: Git
+      - article [ref=e632]:
+        - generic [ref=e633]:
+          - generic [ref=e634]:
+            - generic [ref=e635]: "06"
+            - heading "Photo Booth" [level=3] [ref=e636]
+            - paragraph [ref=e638]:
+              - text: Interactive camera & photostrip web app
+              - generic [ref=e639]: Solo Developer
+          - generic [ref=e640]:
+            - generic [ref=e641]:
+              - region "Photo Booth screenshots. Use the arrow keys to browse." [ref=e642] [cursor=pointer]:
+                - generic [ref=e644]:
+                  - img "Photo Booth landing screen with photostrip preview"
+              - generic [ref=e645]:
+                - paragraph [ref=e646]:
+                  - generic [ref=e647]:
+                    - text: 01/
+                    - generic [ref=e648]: of
+                    - text: "05"
+                  - generic [ref=e649]: Photo Booth landing screen with photostrip preview
+                - generic [ref=e650]:
+                  - button "Previous screenshot" [ref=e651] [cursor=pointer]
+                  - button "Next screenshot" [ref=e654] [cursor=pointer]
+              - generic [ref=e657]:
+                - 'button "Show screenshot 1: Photo Booth landing screen with photostrip preview" [ref=e658] [cursor=pointer]'
+                - 'button "Show screenshot 2: Photo Booth Studio with 4-photo 2x2 classic grid and customization" [ref=e659] [cursor=pointer]'
+                - 'button "Show screenshot 3: Photo Booth Studio with 3-photo vertical strip layout" [ref=e660] [cursor=pointer]'
+                - 'button "Show screenshot 4: Photo Booth Studio with 6-photo 3x2 grid layout" [ref=e661] [cursor=pointer]'
+                - 'button "Show screenshot 5: Photo Booth finished keepsake and standalone download" [ref=e662] [cursor=pointer]'
+            - generic [ref=e663]:
+              - paragraph [ref=e664]: "A browser photobooth: pick a strip layout, shoot with a countdown, decorate with theme stickers and download the finished strip in high resolution."
+              - generic [ref=e665]:
+                - link "Open live project (opens in a new tab)" [ref=e666] [cursor=pointer]:
+                  - /url: https://simple-photobooth.vercel.app/
+                  - text: Open live project
+                  - generic [ref=e667]: (opens in a new tab)
+                - link "View code on GitHub (opens in a new tab)" [ref=e668] [cursor=pointer]:
+                  - /url: https://github.com/brixcel/photo-booth
+                  - text: View code
+                  - generic [ref=e669]: on GitHub (opens in a new tab)
+              - paragraph [ref=e670]: Layouts adapt automatically to the chosen photo count (3, 4 or 6).
+              - generic [ref=e671]:
+                - heading "Built with" [level=4] [ref=e673]
+                - list [ref=e691]:
+                  - listitem [ref=e692]: React
+                  - listitem [ref=e693]: JavaScript
+                  - listitem [ref=e694]: Vite
+                  - listitem [ref=e695]: Tailwind CSS
+                  - listitem [ref=e696]: HTML
+                  - listitem [ref=e697]: CSS
+                  - listitem [ref=e698]: Git
+    - region [ref=e699]:
+      - generic [ref=e700]:
+        - heading "Let’s build something." [level=2] [ref=e701]:
+          - generic [ref=e702]: Let’s build
+          - generic [ref=e704]: something.
+        - paragraph [ref=e706]: Have a project, a role or a question? My inbox is open.
+        - generic [ref=e707]:
+          - link "brexcel14@gmail.com" [ref=e708] [cursor=pointer]:
+            - /url: mailto:brexcel14@gmail.com
+          - button "Copy email" [ref=e709] [cursor=pointer]:
+            - generic [aria-hidden] [ref=e711]: Copied
+        - list [ref=e713]:
+          - listitem [ref=e714]:
+            - link "GitHub github.com/brixcel (opens in a new tab)" [ref=e715] [cursor=pointer]:
+              - /url: https://github.com/brixcel
+              - generic [ref=e716]: GitHub
+              - generic [ref=e717]:
+                - text: github.com/brixcel
+                - generic [ref=e718]: (opens in a new tab)
+          - listitem [ref=e719]:
+            - link "WhatsApp Chat with me (opens in a new tab)" [ref=e720] [cursor=pointer]:
+              - /url: https://wa.me/639154634639
+              - generic [ref=e721]: WhatsApp
+              - generic [ref=e722]:
+                - text: Chat with me
+                - generic [ref=e723]: (opens in a new tab)
+          - listitem [ref=e724]:
+            - button "Discord @brix_61875 (copy username)" [ref=e725] [cursor=pointer]:
+              - generic [ref=e726]: Discord
+              - generic [ref=e727]:
+                - text: "@brix_61875"
+                - generic [ref=e728]: (copy username)
+        - generic [ref=e729]:
+          - generic [ref=e730]: © 2026 Brexcel Joe M. Orias
+          - link "Back to top" [ref=e731] [cursor=pointer]:
+            - /url: "#home"

@@ -4,11 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
 
 const EMAIL = "brexcel14@gmail.com";
+const DISCORD = "brix_61875";
+// Digits only for wa.me; the number itself is never printed, which keeps it away from scrapers.
+const WHATSAPP = "639154634639";
 const HEADLINE = ["Let’s build", "something."];
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<"email" | "discord" | null>(null);
   const resetTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
@@ -36,14 +39,14 @@ export default function Contact() {
     };
   }, []);
 
-  const copyEmail = async () => {
+  const copy = async (what: "email" | "discord") => {
     try {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
+      await navigator.clipboard.writeText(what === "email" ? EMAIL : DISCORD);
+      setCopied(what);
       clearTimeout(resetTimer.current);
-      resetTimer.current = setTimeout(() => setCopied(false), 2200);
+      resetTimer.current = setTimeout(() => setCopied(null), 2200);
     } catch {
-      window.location.href = `mailto:${EMAIL}`;
+      if (what === "email") window.location.href = `mailto:${EMAIL}`;
     }
   };
 
@@ -63,18 +66,29 @@ export default function Contact() {
           <a href={`mailto:${EMAIL}`} className="contact-email">
             {EMAIL}
           </a>
-          <button type="button" className={`copy-btn${copied ? " is-copied" : ""}`} onClick={copyEmail}>
+          <button
+            type="button"
+            className={`copy-btn${copied === "email" ? " is-copied" : ""}`}
+            onClick={() => copy("email")}
+          >
             <span className="copy-label">Copy email</span>
-            <span className="copy-done" aria-hidden={!copied}>
+            <span className="copy-done" aria-hidden={copied !== "email"}>
               Copied
             </span>
           </button>
           <span className="sr-only" aria-live="polite">
-            {copied ? "Email address copied to clipboard" : ""}
+            {copied === "email" ? "Email address copied to clipboard" : ""}
+            {copied === "discord" ? "Discord username copied to clipboard" : ""}
           </span>
         </div>
 
         <ul className="contact-links contact-rise">
+          <li>
+            <a href="/Brexcel-Orias-CV.pdf" download>
+              <span>CV</span>
+              <span className="contact-link-value">Download PDF</span>
+            </a>
+          </li>
           <li>
             <a href="https://github.com/brixcel" target="_blank" rel="noopener noreferrer">
               <span>GitHub</span>
@@ -82,6 +96,23 @@ export default function Contact() {
                 github.com/brixcel<span className="sr-only"> (opens in a new tab)</span>
               </span>
             </a>
+          </li>
+          <li>
+            <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer">
+              <span>WhatsApp</span>
+              <span className="contact-link-value">
+                Chat with me<span className="sr-only"> (opens in a new tab)</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <button type="button" onClick={() => copy("discord")}>
+              <span>Discord</span>
+              <span className="contact-link-value">
+                {copied === "discord" ? "Copied" : `@${DISCORD}`}
+                <span className="sr-only"> (copy username)</span>
+              </span>
+            </button>
           </li>
         </ul>
 
