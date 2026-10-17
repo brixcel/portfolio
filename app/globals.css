@@ -102,6 +102,7 @@
 
   --btn-primary: var(--color-accent);
   --on-tone: #201e1d;
+  --icon-lift: 2.4;
 
   --panel-bg: #161514;
   --panel-text: #f5ead8;
@@ -223,6 +224,10 @@ button {
 
 .icon-invert {
   filter: invert(var(--icon-invert, 0));
+}
+/* Dark-coloured brand marks (e.g. MySQL's teal) brighten in dark mode instead of inverting */
+.icon-lift {
+  filter: brightness(var(--icon-lift, 1));
 }
 
 /* Masked line: children rise into view from below the clip edge */
@@ -1091,6 +1096,10 @@ button {
 .case--clay {
   background: var(--color-accent-2-100);
   border-block: 1px solid var(--color-divider);
+}
+/* The clay tint turns muddy brown on dark; use a neutral raised band instead */
+:root[data-theme="dark"] .case--clay {
+  background: var(--color-neutral-100);
 }
 .case-head {
   display: grid;

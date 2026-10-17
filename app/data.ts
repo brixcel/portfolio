@@ -2,6 +2,8 @@ export type Tech = {
   name: string;
   slug: string;
   invert?: boolean;
+  /** Dark-coloured logo that needs brightening (not inverting) in dark mode. */
+  lift?: boolean;
 };
 
 export const techStack: Tech[] = [
@@ -17,7 +19,7 @@ export const techStack: Tech[] = [
   { name: "Vite", slug: "vitejs" },
   { name: "Laravel", slug: "laravel" },
   { name: "PHP", slug: "php" },
-  { name: "MySQL", slug: "mysql" },
+  { name: "MySQL", slug: "mysql", lift: true },
   { name: "Firebase", slug: "firebase" },
   { name: "Bootstrap", slug: "bootstrap" },
   { name: "HTML", slug: "html5" },
@@ -45,7 +47,7 @@ export const synctaskStack: Tech[] = [
 export const ursachubStack: Tech[] = [
   { name: "Laravel", slug: "laravel" },
   { name: "PHP", slug: "php" },
-  { name: "MySQL", slug: "mysql" },
+  { name: "MySQL", slug: "mysql", lift: true },
   { name: "Bootstrap", slug: "bootstrap" },
   { name: "Tailwind CSS", slug: "tailwindcss" },
   { name: "JavaScript", slug: "javascript" },

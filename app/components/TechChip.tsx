@@ -1,6 +1,7 @@
 import type { Tech } from "../data";
 
 const iconUrl = (slug: string) => `/icons/${slug}.svg`;
+const iconClass = (tech: Tech) => (tech.invert ? "icon-invert" : tech.lift ? "icon-lift" : undefined);
 
 export function TechChip({ tech, size = 18 }: { tech: Tech; size?: number }) {
   return (
@@ -12,7 +13,7 @@ export function TechChip({ tech, size = 18 }: { tech: Tech; size?: number }) {
         width={size}
         height={size}
         loading="lazy"
-        className={tech.invert ? "icon-invert" : undefined}
+        className={iconClass(tech)}
       />
       {tech.name}
     </li>
@@ -28,7 +29,7 @@ export function MarqueeItem({ tech }: { tech: Tech }) {
         alt=""
         width={30}
         height={30}
-        className={tech.invert ? "icon-invert" : undefined}
+        className={iconClass(tech)}
       />
       <span>{tech.name}</span>
     </span>
