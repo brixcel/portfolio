@@ -869,7 +869,7 @@ a.desk-sheet:focus-visible {
   background: radial-gradient(
     140% 120% at 92% 0%,
     transparent 30%,
-    rgba(46, 43, 37, var(--shade, 0.1)) 100%
+    rgba(58, 46, 31, var(--shade, 0.1)) 100%
   );
   pointer-events: none;
 }
@@ -1537,7 +1537,7 @@ a.desk-sheet:focus-visible {
   }
   .desk {
     max-width: 520px;
-    margin: 0 auto;
+    margin: 16px auto 0;
   }
   .desk-light {
     inset: -22% -4% -10% -4%;
