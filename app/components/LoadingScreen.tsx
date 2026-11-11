@@ -25,7 +25,7 @@ export default function LoadingScreen() {
       window.dispatchEvent(new CustomEvent("portfolio:ready"));
     };
 
-    // Already seen the intro this session — skip straight to the badge drop.
+    // Already seen the intro this session — skip straight to the hero.
     let alreadyVisited = false;
     try {
       alreadyVisited = sessionStorage.getItem(VISITED_KEY) === "1";
