@@ -1,116 +1,89 @@
 <!doctype html>
 <!--
-  ATS-friendly source for public/Brexcel-Orias-CV.pdf: one column, plain black text, standard headings,
-  no tables, columns, icons or letter-spacing (spaced letters extract as broken words).
-  After editing, regenerate the PDF from the repo root:
-  "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless --disable-gpu \
-    --no-pdf-header-footer --print-to-pdf="$(cygpath -w "$PWD/public/Brexcel-Orias-CV.pdf")" \
-    "file:///$(cygpath -m "$PWD/resume/cv.html")"
+  Source for public/Brexcel-Orias-CV.pdf (A4, one page). Kept ATS-friendly: one column,
+  real text, standard headings, no tables or icons.
+  Regenerate the PDF by printing this file to PDF at A4 with no headers/footers
+  (Chrome/Edge "Save as PDF", or a headless Chromium print).
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Brexcel Joe M. Orias - Resume</title>
+<title>Brexcel Joe M. Orias — Software Engineer Intern CV</title>
 <style>
-  @page { size: A4; margin: 10mm 15mm; }
+  @page { size: A4; margin: 9mm 13mm; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10pt;
-    line-height: 1.25;
-    color: #000;
-    background: #fff;
-  }
-  a { color: #000; text-decoration: none; }
-  h1 { font-size: 18pt; }
-  .headline { margin-top: 1pt; font-size: 11pt; font-weight: bold; }
-  .contact { margin-top: 3pt; }
-  h2 {
-    margin: 8pt 0 3pt;
-    padding-bottom: 1.5pt;
-    border-bottom: 1pt solid #000;
-    font-size: 11pt;
-  }
-  h3 { font-size: 10pt; }
-  .entry + .entry { margin-top: 6pt; }
-  ul { margin-top: 2pt; padding-left: 14pt; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 9.35pt; line-height: 1.25; color: #222; }
+  a { color: #1d5fa6; text-decoration: none; }
+  header { text-align: center; margin-bottom: 5pt; }
+  h1 { font-size: 15.5pt; color: #1e3557; letter-spacing: 0.02em; }
+  .role { font-size: 9.6pt; font-weight: bold; color: #1e3557; margin-top: 1pt; }
+  .contact { margin-top: 3pt; font-size: 8.8pt; color: #444; }
+  h2 { font-size: 10.6pt; color: #1e3557; border-bottom: 0.8pt solid #1e3557; padding-bottom: 1pt; margin: 7pt 0 3pt; }
+  .head { font-weight: bold; color: #1e3557; }
+  .muted { color: #555; font-weight: normal; }
+  .meta { color: #1d5fa6; font-weight: normal; }
+  .entry + .entry { margin-top: 3.5pt; }
+  ul { padding-left: 11pt; margin-top: 1.5pt; }
   li { margin-top: 1pt; }
+  p.skills { margin-top: 1pt; }
 </style>
 </head>
 <body>
+<header>
   <h1>BREXCEL JOE M. ORIAS</h1>
-  <p class="headline">Junior Software Engineer</p>
-  <p class="contact">Antipolo, Rizal, Philippines | +63 915 463 4639 | brexcel14@gmail.com</p>
-  <p>GitHub: github.com/brixcel | Portfolio: brexcel.vercel.app</p>
+  <p class="role">SOFTWARE ENGINEER INTERN</p>
+  <p class="contact">Antipolo, Rizal, Philippines &nbsp;|&nbsp; +63 915 463 4639 &nbsp;|&nbsp; <a href="mailto:brexcel14@gmail.com">brexcel14@gmail.com</a> &nbsp;|&nbsp; <a href="https://github.com/brixcel">github.com/brixcel</a> &nbsp;|&nbsp; <a href="https://brexcel.vercel.app">brexcel.vercel.app</a></p>
+</header>
 
-  <h2>PROFESSIONAL SUMMARY</h2>
-  <p>
-    Computer Engineering student graduating in May 2027 and Software Engineering Intern at Egoist Labs. Builds
-    full-stack web applications with React, TypeScript, Node.js and PostgreSQL, and sets up CI/CD pipelines with
-    GitHub Actions and Cloudflare Pages. Seeking a Junior Software Engineer role.
-  </p>
+<h2>PROFESSIONAL SUMMARY</h2>
+<p>Fourth-year Computer Engineering student and current Software Engineer Trainee at Egoist Labs, with hands-on full-stack web development experience using React, JavaScript, TypeScript, Laravel, Node.js, and SQL databases. Experienced in integrating APIs into existing interfaces and building GitHub Actions CI/CD workflows with automated quality gates and preview deployments. Seeking a Software Engineer Internship to contribute to product development while strengthening software engineering fundamentals.</p>
 
-  <h2>WORK EXPERIENCE</h2>
-  <div class="entry">
-    <h3>Software Engineering Intern</h3>
-    <p>Egoist Labs | September 2026 - Present</p>
-    <ul>
-      <li>Replaced manual production deployments that took 15-30 minutes with automated GitHub Actions pipelines that deploy in 3-5 minutes, used by a team of 5+ engineers across about 20 deployments to date.</li>
-      <li>Wrote the deployment workflow for the Learning Platform frontend, running format checks, linting, type checking and tests before every deployment to Cloudflare Pages with Wrangler.</li>
-      <li>Reworked the Capability Studio deployment workflow into separate production, development and feature environments.</li>
-      <li>Configured both pipelines to deploy main to production and dev to a development site, with a preview URL for every pull request.</li>
-      <li>Added concurrency controls so outdated workflow runs are cancelled automatically.</li>
-    </ul>
-  </div>
+<h2>PROFESSIONAL EXPERIENCE</h2>
+<p><span class="head">Software Engineer Trainee | Egoist Labs</span> <span class="muted">— September 2026 – Present</span></p>
+<ul>
+  <li>Contributed to <b>2 GitHub Actions deployment workflows</b> (Learning Platform and Capability Studio), which have recorded <b>13 subsequent workflow runs</b> since my changes were merged (Learning Platform: 4; Capability Studio: 9).</li>
+  <li>Built the Learning Platform CI/CD workflow from scratch using AI assistance and technical documentation, configuring <b>5 automated quality gates</b> (formatting, linting, type checking, tests, and production builds) that run before Cloudflare Pages deployment.</li>
+  <li>Extended the Capability Studio deployment workflow started by my mentor, personally implementing <b>3 deployment paths</b>: production, development, and feature preview.</li>
+  <li>Implemented automatic pull-request-specific preview URLs for Capability Studio so developers can test changes through dedicated preview deployments, and added concurrency controls that cancel outdated runs for the same pull request or branch.</li>
+  <li>Created and configured <b>3 GitHub deployment environments</b> (production, development, and feature), and set up repository secrets and variables using Cloudflare credentials provided by my mentor.</li>
+  <li>Validated the workflows by testing pushes to main and dev, opening pull requests, checking preview deployments, testing failure scenarios, and verifying the deployed applications.</li>
+  <li>Integrated a learner API into the Learning Platform React interface using TanStack Query and implemented a batch-selection dropdown to filter learner records <i>(completed; pending commit)</i>.</li>
+</ul>
 
-  <h2>PROJECTS</h2>
-  <div class="entry">
-    <h3>Synctask | Full-Stack Developer</h3>
-    <p>synctask-proj.vercel.app | React, Vite, Node.js, Express, PostgreSQL, Prisma, Docker</p>
-    <ul>
-      <li>Built a task management platform where users create tasks from natural-language prompts using AI.</li>
-      <li>Implemented board, list, calendar and analytics views, a command palette, notifications and subtasks.</li>
-    </ul>
-  </div>
-  <div class="entry">
-    <h3>UrsacHub Social | Lead Developer</h3>
-    <p>Laravel, PHP, Firebase, JavaScript, Tailwind CSS</p>
-    <ul>
-      <li>Led a team of 5 developers and authored about 70% of the commits, owning the architecture and full-stack development of a campus social networking platform with a news feed, posts, likes, comments, organization pages and role-based authentication.</li>
-      <li>Built real-time chat between students.</li>
-    </ul>
-  </div>
-  <div class="entry">
-    <h3>DSA Workbench | Lead Developer</h3>
-    <p>ursacdsa.vercel.app | JavaScript, HTML, CSS</p>
-    <ul>
-      <li>Developed an interactive visualization tool for University of Rizal System Antipolo Campus covering 8 data structures, including stacks, queues, linked lists and AVL trees, with step-by-step memory and pointer views.</li>
-      <li>Used as a teaching aid in a Data Structures class of about 40 students.</li>
-    </ul>
-  </div>
-  <div class="entry">
-    <h3>UrsacHub | Front-End Developer</h3>
-    <p>ursachub.onrender.com | Laravel, PHP, MySQL, Bootstrap, Tailwind CSS</p>
-    <ul>
-      <li>Built the entire front end of a campus web platform with a merchandise shop, news and events, and a student organization directory as 1 of 4 developers; the platform launched with real users.</li>
-    </ul>
-  </div>
-  <div class="entry">
-    <h3>Photo Booth | Solo Developer</h3>
-    <p>simple-photobooth.vercel.app | React, Vite, Tailwind CSS</p>
-    <ul>
-      <li>Built a browser photo booth with countdown camera capture, 3, 4 and 6-photo layouts, stickers and high-res downloads.</li>
-    </ul>
-  </div>
+<h2>SELECTED PROJECTS</h2>
+<div class="entry">
+  <p><span class="head">AR-DUINO (Undergraduate Thesis) | 3D Simulation Developer</span> &nbsp;|&nbsp; <a href="https://ar-duino-m.vercel.app">Live Demo</a> · <a href="https://github.com/Yiizer/Arduino-Ar-App">GitHub</a> · <span class="meta">Unity, C#, Vuforia, Blender</span></p>
+  <p>Built the 3D circuit simulation for a team augmented reality app that teaches Arduino through guided projects, step-by-step lessons, and AR component cards; wrote <b>37 C# scripts</b> covering drag-and-snap breadboard placement, wire-to-pin snapping, circuit validation with a live checklist, and a mock Arduino IDE that uploads code to the simulated board.</p>
+</div>
+<div class="entry">
+  <p><span class="head">SyncTask | Full-Stack Developer</span> &nbsp;|&nbsp; <a href="https://synctask-proj.vercel.app">Live Demo</a> · <span class="meta">React, TypeScript, Next.js, Node.js, Express, PostgreSQL, Prisma</span></p>
+  <p>Built a team task-management app with AI-assisted natural-language task creation, Kanban/list/calendar/analytics views, subtasks, notifications, and a command palette; implemented backend CRUD/API functionality and role- and row-level access controls.</p>
+</div>
+<div class="entry">
+  <p><span class="head">UrsacHub Social | Lead Developer</span> &nbsp;|&nbsp; <a href="https://github.com/brixcel/social-media">GitHub</a> · <span class="meta">Laravel, PHP, Firebase, JavaScript, Tailwind CSS</span></p>
+  <p>Led a five-person team building a campus social platform with feeds, posts, comments, organization pages, authentication, and real-time messaging; primarily developed Laravel routes and backend functionality, with AI-assisted frontend implementation based on a teammate’s design.</p>
+</div>
+<div class="entry">
+  <p><span class="head">DSA Workbench | Lead Developer</span> &nbsp;|&nbsp; <a href="https://ursacdsa.vercel.app">Live Demo</a> · <span class="meta">JavaScript, HTML, CSS</span></p>
+  <p>Developed an interactive learning tool used by students to explore eight data structures, including AVL trees, with implemented operations and step-by-step memory and pointer visualizations.</p>
+</div>
+<div class="entry">
+  <p><span class="head">UrsacHub | Front-End Developer</span> &nbsp;|&nbsp; <a href="https://ursachub.onrender.com">Live Demo</a> · <span class="meta">Laravel, PHP, MySQL, Bootstrap, Tailwind CSS</span></p>
+  <p>Developed the frontend of a campus platform featuring a merchandise shop, news and events, and a student organization directory as part of a development team.</p>
+</div>
+<div class="entry">
+  <p><span class="head">Photo Booth | Solo Developer</span> &nbsp;|&nbsp; <a href="https://simple-photobooth.vercel.app">Live Demo</a> · <span class="meta">React, Vite, Tailwind CSS, HTML Canvas</span></p>
+  <p>Built a browser-based photo booth using camera capture and HTML Canvas to compose 3-, 4-, and 6-photo layouts, add stickers, and export high-resolution images.</p>
+</div>
 
-  <h2>EDUCATION</h2>
-  <h3>Bachelor of Science in Computer Engineering</h3>
-  <p>University of Rizal System - Antipolo Campus | Expected Graduation: May 2027</p>
+<h2>TECHNICAL SKILLS</h2>
+<p class="skills"><b>Languages:</b> JavaScript, TypeScript, PHP, SQL, C#, HTML, CSS</p>
+<p class="skills"><b>Frontend:</b> React, Next.js, Vite, Tailwind CSS, Bootstrap</p>
+<p class="skills"><b>Backend &amp; Databases:</b> Node.js, Express, Laravel, PostgreSQL, MySQL, Prisma, Firebase</p>
+<p class="skills"><b>3D &amp; Game Engines:</b> Unity, Blender</p>
+<p class="skills"><b>Tools &amp; DevOps:</b> Git, GitHub, GitHub Actions, CI/CD, Cloudflare Pages, Wrangler, Docker, Linux/WSL Ubuntu</p>
 
-  <h2>SKILLS</h2>
-  <p><strong>Languages:</strong> TypeScript, JavaScript, PHP, SQL, HTML, CSS</p>
-  <p><strong>Frontend:</strong> React, Next.js, Vite, Tailwind CSS, Bootstrap</p>
-  <p><strong>Backend and Databases:</strong> Node.js, Express, Laravel, PostgreSQL, MySQL, Prisma, Firebase</p>
-  <p><strong>DevOps and Tools:</strong> GitHub Actions, CI/CD, Cloudflare Pages, Wrangler, Docker, Git, GitHub, pnpm</p>
+<h2>EDUCATION</h2>
+<p><b>B.S. Computer Engineering</b> | University of Rizal System – Antipolo Campus | <span class="meta">Expected May 2027</span></p>
 </body>
 </html>

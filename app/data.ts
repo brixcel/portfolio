@@ -4,6 +4,8 @@ export type Tech = {
   invert?: boolean;
   /** Dark-coloured logo that needs brightening (not inverting) in dark mode. */
   lift?: boolean;
+  /** No logo available: render the name alone rather than a made-up mark. */
+  noIcon?: boolean;
 };
 
 export const techStack: Tech[] = [
@@ -29,6 +31,14 @@ export const techStack: Tech[] = [
   { name: "Cloudflare", slug: "cloudflare" },
   { name: "Git", slug: "git" },
   { name: "GitHub", slug: "github", invert: true },
+];
+
+export const arduinoStack: Tech[] = [
+  { name: "Unity", slug: "unity", invert: true },
+  { name: "C#", slug: "csharp" },
+  { name: "Vuforia", slug: "vuforia", noIcon: true },
+  { name: "AR Foundation", slug: "arfoundation", noIcon: true },
+  { name: "Blender", slug: "blender" },
 ];
 
 export const synctaskStack: Tech[] = [
@@ -104,6 +114,14 @@ export const synctaskSlides = [
   { src: "/assets/synctask-3.png", alt: "Synctask empty My Tasks board" },
 ];
 
+export const arduinoSlides = [
+  { src: "/assets/arduino-1.png", alt: "AR-DUINO 3D simulation: Arduino Uno, LED and resistor with the circuit checklist and component buttons" },
+  { src: "/assets/arduino-2.png", alt: "AR-DUINO project list with Blinking LED, Potentiometer, LED Patterns, RC Car and Object Sensor" },
+  { src: "/assets/arduino-3.png", alt: "AR-DUINO step-by-step guide for the Blinking LED project" },
+  { src: "/assets/arduino-4.png", alt: "AR-DUINO Arduino Library start screen with QR code for the component cards" },
+  { src: "/assets/arduino-5.png", alt: "AR-DUINO augmented reality view of an Arduino Uno R3 above its component card" },
+];
+
 export const ursachubSlides = [
   { src: "/assets/ursachub-1.png", alt: "UrsacHub home" },
   { src: "/assets/ursachub-3.png", alt: "UrsacHub campus merchandise products" },
@@ -158,14 +176,37 @@ export type Project = {
   /** Width / height of the screenshots, so the frame never crops them. */
   aspect: string;
   /** CSS custom property suffix: var(--project-<tone>) */
-  tone: "moss" | "clay" | "harbor" | "ink-blue" | "rose";
+  tone: "moss" | "clay" | "harbor" | "ink-blue" | "rose" | "circuit";
   featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    id: "synctask",
+    id: "ar-duino",
     number: "01",
+    title: "AR-DUINO",
+    kind: "AR Arduino learning app, thesis",
+    role: "3D Simulation Developer",
+    description:
+      "An app that teaches Arduino basics: pick a project, follow step-by-step lessons, build the circuit in a 3D simulation, then point your camera at a component card to see the part in AR.",
+    highlights: [
+      "Five guided projects, from Blinking LED to RC Car",
+      "3D circuit simulation with a live circuit checklist",
+      "Mock Arduino IDE to upload code to the simulated board",
+      "AR component library through printed cards",
+    ],
+    liveHref: "https://ar-duino-m.vercel.app/",
+    githubHref: "https://github.com/Yiizer/Arduino-Ar-App",
+    note: "Thesis team project. I built the 3D circuit simulation: drag-and-snap parts on the breadboard, wires that snap to Arduino pins, circuit validation and the mock IDE, writing 37 of its C# scripts.",
+    stack: arduinoStack,
+    slides: arduinoSlides,
+    aspect: "1094 / 560",
+    tone: "circuit",
+    featured: true,
+  },
+  {
+    id: "synctask",
+    number: "02",
     title: "Synctask",
     kind: "Full-stack web application",
     role: "Full-Stack Developer",
@@ -188,7 +229,7 @@ export const projects: Project[] = [
   },
   {
     id: "egoist-cicd",
-    number: "02",
+    number: "03",
     title: "Egoist Labs CI/CD",
     kind: "Frontend deploy pipelines",
     role: "CI/CD, Egoist Labs",
@@ -208,7 +249,7 @@ export const projects: Project[] = [
   },
   {
     id: "ursachub",
-    number: "03",
+    number: "04",
     title: "UrsacHub",
     kind: "Campus platform",
     role: "Front-End Developer",
@@ -231,7 +272,7 @@ export const projects: Project[] = [
   },
   {
     id: "ursachub-social",
-    number: "04",
+    number: "05",
     title: "UrsacHub Social",
     kind: "Social networking & campus community platform",
     role: "Lead Developer",
@@ -251,7 +292,7 @@ export const projects: Project[] = [
   },
   {
     id: "ursac-dsa",
-    number: "05",
+    number: "06",
     title: "DSA Workbench",
     kind: "Interactive academic visualization suite",
     role: "Lead Developer",
@@ -272,7 +313,7 @@ export const projects: Project[] = [
   },
   {
     id: "photobooth",
-    number: "06",
+    number: "07",
     title: "Photo Booth",
     kind: "Interactive camera & photostrip web app",
     role: "Solo Developer",

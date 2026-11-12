@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"></head><body>
+<script>
+function save(name, c){ window.__out = window.__out || {}; window.__out[name] = c.toDataURL("image/png"); }
+function rnd(s){ return ()=> (s = (s*16807)%2147483647)/2147483647; }
+async function run(){
+  await document.fonts.load("600 44px Figtree"); await document.fonts.load("44px Caprasimo");
+  // wood
+  { const c=document.createElement("canvas"); c.width=2048; c.height=1024; const g=c.getContext("2d"); const r=rnd(7);
+    const grd=g.createLinearGradient(0,0,0,1024); grd.addColorStop(0,"#c69a6c"); grd.addColorStop(.5,"#bd8f60"); grd.addColorStop(1,"#c89d70"); g.fillStyle=grd; g.fillRect(0,0,2048,1024);
+    for(let i=0;i<420;i++){ const y=r()*1024, a=0.03+r()*0.09, w=0.6+r()*2.6; g.strokeStyle=`rgba(${80+r()*40|0},${48+r()*22|0},${24+r()*12|0},${a})`; g.lineWidth=w; g.beginPath(); for(let x=0;x<=2048;x+=32){ const yy=y+Math.sin(x/(180+r()*20)+i)*5+Math.sin(x/37+i*3)*1.2; x?g.lineTo(x,yy):g.moveTo(x,yy);} g.stroke(); }
+    for(let k=0;k<5;k++){ const cx=r()*2048, cy=r()*1024; for(let j=1;j<14;j++){ g.strokeStyle=`rgba(90,55,28,${0.06})`; g.lineWidth=1.4; g.beginPath(); g.ellipse(cx,cy,j*9,j*3,0,0,Math.PI*2); g.stroke(); } }
+    save("wood",c); }
+  // cicd page
+  { const img=new Image(); await new Promise(r=>{img.onload=r; img.src="../../public/assets/cicd-1.svg";}); const c=document.createElement("canvas"); c.width=1600; c.height=1000; const g=c.getContext("2d"); g.fillStyle="#fbf8f1"; g.fillRect(0,0,1600,1000); g.drawImage(img,0,0,1600,1000); save("cicd",c); }
+  // notes page
+  { const c=document.createElement("canvas"); c.width=1000; c.height=1340; const g=c.getContext("2d"); g.fillStyle="#fbf8f1"; g.fillRect(0,0,1000,1340);
+    g.strokeStyle="rgba(86,99,63,.25)"; g.lineWidth=2.5; for(let y=170;y<1300;y+=72){ g.beginPath(); g.moveTo(60,y); g.lineTo(960,y); g.stroke(); }
+    g.strokeStyle="rgba(198,113,57,.45)"; g.beginPath(); g.moveTo(110,40); g.lineTo(110,1310); g.stroke();
+    g.fillStyle="#2b2a27"; g.font="56px Caprasimo"; g.fillText("Egoist Labs CI/CD",140,140);
+    g.font="500 42px Figtree"; g.fillStyle="#45443f";
+    ["manual deploy: 15–30 min","now automated: 3–5 min","5 quality gates","main → production","dev → development","preview URL per PR"].forEach((t,i)=>g.fillText(t,140,155+72*(i+1)+ -14));
+    g.strokeStyle="#56633f"; g.lineWidth=5; g.beginPath(); g.moveTo(560,218); g.lineTo(580,236); g.lineTo(620,196); g.stroke();
+    save("notes",c); }
+  // breadboard holes
+  { const c=document.createElement("canvas"); c.width=1400; c.height=460; const g=c.getContext("2d"); g.fillStyle="#f2f0ea"; g.fillRect(0,0,1400,460);
+    g.fillStyle="#d8d4ca"; g.fillRect(0,218,1400,24); g.strokeStyle="#c93b2c"; g.lineWidth=3; g.beginPath(); g.moveTo(20,26); g.lineTo(1380,26); g.stroke(); g.strokeStyle="#2c4fb0"; g.beginPath(); g.moveTo(20,434); g.lineTo(1380,434); g.stroke();
+    g.fillStyle="#3a3934"; for(let x=40;x<1380;x+=22){ for(const y of [44,60]) g.fillRect(x,y,8,8); for(const y of [414,398]) g.fillRect(x,y,8,8); for(let k=0;k<5;k++){ g.fillRect(x,90+k*24,8,8); g.fillRect(x,262+k*24,8,8);} }
+    save("breadboard",c); }
+  window.__done=true;
+}
+run();
+</script></body></html>
