@@ -6,15 +6,17 @@ const iconClass = (tech: Tech) => (tech.invert ? "icon-invert" : tech.lift ? "ic
 export function TechChip({ tech, size = 18 }: { tech: Tech; size?: number }) {
   return (
     <li className="chip">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={iconUrl(tech.slug)}
-        alt=""
-        width={size}
-        height={size}
-        loading="lazy"
-        className={iconClass(tech)}
-      />
+      {!tech.noIcon && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={iconUrl(tech.slug)}
+          alt=""
+          width={size}
+          height={size}
+          loading="lazy"
+          className={iconClass(tech)}
+        />
+      )}
       {tech.name}
     </li>
   );

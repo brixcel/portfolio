@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
+import { projects } from "../data";
 
 const STATEMENT =
   "I build web apps end to end, from the database schema to the deploy pipeline, and I'm sharpening that craft with one goal: ranking among the top 1% of software engineers.";
@@ -9,7 +10,7 @@ const STATEMENT =
 // Each fact adds something the statement above doesn't already say.
 const FACTS = [
   { term: "Studying", detail: "Computer Engineering, 4th year" },
-  { term: "Shipped", detail: "6 projects, incl. CI/CD at Egoist Labs" },
+  { term: "Shipped", detail: `${projects.length} projects, incl. CI/CD at Egoist Labs` },
   { term: "Main stack", detail: "React, TypeScript, Node.js, PostgreSQL" },
 ];
 

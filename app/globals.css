@@ -47,6 +47,7 @@
   --project-harbor: #2c6a8e;
   --project-ink-blue: #41509a;
   --project-rose: #9b2f4b;
+  --project-circuit: #1f6a9c;
 
   --btn-primary: var(--color-accent-700);
   --on-tone: #f7f5f0;
@@ -99,6 +100,7 @@
   --project-harbor: #8ec3e2;
   --project-ink-blue: #aab5ee;
   --project-rose: #eea0b4;
+  --project-circuit: #7fc2ee;
 
   --btn-primary: var(--color-accent);
   --on-tone: #201e1d;

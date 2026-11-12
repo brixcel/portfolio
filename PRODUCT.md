@@ -30,7 +30,8 @@ A Computer Engineering student who ships real, team-used software and the pipeli
 - Hero title text is exactly "software developer". Loading screen text is "brexcel". The phrase "Computer Engineering" appears in the hero world.
 - Confirmed status line: "Software Engineer Trainee at Egoist Labs · Computer Engineering, URS Antipolo, Class of 2027 · Open to internships and freelance".
 - The Robinsons Mall RFID Parking System is not shown anywhere yet.
-- Do not show the Unity AR thesis project, TaskFlow as a separate project, AWS, or n8n.
+- Do not show TaskFlow as a separate project, AWS, or n8n.
+- The AR-DUINO thesis (team project; he built the 3D circuit simulation) is shown first and ranked above Synctask, on the site and the CV.
 
 ## Brand Commitments
 
@@ -39,9 +40,9 @@ A Computer Engineering student who ships real, team-used software and the pipeli
 
 ## Evidence on Hand
 
-- Real project screenshots in `public/assets/` for Synctask, UrsacHub, UrsacHub Social, DSA Workbench, Photo Booth, and the Egoist Labs pipelines.
+- Real project screenshots in `public/assets/` for AR-DUINO, Synctask, UrsacHub, UrsacHub Social, DSA Workbench, Photo Booth, and the Egoist Labs pipelines.
 - One portrait: `public/assets/profile.jpg`.
-- Confirmed numbers: Egoist Labs deploys went from 15–30 minutes manual to 3–5 minutes automated; 5 automated quality gates; 13 workflow runs since his changes merged; led a 5-person team on UrsacHub Social; DSA Workbench used in a class of about 40 students.
+- Confirmed numbers: authored 37 C# scripts in the AR-DUINO repository (github.com/Yiizer/Arduino-Ar-App); Egoist Labs deploys went from 15–30 minutes manual to 3–5 minutes automated; 5 automated quality gates; 13 workflow runs since his changes merged; led a 5-person team on UrsacHub Social; DSA Workbench used in a class of about 40 students.
 - Not yet on hand: photos of his desk, the IoT RC car, or his laptop. Never fabricate users, clients, testimonials, metrics, or photos.
 
 ## Product Principles
