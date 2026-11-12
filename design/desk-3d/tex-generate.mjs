@@ -1,0 +1,10 @@
+import { createRequire } from "module"; import fs from "fs";
+const require = createRequire("/opt/node22/lib/node_modules/");
+const { chromium } = require("playwright");
+const dir = process.argv[2];
+const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const p = await b.newPage(); await p.goto("http://127.0.0.1:3201/gen.html");
+await p.waitForFunction(()=>window.__done===true, null, {timeout:60000});
+const out = await p.evaluate(()=>window.__out);
+for (const [k,v] of Object.entries(out)) fs.writeFileSync(`${dir}/${k}.png`, Buffer.from(v.split(",")[1], "base64"));
+await b.close(); console.log(Object.keys(out));

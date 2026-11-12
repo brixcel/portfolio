@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="fonts.css">
+<link rel="icon" href="data:,">
+<style>
+  :root { --bg:#f7f5f0; --text:#1c1b18; --muted:rgba(28,27,24,.62); --moss:#56633f; --line:rgba(28,27,24,.14); --btn:#56633f; --on:#f7f5f0; }
+  html[data-theme="dark"] { --bg:#201e1d; --text:#f5ead8; --muted:rgba(245,234,216,.62); --moss:#ccdbb2; --line:rgba(245,234,216,.16); --btn:#aebf92; --on:#1c1b18; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:100%; height:100%; overflow:hidden; background:var(--bg); color:var(--text); font-family:"Figtree",sans-serif; }
+  canvas#scene { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  header { position:absolute; left:0; right:0; top:0; height:64px; z-index:3; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; padding:0 140px; background:color-mix(in srgb, var(--bg) 86%, transparent); }
+  .logo { font-family:"Caprasimo",serif; font-size:21px; }
+  .logo b { color:var(--moss); font-weight:400; }
+  nav { display:flex; gap:32px; font-size:15px; color:var(--muted); }
+  nav span:first-child { color:var(--text); font-weight:600; box-shadow:inset 0 -2px 0 var(--moss); padding-bottom:6px; }
+  .lamp { font-size:13px; color:var(--muted); }
+  .copy { position:absolute; z-index:2; left:140px; top:0; bottom:0; width:520px; display:flex; flex-direction:column; justify-content:center; padding-top:40px; }
+  h1 { font-family:"Caprasimo",serif; font-weight:400; font-size:96px; line-height:.92; letter-spacing:-.02em; margin-bottom:28px; }
+  h1 span { display:block; }
+  h1 span + span { color:var(--moss); }
+  .lede { font-size:23px; line-height:1.45; max-width:34ch; margin-bottom:24px; }
+  ul { list-style:none; display:grid; gap:6px; color:var(--muted); font-size:15.5px; margin-bottom:34px; }
+  li.open { color:var(--text); font-weight:600; display:flex; align-items:center; gap:9px; }
+  .dot { width:9px; height:9px; border-radius:50%; background:#728157; box-shadow:0 0 0 4px rgba(143,160,115,.22); }
+  .actions { display:flex; gap:12px; }
+  .btn { padding:13px 22px; border-radius:999px; font-weight:600; font-size:16px; border:1px solid var(--line); }
+  .btn.p { background:var(--btn); color:var(--on); border-color:transparent; }
+  .tag { position:absolute; z-index:2; transform:translate(-50%,-100%); background:var(--bg); color:var(--text); border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow:0 8px 20px -10px rgba(0,0,0,.35); }
+  .tag.hot { background:var(--btn); color:var(--on); border-color:transparent; }
+  .tag::after { content:""; position:absolute; left:50%; bottom:-7px; width:1px; height:7px; background:var(--line); }
+  .hint { position:absolute; z-index:2; right:140px; bottom:34px; font-size:13px; color:var(--muted); }
+  /* mobile */
+  body.m header { padding:0 20px; }
+  body.m nav, body.m .lamp { display:none; }
+  body.m .copy { left:20px; right:20px; width:auto; top:64px; bottom:auto; padding-top:34px; justify-content:flex-start; }
+  body.m h1 { font-size:60px; margin-bottom:18px; }
+  body.m .lede { font-size:19px; margin-bottom:16px; }
+  body.m ul { font-size:14.5px; margin-bottom:22px; }
+  body.m .btn { flex:1; text-align:center; padding:13px 10px; }
+  body.m .hint { display:none; }
+</style>
+<script type="importmap">{ "imports": { "three": "./node_modules/three/build/three.module.js", "three/addons/": "./node_modules/three/examples/jsm/" } }</script>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<header><span class="logo">brexcel<b>.</b></span><nav><span>Home</span><span>About</span><span>Projects</span><span>Contact</span></nav><span class="lamp">Lights on</span></header>
+<section class="copy">
+  <h1><span>software</span><span>developer</span></h1>
+  <p class="lede">I’m Brexcel Joe Orias. I build full‑stack web apps and the pipelines that ship them.</p>
+  <ul>
+    <li>Software Engineer Trainee at Egoist Labs</li>
+    <li>Computer Engineering, URS Antipolo, Class of 2027</li>
+    <li class="open"><span class="dot"></span>Open to internships and freelance</li>
+  </ul>
+  <div class="actions"><span class="btn p">See the projects</span><span class="btn">Download CV</span></div>
+</section>
+<div class="hint">Drag to look around · click anything on the desk</div>
+<script type="module">
+import * as THREE from "three";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const qs = new URLSearchParams(location.search);
+const dark = qs.get("theme") === "dark";
+const mobile = qs.get("m") === "1";
+if (dark) document.documentElement.dataset.theme = "dark";
+if (mobile) document.body.classList.add("m");
+document.querySelector(".lamp").textContent = dark ? "Lights off" : "Lights on";
+
+const W = innerWidth, H = innerHeight;
+const canvas = document.getElementById("scene");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(devicePixelRatio);
+renderer.setSize(W, H, false);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = dark ? 1.05 : 1.15;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(mobile ? 34 : 28, W / H, 0.1, 100);
+if (mobile) {
+  camera.position.set(9.4, 10.6, 15.2);
+  camera.lookAt(0.2, -0.6, 0.2);
+  camera.setViewOffset(W, H, 0, -H * 0.44, W, H);
+} else {
+  camera.position.set(8.6, 8.4, 12.6);
+  camera.lookAt(0.2, 0.4, 0);
+  camera.setViewOffset(W, H, -W * 0.28, H * 0.03, W, H);
+}
+
+const loader = new THREE.TextureLoader();
+const tex = (url) => new Promise((res) => loader.load(url, (t) => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; res(t); }));
+const mat = (color, o = {}) => new THREE.MeshStandardMaterial({ color, roughness: 0.6, metalness: 0, ...o });
+const add = (m, x, y, z, parent = scene) => { m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; parent.add(m); return m; };
+
+// Lighting: the room is dim, the desk lamp does the work
+scene.add(new THREE.HemisphereLight(dark ? 0x4a4038 : 0xfff7ea, dark ? 0x120f0c : 0xb9a98f, dark ? 0.35 : 1.15));
+const fill = new THREE.DirectionalLight(dark ? 0x6f7fa8 : 0xffffff, dark ? 0.25 : 0.9);
+fill.position.set(6, 9, 6); fill.castShadow = true; fill.shadow.mapSize.set(2048, 2048);
+Object.assign(fill.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7 }); fill.shadow.radius = 6;
+scene.add(fill);
+
+// Desk
+const deskTop = add(new THREE.Mesh(new RoundedBoxGeometry(8.4, 0.32, 5.2, 4, 0.08), mat(0xc39466, { roughness: 0.55 })), 0, -0.16, 0);
+// wood grain: a subtle canvas texture
+{
+  const c = document.createElement("canvas"); c.width = 1024; c.height = 512; const g = c.getContext("2d");
+  g.fillStyle = "#c39466"; g.fillRect(0, 0, 1024, 512);
+  for (let i = 0; i < 140; i++) { g.strokeStyle = `rgba(${90 + Math.random() * 40},${55 + Math.random() * 25},${30},${0.05 + Math.random() * 0.08})`; g.lineWidth = 1 + Math.random() * 3; g.beginPath(); const y = Math.random() * 512; g.moveTo(0, y); for (let x = 0; x <= 1024; x += 64) g.lineTo(x, y + Math.sin(x / 140 + i) * 6); g.stroke(); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; deskTop.material.map = t; deskTop.material.color.set(0xffffff);
+}
+// a soft contact shadow under the floating desk
+{
+  const c = document.createElement("canvas"); c.width = c.height = 256; const g = c.getContext("2d");
+  const gr = g.createRadialGradient(128, 128, 10, 128, 128, 128); gr.addColorStop(0, dark ? "rgba(0,0,0,.55)" : "rgba(60,45,30,.22)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+  const sh = new THREE.Mesh(new THREE.PlaneGeometry(11, 7.5), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false }));
+  sh.rotation.x = -Math.PI / 2; sh.position.y = -0.9; scene.add(sh);
+}
+
+const [synctask, profile, cicdImg] = await Promise.all([tex("a/synctask-2.png"), tex("a/profile.jpg"),
+  new Promise((res) => { const img = new Image(); img.onload = () => { const c = document.createElement("canvas"); c.width = 1200; c.height = 750; const g = c.getContext("2d"); g.fillStyle = "#fbf8f1"; g.fillRect(0, 0, 1200, 750); g.drawImage(img, 0, 0, 1200, 750); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; res(t); }; img.src = "a/cicd-1.svg"; })]);
+
+// Laptop showing Synctask
+const laptop = new THREE.Group(); laptop.position.set(0.35, 0, 0.1); laptop.rotation.y = -0.32; scene.add(laptop);
+const alu = mat(0xc9ccd1, { metalness: 0.55, roughness: 0.35 });
+add(new THREE.Mesh(new RoundedBoxGeometry(2.9, 0.1, 2.0, 3, 0.04), alu), 0, 0.05, 0, laptop);
+add(new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.012, 1.0), mat(0x2a2c30)), 0, 0.105, -0.25, laptop);
+const lid = new THREE.Group(); lid.position.set(0, 0.1, -1.0); lid.rotation.x = -0.28; laptop.add(lid);
+add(new THREE.Mesh(new RoundedBoxGeometry(2.9, 1.85, 0.07, 3, 0.03), alu), 0, 0.92, -0.04, lid);
+add(new THREE.Mesh(new THREE.BoxGeometry(2.78, 1.73, 0.01), mat(0x111214, { roughness: 0.3 })), 0, 0.92, 0.0, lid);
+const screen = new THREE.Mesh(new THREE.PlaneGeometry(2.62, 1.52), new THREE.MeshBasicMaterial({ map: synctask, toneMapped: false }));
+screen.position.set(0, 0.93, 0.008); lid.add(screen);
+
+// Desk lamp (moss, like the header lamp)
+const moss = mat(0x56633f, { roughness: 0.45 });
+const lamp = new THREE.Group(); lamp.position.set(-3.05, 0, -1.6); lamp.rotation.y = 0.2; scene.add(lamp);
+const rod = (from, to, r) => {
+  const a = new THREE.Vector3(...from), b = new THREE.Vector3(...to), len = a.distanceTo(b);
+  const m = add(new THREE.Mesh(new THREE.CylinderGeometry(r, r, len, 16), moss), 0, 0, 0, lamp);
+  m.position.copy(a).add(b).multiplyScalar(0.5); m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize()); return m;
+};
+add(new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.48, 0.12, 40), moss), 0, 0.06, 0, lamp);
+rod([0, 0.1, 0], [0.45, 2.15, 0], 0.05);
+add(new THREE.Mesh(new THREE.SphereGeometry(0.1, 20, 16), moss), 0.45, 2.15, 0, lamp);
+rod([0.45, 2.15, 0], [1.75, 2.45, 0], 0.045);
+const shade = add(new THREE.Mesh(new THREE.ConeGeometry(0.42, 0.6, 40, 1, true), new THREE.MeshStandardMaterial({ color: 0x56633f, roughness: 0.45, side: THREE.DoubleSide })), 1.95, 2.22, 0, lamp);
+shade.rotation.z = -0.28;
+const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.12, 20, 16), new THREE.MeshBasicMaterial({ color: 0xfff1d0 })); bulb.position.set(2.05, 2.02, 0); lamp.add(bulb);
+const spot = new THREE.SpotLight(0xffd29a, dark ? 80 : 38, 16, 0.7, 0.6, 1.4);
+spot.castShadow = true; spot.shadow.mapSize.set(2048, 2048); spot.shadow.radius = 4; spot.shadow.bias = -0.0004;
+const bulbWorld = new THREE.Vector3(); lamp.updateMatrixWorld(true); bulb.getWorldPosition(bulbWorld);
+spot.position.copy(bulbWorld); spot.target.position.set(0.2, 0, 0.6); scene.add(spot, spot.target);
+const glow = new THREE.PointLight(0xffc98a, dark ? 2.4 : 0.9, 3.4, 2); glow.position.copy(bulbWorld); scene.add(glow);
+
+// Open notebook with the CI/CD pipeline
+const nb = new THREE.Group(); nb.position.set(-2.05, 0, 1.25); nb.rotation.y = 0.22; scene.add(nb);
+add(new THREE.Mesh(new RoundedBoxGeometry(3.0, 0.06, 2.05, 2, 0.02), mat(0x8c491a, { roughness: 0.7 })), 0, 0.03, 0, nb);
+const pageL = add(new THREE.Mesh(new THREE.BoxGeometry(1.42, 0.05, 1.92), mat(0xfbf8f1, { roughness: 0.9 })), -0.73, 0.085, 0, nb);
+const pageR = add(new THREE.Mesh(new THREE.BoxGeometry(1.42, 0.05, 1.92), mat(0xfbf8f1, { roughness: 0.9 })), 0.73, 0.085, 0, nb);
+const diag = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 0.81), new THREE.MeshStandardMaterial({ map: cicdImg, roughness: 0.9 }));
+diag.rotation.x = -Math.PI / 2; diag.position.set(-0.73, 0.112, -0.1); diag.receiveShadow = true; nb.add(diag);
+{ // ruled right page with notes
+  const c = document.createElement("canvas"); c.width = 700; c.height = 940; const g = c.getContext("2d");
+  g.fillStyle = "#fbf8f1"; g.fillRect(0, 0, 700, 940); g.strokeStyle = "rgba(86,99,63,.28)"; g.lineWidth = 2;
+  for (let y = 120; y < 900; y += 54) { g.beginPath(); g.moveTo(40, y); g.lineTo(660, y); g.stroke(); }
+  g.fillStyle = "#2b2a27"; g.font = "600 44px Figtree"; g.fillText("Egoist Labs CI/CD", 48, 100);
+  g.font = "36px Figtree"; g.fillStyle = "#45443f";
+  ["manual deploy: 15–30 min", "now: 3–5 min, automated", "5 quality gates", "main → prod, dev → dev", "preview URL per PR"].forEach((t, i) => g.fillText("· " + t, 52, 205 + i * 108));
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  const pg = new THREE.Mesh(new THREE.PlaneGeometry(1.36, 1.84), new THREE.MeshStandardMaterial({ map: t, roughness: 0.9 }));
+  pg.rotation.x = -Math.PI / 2; pg.position.set(0.73, 0.112, 0); pg.receiveShadow = true; nb.add(pg);
+}
+const pencil = add(new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.5, 6), mat(0xe2b54a)), 1.65, 0.07, 0.35, nb); pencil.rotation.set(Math.PI / 2, 0, 0.5);
+
+// IoT RC car
+const car = new THREE.Group(); car.position.set(3.05, 0, 1.55); car.rotation.y = -0.75; scene.add(car);
+add(new THREE.Mesh(new RoundedBoxGeometry(1.05, 0.16, 1.7, 2, 0.04), mat(0xc67139, { roughness: 0.5 })), 0, 0.3, 0, car);
+for (const [x, z] of [[-0.6, -0.55], [0.6, -0.55], [-0.6, 0.55], [0.6, 0.55]]) { const w = add(new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.2, 28), mat(0x1d1d1f, { roughness: 0.85 })), x, 0.24, z, car); w.rotation.z = Math.PI / 2; }
+add(new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.05, 0.42), mat(0x1f6b4f, { roughness: 0.5 })), 0, 0.41, -0.3, car);
+add(new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.05, 0.3), mat(0x1f3f8f, { roughness: 0.5 })), 0, 0.41, 0.25, car);
+add(new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.14, 0.32), mat(0x2a2a2c)), 0, 0.47, 0.55, car);
+for (const x of [-0.3, 0.3]) { const led = new THREE.Mesh(new THREE.SphereGeometry(0.055, 12, 10), new THREE.MeshBasicMaterial({ color: 0xfff3b0 })); led.position.set(x, 0.33, -0.86); car.add(led); }
+
+// Framed portrait
+const frame = new THREE.Group(); frame.position.set(2.45, 0, -1.55); frame.rotation.y = -0.55; scene.add(frame);
+const f = add(new THREE.Mesh(new RoundedBoxGeometry(1.15, 1.42, 0.1, 2, 0.03), mat(0x3d2c1f, { roughness: 0.5 })), 0, 0.74, 0, frame); f.rotation.x = -0.14;
+const ph = new THREE.Mesh(new THREE.PlaneGeometry(0.95, 1.18), new THREE.MeshStandardMaterial({ map: profile, roughness: 0.4 }));
+ph.position.set(0, 0.745, 0.06); ph.rotation.x = -0.14; frame.add(ph);
+
+// Mug
+const mug = new THREE.Group(); mug.position.set(1.85, 0, 1.45); scene.add(mug);
+add(new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.25, 0.62, 32), mat(0xf3eee4, { roughness: 0.35 })), 0, 0.31, 0, mug);
+add(new THREE.Mesh(new THREE.CylinderGeometry(0.29, 0.29, 0.12, 32), moss), 0, 0.42, 0, mug);
+const h = add(new THREE.Mesh(new THREE.TorusGeometry(0.15, 0.04, 12, 24), mat(0xf3eee4)), 0.3, 0.33, 0, mug); h.rotation.y = Math.PI / 2;
+
+renderer.render(scene, camera);
+
+// Labels anchored to the 3D objects
+const tag = (text, obj, dy, hot) => {
+  const v = new THREE.Vector3(); obj.getWorldPosition(v); v.y += dy; v.project(camera);
+  const el = document.createElement("div"); el.className = "tag" + (hot ? " hot" : ""); el.textContent = text;
+  el.style.left = ((v.x + 1) / 2) * W + "px"; el.style.top = ((1 - v.y) / 2) * H + "px"; document.body.appendChild(el);
+};
+tag("Synctask: open project", screen, 0.95, true);
+tag("Egoist Labs CI/CD", pageR, 0.45);
+tag("IoT RC car", car, 0.95);
+window.__ready = true;
+</script>
+</body>
+</html>
