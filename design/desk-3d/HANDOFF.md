@@ -11,7 +11,9 @@ Also read `PRODUCT.md` at the repo root: it holds the confirmed facts and rules.
 - **Owner feedback on the 2D hero:** "underwhelming". He wants a real **3D desk** hero.
 - **Built so far for 3D (this folder):**
   - `desk.py`: a Blender 4.x Python script that models the whole desk scene, renders it, and exports a GLB.
-  - `renders/`: Cycles renders (desktop and mobile, light and dark) and `desk.glb` / `desk.blend`.
+  - `renders/`: Cycles renders (desktop and mobile, light and dark) and `desk.glb` (4.3 MB, uncompressed, 79 nodes;
+    named groups: Laptop, Notebook, RC_car, Frame, Breadboard, Mug, Pencil) / `desk.blend`.
+  - `previews/`: the renders laid behind the real hero copy (what the owner reviewed).
   - `threejs-prototype/index.html`: an earlier Three.js prototype of the same scene with primitive models.
   - `preview-layout.html`: lays a render behind the real hero copy, for screenshots.
 - Nothing 3D is wired into the website yet.
@@ -48,6 +50,9 @@ blender -b -P desk.py -- --theme dark  --out renders/desk-dark.png  --scale 100 
 blender -b -P desk.py -- --theme light --view mobile --out renders/desk-mobile-light.png --samples 128
 blender -b -P desk.py -- --theme light --glb renders/desk.glb --blend renders/desk.blend
 ```
+
+The glTF export needs NumPy available to Blender's Python (on Debian/Ubuntu: `apt install python3-numpy`).
+Draco compression was not available in that build; compress later with `gltf-transform`.
 
 `tex/` holds the generated textures (wood, CI/CD page, notes page, breadboard). Regenerating them is optional;
 `tex-generate.html` + `tex-generate.mjs` made them with headless Chromium.
