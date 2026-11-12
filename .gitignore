@@ -43,3 +43,9 @@ next-env.d.ts
 # Impeccable runtime state (config.json in these folders stays committable)
 .impeccable/live/server.json
 .impeccable/review/
+
+# Playwright MCP screenshots and logs
+.playwright-mcp/
+
+# Blender auto-backups
+*.blend1

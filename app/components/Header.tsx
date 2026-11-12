@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { toggleTheme } from "../lib/theme";
 
 const LINKS = [
   { id: "home", label: "Home" },
@@ -10,47 +9,13 @@ const LINKS = [
   { id: "contact", label: "Contact" },
 ];
 
-function DeskLamp() {
-  const ref = useRef<HTMLButtonElement>(null);
-  return (
-    <button
-      ref={ref}
-      id="lamp"
-      type="button"
-      className="lamp"
-      onClick={() => {
-        ref.current?.classList.remove("is-clicked");
-        // restart the little head-nod animation on every press
-        void ref.current?.offsetWidth;
-        ref.current?.classList.add("is-clicked");
-        toggleTheme(ref.current?.querySelector<HTMLElement>(".lamp-shade"));
-      }}
-      aria-label="Desk lamp: switch between light and dark"
-      title="Desk lamp: switch between light and dark"
-    >
-      <span className="lamp-figure" aria-hidden="true">
-        <span className="lamp-base" />
-        <span className="lamp-arm" />
-        <span className="lamp-head">
-          <span className="lamp-neck" />
-          <span className="lamp-shade" />
-          <span className="lamp-beam" />
-        </span>
-      </span>
-      <span className="lamp-label">
-        <span className="lamp-label-light">Lights on</span>
-        <span className="lamp-label-dark">Lights off</span>
-      </span>
-    </button>
-  );
-}
-
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("home");
   const navRef = useRef<HTMLElement>(null);
   const indicatorRef = useRef<HTMLSpanElement>(null);
   const progressRef = useRef<HTMLSpanElement>(null);
+  const toTopRef = useRef<HTMLAnchorElement>(null);
 
   // Scroll spy: the section crossing the upper third of the viewport is "current".
   useEffect(() => {
@@ -92,6 +57,8 @@ export default function Header() {
       frame = 0;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+      // Up button shows once the hero (and its lamp switch) is out of view
+      toTopRef.current?.classList.toggle("is-shown", window.scrollY > window.innerHeight * 0.8);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -137,7 +104,6 @@ export default function Header() {
         </nav>
 
         <div className="header-tools">
-          <DeskLamp />
           <button
             type="button"
             className={`menu-btn${menuOpen ? " is-open" : ""}`}
@@ -166,6 +132,11 @@ export default function Header() {
         ))}
       </nav>
       <span ref={progressRef} className="read-progress" aria-hidden="true" />
+      <a ref={toTopRef} href="#home" className="to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </a>
     </header>
   );
 }

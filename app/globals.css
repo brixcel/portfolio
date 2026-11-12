@@ -504,125 +504,6 @@ button {
   pointer-events: none;
 }
 
-/* Desk lamp */
-.lamp {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  padding: 4px 6px 2px;
-  border: 0;
-  border-radius: 12px;
-  background: transparent;
-  cursor: pointer;
-}
-.lamp-figure {
-  position: relative;
-  display: block;
-  width: 44px;
-  height: 38px;
-}
-.lamp-base,
-.lamp-arm,
-.lamp-neck {
-  position: absolute;
-  border-radius: 999px;
-  background: var(--color-neutral-400);
-}
-.lamp-base {
-  left: 5px;
-  bottom: 0;
-  width: 23px;
-  height: 4px;
-}
-.lamp-arm {
-  left: 14px;
-  bottom: 3px;
-  width: 4px;
-  height: 23px;
-  transform: rotate(-16deg);
-  transform-origin: 50% 100%;
-}
-.lamp-head {
-  position: absolute;
-  left: 17px;
-  top: 2px;
-  width: 27px;
-  height: 36px;
-  transform-origin: 2px 2px;
-}
-.lamp-neck {
-  left: 0;
-  top: 0;
-  width: 5px;
-  height: 13px;
-  transform: rotate(52deg);
-  transform-origin: 0 0;
-}
-.lamp-shade {
-  position: absolute;
-  left: 3px;
-  top: 5px;
-  width: 23px;
-  height: 14px;
-  background: var(--color-accent-600);
-  clip-path: polygon(0 100%, 22% 0, 78% 0, 100% 100%);
-  transform: rotate(14deg);
-  transition: background-color 0.3s ease;
-}
-.lamp-beam {
-  position: absolute;
-  left: -7px;
-  top: 19px;
-  width: 38px;
-  height: 28px;
-  background: radial-gradient(120% 90% at 42% 0%, color-mix(in srgb, #ffd9a0 78%, transparent), transparent 72%);
-  clip-path: polygon(30% 0, 62% 0, 100% 100%, 0 100%);
-  transition: opacity 0.35s ease;
-}
-:root[data-theme="dark"] .lamp-shade {
-  background: var(--color-neutral-500);
-}
-:root[data-theme="dark"] .lamp-beam {
-  opacity: 0;
-}
-.lamp:hover .lamp-head {
-  transform: rotate(-4deg);
-  transition: transform 0.4s var(--ease-out);
-}
-.lamp.is-clicked .lamp-head {
-  animation: lamp-nod 0.6s var(--ease-out);
-}
-@keyframes lamp-nod {
-  0% {
-    transform: rotate(0);
-  }
-  30% {
-    transform: rotate(9deg);
-  }
-  60% {
-    transform: rotate(-3deg);
-  }
-  100% {
-    transform: rotate(0);
-  }
-}
-.lamp-label {
-  padding-bottom: 2px;
-  color: var(--color-muted);
-  font-size: 12px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.lamp-label-dark {
-  display: none;
-}
-:root[data-theme="dark"] .lamp-label-light {
-  display: none;
-}
-:root[data-theme="dark"] .lamp-label-dark {
-  display: inline;
-}
-
 .menu-btn {
   display: none;
   position: relative;
@@ -726,8 +607,7 @@ button {
   transform: translateY(105%);
 }
 [data-motion="on"] .hero-rise,
-[data-motion="on"] .desk-item,
-[data-motion="on"] .desk-light {
+[data-motion="on"] .desk3d {
   opacity: 0;
 }
 .hero-lede {
@@ -768,172 +648,129 @@ button {
   gap: 12px;
 }
 
-/* The desk: real artifacts lying under the lamp's light */
-.desk {
-  --lamp-light: #ffd9a0;
+/* The desk in 3D: Blender poster underneath, live canvas fades in over it */
+.desk3d {
   position: relative;
-  aspect-ratio: 1 / 0.92;
+  aspect-ratio: 1200 / 1104;
   width: 100%;
 }
-:root[data-theme="dark"] .desk {
-  --lamp-light: #ffc677;
-}
-.desk-light {
-  position: absolute;
-  inset: -30% -12% -18% -16%;
-  z-index: 0;
-  background: radial-gradient(
-    closest-side at 64% 36%,
-    color-mix(in srgb, var(--lamp-light) 88%, transparent),
-    color-mix(in srgb, var(--lamp-light) 46%, transparent) 42%,
-    color-mix(in srgb, var(--lamp-light) 12%, transparent) 72%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
-:root[data-theme="dark"] .desk-light {
-  background: radial-gradient(
-    closest-side at 64% 34%,
-    color-mix(in srgb, var(--lamp-light) 62%, transparent),
-    color-mix(in srgb, var(--lamp-light) 30%, transparent) 34%,
-    color-mix(in srgb, var(--lamp-light) 6%, transparent) 62%,
-    transparent 80%
-  );
-}
-.desk-items {
+.desk3d-poster,
+.desk3d-canvas {
   position: absolute;
   inset: 0;
-  z-index: 1;
+}
+.desk3d-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.desk3d-poster-dark,
+:root[data-theme="dark"] .desk3d-poster-light {
+  display: none !important;
+}
+:root[data-theme="dark"] .desk3d-poster-dark {
+  display: block !important;
+}
+.desk3d-canvas {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+}
+.desk3d.is-live .desk3d-canvas {
+  opacity: 1;
+}
+.desk3d.is-live .desk3d-poster {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out) 0.3s;
+}
+.desk3d-label {
+  display: block;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.5);
+}
+/* The desk lamp switches the theme (box = the lamp's bounds in the poster frame) */
+.desk3d-lamp {
+  position: absolute;
+  left: 29.5%;
+  top: 19.5%;
+  width: 16.8%;
+  height: 21.4%;
+  z-index: 4;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+}
+.desk3d-lamp:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.desk3d-lamp-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity 0.2s ease, transform 0.2s var(--ease-out);
+  pointer-events: none;
+}
+.desk3d-lamp:hover .desk3d-lamp-tip,
+.desk3d-lamp:focus-visible .desk3d-lamp-tip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.desk3d-lamp-tip-dark,
+:root[data-theme="dark"] .desk3d-lamp-tip-light {
+  display: none;
+}
+:root[data-theme="dark"] .desk3d-lamp-tip-dark {
+  display: inline;
+}
+/* Keyboard route to what's on the desk: hidden until focused */
+.desk3d-links {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.desk-item {
-  position: absolute;
-}
-.desk-item--cicd {
-  top: 4%;
-  left: 0;
-  width: 70%;
-  --r: -4deg;
-  --shade: 0.16;
-  --shade-dark: 0.62;
-}
-.desk-item--synctask {
-  top: 41%;
-  left: 20%;
-  width: 78%;
-  --r: 2.5deg;
-  --shade: 0.12;
-  --shade-dark: 0.5;
-}
-.desk-item--photo {
-  top: 0;
-  right: 2%;
-  width: 34%;
-  --r: 5deg;
-  --shade: 0.05;
-  --shade-dark: 0.22;
-  z-index: 2;
-}
-.desk-sheet {
+.desk3d-links a {
   display: block;
-  margin: 0;
-  padding: 10px 10px 12px;
-  background: var(--color-neutral-100);
-  border-radius: 3px;
-  color: var(--color-text);
-  text-decoration: none;
-  transform: rotate(var(--r));
-  box-shadow: 0 1px 1px color-mix(in srgb, #2e2b25 18%, transparent),
-    0 18px 34px -16px color-mix(in srgb, #2e2b25 45%, transparent);
-  transition: transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
-}
-:root[data-theme="dark"] .desk-sheet {
-  background: #f1ece2;
-  color: #1c1b18;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4), 0 22px 40px -16px rgba(0, 0, 0, 0.7);
-}
-a.desk-sheet:hover,
-a.desk-sheet:focus-visible {
-  transform: rotate(calc(var(--r) * 0.4)) translateY(-6px);
-  box-shadow: 0 1px 1px color-mix(in srgb, #2e2b25 18%, transparent),
-    0 30px 44px -18px color-mix(in srgb, #2e2b25 50%, transparent);
-}
-.desk-sheet {
-  position: relative;
-}
-.desk-sheet::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    140% 120% at 92% 0%,
-    transparent 30%,
-    rgba(58, 46, 31, var(--shade, 0.1)) 100%
-  );
-  pointer-events: none;
-}
-:root[data-theme="dark"] .desk-sheet::after {
-  background: radial-gradient(
-    130% 115% at 92% 0%,
-    transparent 18%,
-    rgba(12, 10, 8, var(--shade-dark, 0.5)) 100%
-  );
-}
-.desk-sheet--label-top {
-  display: flex;
-  flex-direction: column-reverse;
-  padding: 12px 10px 10px;
-}
-.desk-sheet--label-top .desk-label {
-  padding: 0 0 9px;
-}
-.desk-print {
-  display: block;
-  overflow: hidden;
-  border-radius: 1px;
-  background: var(--color-surface);
-}
-.desk-print img,
-.desk-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.desk-label,
-.desk-photo figcaption {
-  display: block;
-  padding-top: 9px;
-  font-size: 13.5px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 13px;
   font-weight: 600;
-  line-height: 1.2;
+  text-decoration: none;
 }
-.desk-photo {
-  padding-bottom: 14px;
-}
-.desk-photo img {
-  aspect-ratio: 1;
-  object-fit: cover;
-}
-.desk-photo figcaption {
-  white-space: nowrap;
-  text-align: center;
-  font-weight: 500;
-  color: color-mix(in srgb, #1c1b18 72%, transparent);
-}
-/* A strip of tape holding the photo down */
-.desk-photo::before {
-  content: "";
+.desk3d-links a:not(:focus-visible) {
   position: absolute;
-  top: -11px;
-  left: 50%;
-  width: 46%;
-  height: 22px;
-  transform: translateX(-50%) rotate(-3deg);
-  background: rgba(225, 238, 204, 0.62);
-  box-shadow: 0 1px 2px rgba(46, 43, 37, 0.12);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 /* =====================================================================
@@ -1527,6 +1364,39 @@ a.desk-sheet:focus-visible {
   color: var(--panel-accent);
 }
 
+/* Floating up button: back to the hero, where the desk lamp switches the theme */
+.to-top {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-text);
+  color: var(--color-bg);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s var(--ease-out), visibility 0s linear 0.25s;
+}
+.to-top.is-shown {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.25s ease, transform 0.25s var(--ease-out);
+}
+.to-top:hover {
+  transform: translateY(-2px);
+}
+.to-top:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 /* =====================================================================
    Responsive
    ===================================================================== */
@@ -1537,23 +1407,12 @@ a.desk-sheet:focus-visible {
     min-height: 0;
     padding: 36px 0 48px;
   }
-  .desk {
-    max-width: 520px;
-    margin: 16px auto 0;
-  }
-  .desk-light {
-    inset: -22% -4% -10% -4%;
+  .desk3d {
+    max-width: 560px;
+    margin: 0 auto;
   }
   .hero-status {
     font-size: 14.5px;
-  }
-  .desk-item--photo {
-    top: -6%;
-    right: 0;
-    width: 30%;
-  }
-  .desk-photo figcaption {
-    font-size: 11.5px;
   }
   .about-grid,
   .projects-intro {
@@ -1583,8 +1442,7 @@ a.desk-sheet:focus-visible {
 }
 
 @media (max-width: 680px) {
-  .desktop-nav,
-  .lamp-label {
+  .desktop-nav {
     display: none;
   }
   .menu-btn {

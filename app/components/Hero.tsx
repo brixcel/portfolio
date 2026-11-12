@@ -17,18 +17,16 @@ export default function Hero() {
     // CSS hides these before hydration (html[data-motion]); take over that state explicitly.
     gsap.set(q(".hero-line > span"), { y: 0, yPercent: 105 });
     gsap.set(q(".hero-rise"), { y: 14, autoAlpha: 0 });
-    gsap.set(q(".desk-item"), { y: -18, autoAlpha: 0 });
-    gsap.set(q(".desk-light"), { autoAlpha: 0 });
+    gsap.set(q(".desk3d"), { y: 18, autoAlpha: 0 });
 
     let intro: gsap.core.Timeline | null = null;
     const cancelReady = onPortfolioReady(() => {
-      // The one authored moment: the desk lamp switches on and lights what's on the desk.
+      // The lamp flicker itself plays in the 3D scene once the model has loaded (DeskScene).
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
       intro = tl;
       tl.to(q(".hero-line > span"), { yPercent: 0, duration: 1, stagger: 0.1 }, 0)
         .to(q(".hero-rise"), { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.08, ease: "power3.out" }, 0.35)
-        .to(q(".desk-light"), { keyframes: { autoAlpha: [0, 0.7, 0.25, 1] }, duration: 0.55, ease: "none" }, 0.25)
-        .to(q(".desk-item"), { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.09 }, 0.45);
+        .to(q(".desk3d"), { y: 0, autoAlpha: 1, duration: 1 }, 0.4);
     });
 
     return () => {
