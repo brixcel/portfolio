@@ -8,7 +8,9 @@ const IMAGE = /\.(jpe?g|jfif|png|webp|avif)$/i;
 // Camera and download names (IMG_1234.jpg, 0cf993b7-….jfif) are not captions.
 const NO_CAPTION = /^((img|dsc|pxl|photo)[-_ ]?\d{3,}|(?=[0-9a-f-]*\d)[0-9a-f-]{6,})\.\w+$/i;
 
-export type LifePhoto = { src: string; caption: string };
+// unoptimized: Vercel serves .jfif as application/octet-stream, which the image optimizer rejects, so those
+// files skip it (rename them to .jpg to get resized versions).
+export type LifePhoto = { src: string; caption: string; unoptimized: boolean };
 
 function captionOf(file: string) {
   if (NO_CAPTION.test(file)) return "";
@@ -21,5 +23,5 @@ export async function lifePhotos(): Promise<LifePhoto[]> {
   return files
     .filter((f) => IMAGE.test(f))
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-    .map((f) => ({ src: `/${DIR}/${encodeURIComponent(f)}`, caption: captionOf(f) }));
+    .map((f) => ({ src: `/${DIR}/${encodeURIComponent(f)}`, caption: captionOf(f), unoptimized: /\.jfif$/i.test(f) }));
 }

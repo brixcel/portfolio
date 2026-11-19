@@ -122,6 +122,7 @@ export default function Life({ photos }: { photos: LifePhoto[] }) {
                       src={p.src}
                       alt={p.caption || "Brexcel outside software engineering"}
                       fill
+                      unoptimized={p.unoptimized}
                       sizes="(max-width: 640px) 78vw, 320px"
                     />
                     <span className="life-num" aria-hidden="true">
