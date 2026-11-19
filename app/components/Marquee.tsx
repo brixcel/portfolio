@@ -83,6 +83,9 @@ export default function Marquee() {
           <li key={tech.slug}>{tech.name}</li>
         ))}
       </ul>
+      <span className="marq-label" aria-hidden="true">
+        Tech stack
+      </span>
       <div ref={wrapRef} className="marq-wrap" aria-hidden="true">
         <div ref={trackRef} className="marq-track">
           {[0, 1].map((copy) => (
@@ -94,6 +97,12 @@ export default function Marquee() {
           ))}
         </div>
       </div>
+      <a href="#contact" className="marq-cta">
+        Let&rsquo;s build something great.
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <path d="M7 17 17 7M8 7h9v9" />
+        </svg>
+      </a>
     </section>
   );
 }

@@ -1,0 +1,150 @@
+/* Mockup style system, extracted from the hero concept: cool grey paper, black ink,
+   heavy tight grotesk, mono terminal labels, giant "//" brand mark, frame lines, dark strip. */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  --bg: #e9e9e6;
+  --bg-2: #dfdfdb;
+  --card: #f3f3f0;
+  --ink: #111111;
+  --muted: #5d5d5a;
+  --line: rgba(17, 17, 17, 0.14);
+  --mark: rgba(17, 17, 17, 0.09);
+  --green: #3fb66b;
+  --strip: #121212;
+  --ink-2: #333331;
+  --body: #4a4a47;
+  --on-ink: #f3f3f0;
+  --sans: "Inter Tight", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 1440px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+
+/* page frame: thin vertical rules + section index */
+.page {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    repeating-linear-gradient(0deg, transparent 0 79px, rgba(17,17,17,.035) 79px 80px);
+}
+.page::before, .page::after {
+  content: ""; position: absolute; top: 28px; bottom: 120px; width: 1px; background: var(--line); z-index: 1;
+}
+.page::before { left: 44px; }
+.page::after { right: 44px; }
+.index { position: absolute; left: 40px; display: grid; gap: 8px; z-index: 2; }
+.index i { width: 9px; height: 9px; background: #b9b9b5; display: block; }
+.index i.on { background: var(--ink); }
+
+/* giant brand mark */
+.mark {
+  position: absolute; z-index: 0;
+  font-family: var(--sans); font-weight: 900; line-height: .8;
+  color: var(--mark); letter-spacing: -0.12em; pointer-events: none; user-select: none;
+}
+
+/* header */
+.top {
+  position: relative; z-index: 3;
+  display: flex; align-items: center; height: 96px; padding: 0 80px;
+}
+.logo { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; padding-right: 46px; border-right: 1.5px solid var(--ink); line-height: 40px; }
+.nav { display: flex; gap: 58px; margin-left: 52px; font-size: 16.5px; color: var(--muted); }
+.nav a.on { color: var(--ink); font-weight: 600; box-shadow: inset 0 -2px 0 var(--ink); padding-bottom: 8px; margin-bottom: -10px; }
+.toggle { margin-left: auto; display: flex; gap: 0; border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px; background: var(--ink); }
+.toggle span { width: 34px; height: 30px; border-radius: 999px; display: grid; place-items: center; color: #fff; }
+.toggle span:first-child { background: #fff; color: var(--ink); }
+.toggle svg { width: 16px; height: 16px; }
+
+/* type */
+.wrap { position: relative; z-index: 2; padding: 0 98px; }
+.prompt { font-family: var(--mono); font-size: 14px; color: var(--ink-2); margin-bottom: 18px; }
+.prompt .cur { display: inline-block; width: 8px; height: 15px; background: #555; vertical-align: -2px; margin-left: 4px; }
+.h1 { font-weight: 900; font-size: 148px; line-height: .86; letter-spacing: -0.065em; }
+.h1 .dot, .h2 .dot { color: var(--ink); }
+.h2 { font-weight: 900; font-size: 64px; line-height: .92; letter-spacing: -0.055em; }
+.lede { font-size: 25px; line-height: 1.3; color: var(--body); max-width: 30ch; padding-left: 22px; border-left: 2px solid var(--ink-2); }
+.label { font-family: var(--mono); font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.note { font-family: var(--mono); font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.note b { font-weight: 700; color: var(--ink); }
+
+/* annotation with leader line */
+.callout { position: absolute; z-index: 3; font-family: var(--mono); }
+.callout strong { display: block; font-size: 15px; letter-spacing: .06em; font-weight: 700; }
+.callout em { font-style: normal; font-size: 12.5px; color: var(--ink-2); letter-spacing: .04em; }
+.callout svg { position: absolute; overflow: visible; }
+
+/* buttons + chips */
+.btn { display: inline-flex; align-items: center; gap: 22px; height: 58px; padding: 0 26px; border-radius: 8px; font-size: 18px; font-weight: 500; border: 1.5px solid var(--ink); }
+.btn.primary { background: var(--ink); color: var(--on-ink); }
+.btn svg { width: 20px; height: 20px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 13px; border: 1px solid var(--line); border-radius: 6px; font-family: var(--mono); font-size: 12.5px; background: rgba(255,255,255,.35); }
+.chip img { width: 15px; height: 15px; filter: grayscale(1) brightness(.25); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* icon info row (from the hero) */
+.info { display: flex; align-items: stretch; }
+.info > div { display: flex; gap: 12px; align-items: flex-start; padding: 0 22px; border-left: 1.5px solid var(--line); font-size: 14.5px; line-height: 1.2; }
+.info > div:first-child { padding-left: 0; border-left: 0; }
+.info svg { width: 19px; height: 19px; flex: none; margin-top: 1px; }
+.dotg { width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin: 5px 4px 0; flex: none; }
+
+/* screenshot frame */
+.shot { border-radius: 10px; overflow: hidden; background: #1a1a1a; box-shadow: 0 40px 70px -40px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.18); }
+.shot .bar { height: 30px; display: flex; align-items: center; gap: 7px; padding: 0 12px; background: #202020; }
+.shot .bar i { width: 9px; height: 9px; border-radius: 50%; background: #4a4a4a; }
+.shot .bar span { margin-left: 12px; font-family: var(--mono); font-size: 11px; color: #8a8a8a; }
+.shot img { width: 100%; height: auto; }
+
+/* dark strip */
+.strip {
+  position: relative; z-index: 3; height: 92px; background: var(--strip); color: #eaeaea;
+  display: flex; align-items: center; padding: 0 64px; gap: 48px;
+}
+.strip .label { color: #d8d8d8; }
+.strip .sep { width: 1px; height: 46px; background: #3a3a3a; }
+.strip .icons { display: flex; gap: 52px; flex: 1; justify-content: center; }
+.strip .icons img { width: 32px; height: 32px; filter: grayscale(1) brightness(1.25) contrast(.95); opacity: .9; }
+.strip .icons img.inv { filter: invert(.9); }
+.strip .label, .strip .end { white-space: nowrap; }
+.strip .end { display: flex; align-items: center; gap: 18px; font-family: var(--mono); font-size: 13px; letter-spacing: .12em; }
+.strip .end svg { width: 18px; height: 18px; }
+
+/* rows */
+.rule { height: 1px; background: var(--line); }
+
+/* Lights off: the dark theme the desk lamp switches to */
+body.dark {
+  --bg: #131312; --bg-2: #1a1a19; --card: #1c1c1b;
+  --ink: #ecece8; --ink-2: #c4c4bf; --body: #b4b4af; --muted: #8f8f8a;
+  --line: rgba(236, 236, 232, 0.14); --mark: rgba(236, 236, 232, 0.06);
+  --strip: #0b0b0b; --on-ink: #131312;
+}
+body.dark .page { background: var(--bg); }
+body.dark .strip { border-top: 1px solid var(--line); }
+body.dark .index i { background: #3d3d3a; }
+body.dark .index i.on { background: var(--ink); }
+
+/* The desk lamp: the site's light/dark switch (kept from the current site) */
+.lamp { margin-left: auto; display: flex; align-items: flex-end; gap: 12px; }
+.lamp-figure { position: relative; display: block; width: 56px; height: 48px; }
+.lamp-base, .lamp-arm, .lamp-neck { position: absolute; border-radius: 999px; background: #8d8d89; }
+.lamp-base { left: 6px; bottom: 0; width: 30px; height: 5px; }
+.lamp-arm { left: 18px; bottom: 4px; width: 5px; height: 29px; transform: rotate(-16deg); transform-origin: 50% 100%; }
+.lamp-head { position: absolute; left: 22px; top: 3px; width: 34px; height: 46px; transform-origin: 2px 2px; }
+.lamp-neck { left: 0; top: 0; width: 6px; height: 16px; transform: rotate(52deg); transform-origin: 0 0; }
+.lamp-shade { position: absolute; left: 4px; top: 6px; width: 29px; height: 18px; background: var(--ink); clip-path: polygon(0 100%, 22% 0, 78% 0, 100% 100%); transform: rotate(14deg); }
+.lamp-beam { position: absolute; left: -9px; top: 24px; width: 48px; height: 36px; background: radial-gradient(120% 90% at 42% 0%, rgba(255, 217, 160, .85), transparent 72%); clip-path: polygon(30% 0, 62% 0, 100% 100%, 0 100%); }
+.lamp-label { padding-bottom: 2px; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+body.dark .lamp-shade { background: #5a5a57; }
+body.dark .lamp-beam { opacity: 0; }

@@ -1,13 +1,50 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { toggleTheme } from "../lib/theme";
 
 const LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
+  { id: "life", label: "Life" },
   { id: "contact", label: "Contact" },
 ];
+
+function DeskLamp() {
+  const ref = useRef<HTMLButtonElement>(null);
+  return (
+    <button
+      ref={ref}
+      id="lamp"
+      type="button"
+      className="lamp"
+      onClick={() => {
+        ref.current?.classList.remove("is-clicked");
+        // restart the little head-nod animation on every press
+        void ref.current?.offsetWidth;
+        ref.current?.classList.add("is-clicked");
+        toggleTheme(ref.current?.querySelector<HTMLElement>(".lamp-shade"));
+      }}
+      aria-label="Desk lamp: switch between light and dark"
+      title="Desk lamp: switch between light and dark"
+    >
+      <span className="lamp-figure" aria-hidden="true">
+        <span className="lamp-base" />
+        <span className="lamp-arm" />
+        <span className="lamp-head">
+          <span className="lamp-neck" />
+          <span className="lamp-shade" />
+          <span className="lamp-beam" />
+        </span>
+      </span>
+      <span className="lamp-label">
+        <span className="lamp-label-light">Lights on</span>
+        <span className="lamp-label-dark">Lights off</span>
+      </span>
+    </button>
+  );
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,7 +75,7 @@ export default function Header() {
     const indicator = indicatorRef.current;
     if (!nav || !indicator) return;
     const place = () => {
-      const link = nav.querySelector<HTMLElement>(`a[href="#${active}"]`);
+      const link = nav.querySelector<HTMLElement>(`a[data-id="${active}"]`);
       if (!link) return;
       indicator.style.width = `${link.offsetWidth}px`;
       indicator.style.transform = `translateX(${link.offsetLeft}px)`;
@@ -86,7 +123,7 @@ export default function Header() {
     <header className="site-header">
       <div className="header-inner">
         <a href="#home" className="header-logo">
-          brexcel<span className="dot">.</span>
+          BREXCEL<span className="dot">.</span>
         </a>
 
         <nav ref={navRef} className="desktop-nav" aria-label="Sections">
@@ -94,6 +131,7 @@ export default function Header() {
             <a
               key={l.id}
               href={`#${l.id}`}
+              data-id={l.id}
               className={`nav-link${active === l.id ? " is-active" : ""}`}
               aria-current={active === l.id ? "location" : undefined}
             >
@@ -104,6 +142,7 @@ export default function Header() {
         </nav>
 
         <div className="header-tools">
+          <DeskLamp />
           <button
             type="button"
             className={`menu-btn${menuOpen ? " is-open" : ""}`}

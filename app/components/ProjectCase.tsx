@@ -37,7 +37,7 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
           scrollTrigger: { trigger: root, start: "top bottom", end: "bottom top", scrub: 0.5 },
         }
       );
-      gsap.from(q(".case-details > *"), {
+      if (featured) gsap.from(q(".case-details > *"), {
         y: 22,
         autoAlpha: 0,
         duration: 0.8,
@@ -47,18 +47,22 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
       });
     }, root);
     return () => ctx.revert();
-  }, [flip]);
+  }, [flip, featured]);
 
-  return (
-    <article
-      id={project.id}
-      ref={ref}
-      className={`case case--${project.tone}${featured ? " case--featured" : " case--compact"}${flip ? " case--flip" : ""}`}
-      style={{ ["--tone" as string]: `var(--project-${project.tone})` }}
-      aria-labelledby={`${project.id}-title`}
-    >
-      <div className="container">
-        <header className="case-head">
+  // A compact case opens itself when a link (project index, journey) targets it.
+  useEffect(() => {
+    if (featured) return;
+    const open = () => {
+      const d = ref.current?.querySelector("details");
+      if (d && window.location.hash === "#" + project.id) d.open = true;
+    };
+    open();
+    window.addEventListener("hashchange", open);
+    return () => window.removeEventListener("hashchange", open);
+  }, [featured, project.id]);
+
+  const head = (
+    <>
           <span className="case-number">{project.number}</span>
           <h3 id={`${project.id}-title`} className="case-title mask">
             <span>{project.title}</span>
@@ -67,8 +71,9 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
             {project.kind}
             <span className="case-role">{project.role}</span>
           </p>
-        </header>
-
+    </>
+  );
+  const body = (
         <div className="case-body">
           <ProjectGallery
             title={project.title}
@@ -122,6 +127,31 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
             </div>
           </div>
         </div>
+  );
+
+  return (
+    <article
+      id={project.id}
+      ref={ref}
+      className={`case case--${project.tone}${featured ? " case--featured" : " case--compact"}${flip ? " case--flip" : ""}`}
+      style={{ ["--tone" as string]: `var(--project-${project.tone})` }}
+      aria-labelledby={`${project.id}-title`}
+    >
+      <div className="container">
+        {featured ? (
+          <>
+            <header className="case-head">{head}</header>
+            {body}
+          </>
+        ) : (
+          <details className="case-fold">
+            <summary className="case-head case-summary">
+              {head}
+              <span className="case-toggle" aria-hidden="true" />
+            </summary>
+            {body}
+          </details>
+        )}
       </div>
     </article>
   );

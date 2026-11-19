@@ -1,16 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Caprasimo, Figtree } from "next/font/google";
+import { Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const caprasimo = Caprasimo({
-  variable: "--font-caprasimo",
-  weight: "400",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
 });
 
-const figtree = Figtree({
-  variable: "--font-figtree",
-  weight: ["400", "500", "600", "700"],
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -43,8 +41,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f5f0" },
-    { media: "(prefers-color-scheme: dark)", color: "#201e1d" },
+    { media: "(prefers-color-scheme: light)", color: "#e9e9e6" },
+    { media: "(prefers-color-scheme: dark)", color: "#131312" },
   ],
 };
 
@@ -58,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${caprasimo.variable} ${figtree.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${interTight.variable} ${jetbrainsMono.variable}`}>
       <body suppressHydrationWarning>
         <script id="theme-init" dangerouslySetInnerHTML={{ __html: INIT_SCRIPT }} suppressHydrationWarning />
         {children}

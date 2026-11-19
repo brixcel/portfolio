@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
+import ContactForm from "./ContactForm";
 
 const EMAIL = "brexcel14@gmail.com";
 const DISCORD = "brix_61875";
 // Digits only for wa.me; the number itself is never printed, which keeps it away from scrapers.
 const WHATSAPP = "639154634639";
-const HEADLINE = ["Let’s build", "something."];
+const HEADLINE = ["Have something", "worth building?", "Let’s talk."];
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -53,6 +54,13 @@ export default function Contact() {
   return (
     <section id="contact" ref={ref} className="contact" aria-labelledby="contact-title">
       <div className="container">
+        <span className="sec-mark contact-mark" aria-hidden="true">
+          {"//"}
+        </span>
+        <p className="sec-index">06 — Contact</p>
+        <p className="sec-prompt" aria-hidden="true">
+          &gt; contact --open
+        </p>
         <h2 id="contact-title" className="contact-title">
           {HEADLINE.map((line) => (
             <span key={line} className="mask">
@@ -61,6 +69,10 @@ export default function Contact() {
           ))}
         </h2>
         <p className="contact-lede contact-rise">Have a project, a role or a question? My inbox is open.</p>
+
+        <div className="contact-rise">
+          <ContactForm />
+        </div>
 
         <div className="contact-actions contact-rise">
           <a href={`mailto:${EMAIL}`} className="contact-email">

@@ -1,17 +1,40 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
-import { projects } from "../data";
 
-const STATEMENT =
-  "I build web apps end to end, from the database schema to the deploy pipeline, and I'm sharpening that craft with one goal: ranking among the top 1% of software engineers.";
-
-// Each fact adds something the statement above doesn't already say.
+// Each fact is something an interviewer can check (PRODUCT.md).
 const FACTS = [
-  { term: "Studying", detail: "Computer Engineering, 4th year" },
-  { term: "Shipped", detail: `${projects.length} projects, incl. CI/CD at Egoist Labs` },
-  { term: "Main stack", detail: "React, TypeScript, Node.js, PostgreSQL" },
+  { value: "2027", label: "Graduating Year" },
+  { value: "Egoist Labs", label: "Software Engineer Trainee" },
+  { value: "Philippines", label: "Location" },
+];
+
+const FOCUS = [
+  {
+    title: "Reliable software",
+    text: "Code that keeps working after the demo, shipped through a pipeline instead of by hand.",
+  },
+  {
+    title: "Understanding systems",
+    text: "How the database, the API, the interface and the deploy fit together, so a fix lands in the right layer.",
+  },
+  {
+    title: "Getting better each build",
+    text: "Every project teaches the next one. I would rather understand why something broke than patch around it.",
+  },
+];
+
+const INTERESTS = [
+  "Full-stack web",
+  "Backend & APIs",
+  "Database design",
+  "DevOps & CI/CD",
+  "Software architecture",
+  "Automation",
+  "3D simulation & AR",
+  "Hardware projects",
 ];
 
 export default function About() {
@@ -23,49 +46,110 @@ export default function About() {
     const { gsap } = getGsap();
     const q = gsap.utils.selector(root);
     const ctx = gsap.context(() => {
-      // Each word inks in as the statement passes through the reading line.
-      gsap.fromTo(
-        q(".about-statement .w"),
-        { opacity: 0.16 },
-        {
-          opacity: 1,
-          ease: "none",
-          stagger: 0.1,
-          scrollTrigger: { trigger: q(".about-statement")[0], start: "top 80%", end: "bottom 45%", scrub: true },
-        }
-      );
-      gsap.from(q(".about-facts > div"), {
-        y: 20,
+      gsap.from(q(".about-reveal"), {
+        y: 24,
         autoAlpha: 0,
-        duration: 0.8,
+        duration: 0.9,
         ease: "power3.out",
         stagger: 0.08,
-        scrollTrigger: { trigger: q(".about-facts")[0], start: "top 88%", once: true },
+        scrollTrigger: { trigger: root, start: "top 72%", once: true },
       });
     }, root);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="about" ref={ref} className="about section">
-      <div className="container about-grid">
-        <h2 className="section-label">About</h2>
-        <div>
-          <p className="about-statement">
-            {STATEMENT.split(" ").map((word, i) => (
-              <span key={i} className="w">
-                {word}{" "}
-              </span>
-            ))}
+    <section
+      id="about"
+      ref={ref}
+      className="about sec"
+      aria-labelledby="about-title"
+    >
+      {/* Full-width grid: copy sits on the container's left edge, the portrait frame runs to the screen edge. */}
+      <div className="about-top">
+        <div className="about-copy">
+          <p className="sec-prompt" aria-hidden="true">
+            &gt; whoami
           </p>
-          <dl className="about-facts">
-            {FACTS.map((f) => (
-              <div key={f.term}>
-                <dt>{f.term}</dt>
-                <dd>{f.detail}</dd>
-              </div>
+          <h2 id="about-title" className="about-title">
+            About me<span aria-hidden="true">.</span>
+          </h2>
+          <div className="about-text about-reveal">
+            <p>
+              I&rsquo;m <strong>Brexcel Orias</strong>, a Computer Engineering
+              student passionate about building software, exploring technology,
+              and solving real-world problems through code.
+            </p>
+            <p>
+              From web development to 3D simulation, I enjoy working across
+              different technologies and turning ideas into working products.
+            </p>
+          </div>
+          <a className="about-journey about-reveal" href="#journey">
+            My Journey
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <path d="M7 17 17 7M8 7h9v9" />
+            </svg>
+          </a>
+        </div>
+        <figure className="about-stage">
+          <span className="about-stage-slab" aria-hidden="true" />
+          <span className="about-stage-tile" aria-hidden="true" />
+          <span className="about-stage-corner" aria-hidden="true" />
+          <span className="about-stage-frame" aria-hidden="true" />
+          <span className="about-stage-person">
+            <Image
+              src="/assets/about-portrait.webp"
+              alt="Brexcel Orias in a cap and white shirt, holding his bag strap"
+              fill
+              sizes="(max-width: 860px) 110vw, 60vw"
+            />
+          </span>
+          <span className="about-stage-base" aria-hidden="true" />
+          <span className="about-stage-line" aria-hidden="true" />
+          <span className="about-stage-block" aria-hidden="true" />
+        </figure>
+        <dl className="about-facts about-reveal">
+          {FACTS.map((f) => (
+            <div key={f.value}>
+              <dt>{f.value}</dt>
+              <dd>{f.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div className="container">
+        <div className="about-focus">
+          <h3 className="mono-label">What I care about</h3>
+          <ol>
+            {FOCUS.map((f, i) => (
+              <li key={f.title} className="about-reveal">
+                <span className="about-focus-n">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h4>{f.title}</h4>
+                <p>{f.text}</p>
+              </li>
             ))}
-          </dl>
+          </ol>
+        </div>
+
+        <div className="about-interests about-reveal">
+          <h3 className="mono-label">Exploring</h3>
+          <ul>
+            {INTERESTS.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

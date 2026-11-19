@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Hero mockup</title>
+<link rel="stylesheet" href="mock.css">
+<style>
+  .page { height: 900px; }
+  .page::after, .page::before { bottom: 92px; }
+  /* right side: his real photo (faded B/W) -> "//" -> his cut-out, aligned to the same spot */
+  .scene {
+    position: absolute; z-index: 1;
+    right: -70px; bottom: 92px;
+    height: 1010px; aspect-ratio: 844 / 1125;
+  }
+  .scene .bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    filter: grayscale(1) contrast(1.05) brightness(1.08);
+    opacity: .42;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 34%), linear-gradient(to bottom, transparent 0, #000 30%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 34%), linear-gradient(to bottom, transparent 0, #000 30%);
+    mask-composite: intersect;
+  }
+  .scene .slash {
+    position: absolute; left: 4%; top: 6%;
+    font-family: var(--sans); font-weight: 900; font-size: 860px; line-height: .8; letter-spacing: -0.12em;
+    color: color-mix(in srgb, var(--ink) 13%, transparent);
+  }
+  /* cut-out sits exactly where he stands in the original: crop offset 260,378 / size 291x747 of 844x1125 */
+  .scene .me {
+    position: absolute; left: calc(260 / 844 * 100%); top: calc(378 / 1125 * 100%);
+    width: calc(291 / 844 * 100%); height: auto;
+    filter: grayscale(1) contrast(1.12) brightness(1.02);
+  }
+  body.dark .scene .bg { opacity: .28; filter: grayscale(1) brightness(.75); }
+  body.dark .scene .me { filter: grayscale(1) contrast(1.1) brightness(.92); }
+  .callout { color: var(--ink); }
+  .copy { position: relative; z-index: 2; padding-top: 70px; }
+  .h1 { font-size: 150px; letter-spacing: -0.068em; margin-top: 4px; }
+  .lede { margin-top: 34px; max-width: 34ch; }
+  .btns { display: flex; gap: 26px; margin-top: 42px; }
+  .info { margin-top: 64px; }
+</style></head>
+<body><div class="page">
+  <div class="index" style="top:560px"><i class="on"></i><i></i><i></i><i></i></div>
+
+  <div class="scene">
+    <img class="bg" src="../hero/vista-original.jpg" alt="">
+    <span class="slash">//</span>
+    <img class="me" src="../hero/vista-cutout.png" alt="">
+  </div>
+
+  <div class="callout" style="right:62px; top:268px;">
+    <svg width="64" height="60" style="left:-70px; top:8px"><path d="M0 58 L34 6 L62 6" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="62" cy="6" r="3.5" fill="currentColor"/></svg>
+    <strong>BREXCEL ORIAS</strong><em>// SOFTWARE DEVELOPER</em>
+  </div>
+
+  <header class="top">
+    <span class="logo">BREXCEL.</span>
+    <nav class="nav"><a class="on">Home</a><a>Projects</a><a>About</a><a>Contact</a></nav>
+    <span class="lamp" title="Desk lamp: switch between light and dark"><span class="lamp-figure"><span class="lamp-base"></span><span class="lamp-arm"></span><span class="lamp-head"><span class="lamp-neck"></span><span class="lamp-shade"></span><span class="lamp-beam"></span></span></span><span class="lamp-label">Lights on</span></span>
+  </header>
+
+  <div class="wrap copy">
+    <p class="prompt">&gt; brexcel@portfolio:~<span class="cur"></span></p>
+    <h1 class="h1">software<br>developer<span class="dot">.</span></h1>
+    <p class="lede">I&rsquo;m Brexcel Joe Orias. I build full-stack web apps and the pipelines that ship them.</p>
+    <div class="btns">
+      <a class="btn primary">See the projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a class="btn">Download CV <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+    </div>
+    <div class="info">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg><span>Computer Engineering<br>URS Antipolo, Class of 2027</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></svg><span>Software Engineer<br>Trainee, Egoist Labs</span></div>
+      <div><span class="dotg"></span><span>Open to internships<br>and freelance</span></div>
+    </div>
+  </div>
+
+  <footer class="strip" style="position:absolute; left:0; right:0; bottom:0;">
+    <span class="label">Tech stack</span><span class="sep"></span>
+    <div class="icons">
+      <img src="../../public/icons/react.svg" alt=""><img class="inv" src="../../public/icons/nextjs.svg" alt=""><img src="../../public/icons/typescript.svg" alt=""><img src="../../public/icons/tailwindcss.svg" alt=""><img src="../../public/icons/nodejs.svg" alt=""><img src="../../public/icons/postgresql.svg" alt=""><img src="../../public/icons/githubactions.svg" alt=""><img class="inv" src="../../public/icons/github.svg" alt=""><img src="../../public/icons/blender.svg" alt=""><img src="../../public/icons/unity.svg" alt="">
+    </div>
+    <span class="sep"></span>
+    <span class="end">LET'S BUILD SOMETHING GREAT. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  </footer>
+</div></body></html>

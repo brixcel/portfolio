@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { projects } from "../data";
 import { getGsap } from "../lib/motion";
 import ProjectCase from "./ProjectCase";
+import SectionHead from "./SectionHead";
 
 /**
  * Project index (doubles as in-page navigation) followed by each case study.
@@ -35,11 +36,21 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="projects" aria-labelledby="projects-title">
-      <div className="container projects-intro">
-        <h2 id="projects-title" className="section-label">
-          Projects
-        </h2>
+    <section id="projects" className="projects sec" aria-labelledby="projects-title">
+      <div className="container">
+        <SectionHead
+          id="projects-title"
+          index="02 — Projects"
+          prompt="ls ~/projects --all"
+          title="selected work"
+          sub="Projects I’ve built, shipped and learned from. The first three are told in full; open the rest for their details."
+          aside={
+            <>
+              <span className="sec-count">{String(projects.length).padStart(2, "0")}</span>
+              <span className="mono-label">projects // shipped</span>
+            </>
+          }
+        />
         <div className="projects-index-wrap">
           <ol ref={listRef} className="projects-index" onPointerLeave={() => setHovered(null)}>
             {projects.map((p, i) => (

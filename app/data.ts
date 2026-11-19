@@ -246,6 +246,7 @@ export const projects: Project[] = [
     slides: cicdSlides,
     aspect: "1200 / 750",
     tone: "harbor",
+    featured: true,
   },
   {
     id: "ursachub",
@@ -268,7 +269,6 @@ export const projects: Project[] = [
     slides: ursachubSlides,
     aspect: "1430 / 782",
     tone: "clay",
-    featured: true,
   },
   {
     id: "ursachub-social",

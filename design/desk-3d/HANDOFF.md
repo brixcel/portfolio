@@ -16,7 +16,20 @@ Also read `PRODUCT.md` at the repo root: it holds the confirmed facts and rules.
   - `previews/`: the renders laid behind the real hero copy (what the owner reviewed).
   - `threejs-prototype/index.html`: an earlier Three.js prototype of the same scene with primitive models.
   - `preview-layout.html`: lays a render behind the real hero copy, for screenshots.
-- **3D hero is live in code** (`app/components/HeroDesk.tsx` + `DeskScene.tsx`): R3F canvas loads after the
+- **Hero (owner-approved mockup, Nov 19):** monochrome redesign built from `design/mockups/hero.html`. Site-wide tokens
+  are now grey/ink with Inter Tight + JetBrains Mono. Hero: prompt, "software developer.", lede, CTAs, icon status
+  row; right side = his real lookout view (B/W, fade baked into the image), the "//" mark, his cut-out aligned to
+  the same spot. Header has the desk lamp toggle again. The marquee is now the dark tech strip under the hero.
+  Full redesign built (Nov 19): every section uses `SectionHead` (index, prompt, giant title + full stop). Order:
+  Hero, tech strip, 01 Projects (AR-DUINO, Synctask, Egoist CI/CD in full; the rest fold into <details> that open
+  on #hash), 02 About (no "top 1%" line), 03 Capabilities (only data.ts techs; "Used in" derived from project
+  stacks), 04 Journey (no invented dates), 05 Desk, 06 Contact. Mockups stay in `design/mockups/` for reference. Later the same day: About moved before Projects and was rebuilt
+  after the owner's mockup (photo: `public/assets/about-portrait.webp`, Regina Rosarii cut-out); "Life beyond the
+  code" is a film-strip carousel after Projects reading `public/life-photos/` (`app/lib/lifePhotos.ts`); the
+  contact form posts to `app/api/contact/route.ts`, which sends through Resend (`RESEND_API_KEY`, see
+  `.env.example`). **The 3D desk section is off the page for now** (owner's call); `HeroDesk.tsx`, `DeskScene.tsx`
+  and `public/models/` are kept so it can come back. The header lamp is the light/dark switch.
+- **3D desk is live in code** (`app/components/HeroDesk.tsx` + `DeskScene.tsx`): R3F canvas loads after the
   loader hands over; Blender poster `public/models/desk-poster-{light,dark}.webp` (same camera, FOV 30°) shows
   underneath and is the whole hero for reduced motion / no WebGL. Hover Laptop/Notebook/RC_car → lift + label;
   click → camera glide, then scroll to `#synctask` / `#egoist-cicd` / `#projects`. The **desk lamp is the

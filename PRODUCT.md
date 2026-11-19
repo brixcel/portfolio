@@ -36,13 +36,13 @@ A Computer Engineering student who ships real, team-used software and the pipeli
 
 ## Brand Commitments
 
-- Owner-confirmed direction: the site is his desk / developer's notebook, including the desk-lamp light and dark toggle. The corporate ID-badge / lanyard hero is retired.
+- Owner-confirmed direction (Nov 19, 2026): monochrome "developer" look: grey paper, black ink, Inter Tight (heavy) with JetBrains Mono labels, a giant "//" brand mark, terminal-prompt details and a dark tech strip. Green is used only for the open-to-work status. The desk lamp in the header stays the light/dark switch ("Lights on" / "Lights off"). Replaces the cream / olive / Caprasimo identity.
 - Project names are spelled Synctask and UrsacHub.
 
 ## Evidence on Hand
 
 - Real project screenshots in `public/assets/` for AR-DUINO, Synctask, UrsacHub, UrsacHub Social, DSA Workbench, Photo Booth, and the Egoist Labs pipelines.
-- One portrait: `public/assets/profile.jpg`.
+- Photos of him: `public/assets/profile.jpg` (formal portrait, in the 3D desk frame) and his lookout photo (side profile, hands in pockets), used in the hero as `hero-me.webp` (his own cut-out outline applied to the full-res original) over `hero-vista-fade.webp` (the same photo, B/W and faded). Sources in `design/hero/`.
 - Confirmed numbers: authored 37 C# scripts in the AR-DUINO repository (github.com/Yiizer/Arduino-Ar-App); Egoist Labs deploys went from 15–30 minutes manual to 3–5 minutes automated; 5 automated quality gates; 13 workflow runs since his changes merged; led a 5-person team on UrsacHub Social; DSA Workbench used in a class of about 40 students.
 - Not yet on hand: photos of his desk, the IoT RC car, or his laptop. Never fabricate users, clients, testimonials, metrics, or photos.
 

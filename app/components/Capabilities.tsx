@@ -1,0 +1,83 @@
+import { projects, techStack, type Tech } from "../data";
+import SectionHead from "./SectionHead";
+import { TechChip } from "./TechChip";
+
+// Only technologies already in his stack data. "Used in" is derived from each project's stack, never typed in.
+const GROUPS: { title: string; note: string; slugs: string[] }[] = [
+  {
+    title: "Frontend Engineering",
+    note: "Interfaces, app shells and the views people actually click.",
+    slugs: ["react", "nextjs", "typescript", "javascript", "tailwindcss", "vitejs", "html5", "css3", "bootstrap"],
+  },
+  {
+    title: "Backend Engineering",
+    note: "APIs, auth and the server logic behind the screens.",
+    slugs: ["nodejs", "express", "laravel", "php"],
+  },
+  {
+    title: "Databases",
+    note: "Schemas, queries and the ORM layer in between.",
+    slugs: ["postgresql", "mysql", "prisma", "firebase"],
+  },
+  {
+    title: "DevOps & Infrastructure",
+    note: "Builds, checks and deploys that run without someone watching.",
+    slugs: ["githubactions", "cloudflare", "docker", "pnpm"],
+  },
+  {
+    title: "Creative Engineering",
+    note: "3D simulation and augmented reality.",
+    slugs: ["unity", "csharp", "blender", "vuforia", "arfoundation"],
+  },
+  {
+    title: "Other Tools",
+    note: "Version control and collaboration.",
+    slugs: ["git", "github"],
+  },
+];
+
+const bySlug = new Map<string, Tech>();
+for (const t of [...techStack, ...projects.flatMap((p) => p.stack)]) if (!bySlug.has(t.slug)) bySlug.set(t.slug, t);
+
+export default function Capabilities() {
+  return (
+    <section id="capabilities" className="capabilities sec" aria-labelledby="capabilities-title">
+      <div className="container">
+        <SectionHead
+          id="capabilities-title"
+          index="04 — Skills"
+          prompt="cat ~/stack.md"
+          title="engineering capabilities"
+          sub="What I build with, grouped by layer, and where each one shows up in my projects."
+        />
+        <ol className="cap-list">
+          {GROUPS.map((g, i) => {
+            const techs = g.slugs.map((s) => bySlug.get(s)).filter((t): t is Tech => !!t);
+            const usedIn = projects.filter((p) => p.stack.some((t) => g.slugs.includes(t.slug))).map((p) => p.title);
+            return (
+              <li key={g.title} className="cap-row">
+                <span className="cap-n">{String(i + 1).padStart(2, "0")}</span>
+                <div className="cap-head">
+                  <h3>{g.title}</h3>
+                  <p>{g.note}</p>
+                </div>
+                <div className="cap-body">
+                  <ul className="chips">
+                    {techs.map((t) => (
+                      <TechChip key={t.slug} tech={t} />
+                    ))}
+                  </ul>
+                  {usedIn.length > 0 && (
+                    <p className="cap-used">
+                      <span className="mono-label">Used in</span> {usedIn.join(" · ")}
+                    </p>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </section>
+  );
+}
