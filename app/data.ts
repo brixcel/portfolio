@@ -43,8 +43,7 @@ export const arduinoStack: Tech[] = [
 
 export const synctaskStack: Tech[] = [
   { name: "React", slug: "react" },
-  { name: "TypeScript", slug: "typescript" },
-  { name: "Next.js", slug: "nextjs", invert: true },
+  { name: "JavaScript", slug: "javascript" },
   { name: "Node.js", slug: "nodejs" },
   { name: "Express", slug: "express", invert: true },
   { name: "PostgreSQL", slug: "postgresql" },
@@ -196,7 +195,6 @@ export const projects: Project[] = [
       "AR component library through printed cards",
     ],
     liveHref: "https://ar-duino-m.vercel.app/",
-    githubHref: "https://github.com/Yiizer/Arduino-Ar-App",
     note: "Thesis team project. I built the 3D circuit simulation: drag-and-snap parts on the breadboard, wires that snap to Arduino pins, circuit validation and the mock IDE, writing 37 of its C# scripts.",
     stack: arduinoStack,
     slides: arduinoSlides,
@@ -264,7 +262,7 @@ export const projects: Project[] = [
     ],
     liveHref: "https://ursachub.onrender.com/student/home",
     githubHref: "https://github.com/markPie29/ursachub",
-    note: "Built with a team — this repo covers my front-end work.",
+    note: "Team project. I worked on the front end: the login and register pages, the product and news pages, the admin forms for adding news and products, and styling in the shared stylesheet.",
     stack: ursachubStack,
     slides: ursachubSlides,
     aspect: "1430 / 782",

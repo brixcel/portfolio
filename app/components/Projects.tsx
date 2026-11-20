@@ -43,11 +43,11 @@ export default function Projects() {
           index="02 — Projects"
           prompt="ls ~/projects --all"
           title="selected work"
-          sub="Projects I’ve built, shipped and learned from. The first three are told in full; open the rest for their details."
+          sub="Projects I’ve built and learned from. The first three are told in full; open the rest for their details."
           aside={
             <>
               <span className="sec-count">{String(projects.length).padStart(2, "0")}</span>
-              <span className="mono-label">projects // shipped</span>
+              <span className="mono-label">projects // built</span>
             </>
           }
         />
