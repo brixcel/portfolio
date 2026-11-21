@@ -1320,12 +1320,12 @@ main:focus {
   filter: brightness(0.82);
   clip-path: polygon(94% 13.8%, 100% 13.8%, 100% 47.2%, 79.6% 47.2%);
 }
-/* Cap-to-chest crop, sized from the frame height so it holds at any aspect: at 80cqh wide his jacket starts
-   below 80% of the frame, under the light base and dark block. Cap centre (42.5% across the cut-out) sits at
-   59.5% across the frame. */
+/* Head-and-shoulders crop, sized from the frame height so it holds at any aspect: at 90cqh wide his crossed
+   arms start below 81% of the frame, under the light base and dark block. Hair centre (65% across the cut-out)
+   sits at 59.5% across the frame. */
 .about-stage > .about-stage-person {
-  inset: 16% auto 0 calc(59.5cqw - 34cqh);
-  width: 80cqh;
+  inset: 14% auto 0 calc(59.5cqw - 58.5cqh);
+  width: 90cqh;
 }
 .about-stage-person img {
   object-fit: cover;
@@ -1922,6 +1922,28 @@ main:focus {
 }
 .case-note {
   margin-top: -8px;
+  color: var(--color-muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+/* Portrait clip: sized to its own 9:16 frame, not the landscape gallery. */
+.case-media {
+  min-width: 0;
+}
+.case-video {
+  margin: 40px 0 0;
+}
+.case-video video {
+  display: block;
+  width: min(100%, 280px);
+  aspect-ratio: 576 / 1024;
+  border-radius: 10px;
+  background: #000;
+  box-shadow: var(--shadow-frame);
+}
+.case-video figcaption {
+  margin-top: 12px;
+  max-width: 44ch;
   color: var(--color-muted);
   font-size: 13.5px;
   line-height: 1.5;

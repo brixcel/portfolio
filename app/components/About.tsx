@@ -105,8 +105,8 @@ export default function About() {
           <span className="about-stage-frame" aria-hidden="true" />
           <span className="about-stage-person">
             <Image
-              src="/assets/about-portrait.webp"
-              alt="Brexcel Orias in a cap and white shirt, holding his bag strap"
+              src="/assets/about-portrait-wicker.webp"
+              alt="Brexcel Orias seated, looking to the side"
               fill
               sizes="(max-width: 860px) 110vw, 60vw"
             />

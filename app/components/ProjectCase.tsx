@@ -73,14 +73,37 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
           </p>
     </>
   );
+  const gallery = (
+    <ProjectGallery
+      title={project.title}
+      slides={project.slides}
+      aspect={project.aspect}
+      sizes={featured ? "(max-width: 900px) 100vw, 680px" : "(max-width: 900px) 100vw, 600px"}
+    />
+  );
   const body = (
         <div className="case-body">
-          <ProjectGallery
-            title={project.title}
-            slides={project.slides}
-            aspect={project.aspect}
-            sizes={featured ? "(max-width: 900px) 100vw, 680px" : "(max-width: 900px) 100vw, 600px"}
-          />
+          {project.video ? (
+            // The clip sits under the gallery so the two columns stay balanced.
+            <div className="case-media">
+              {gallery}
+              <figure className="case-video">
+                <video
+                  controls
+                  muted
+                  playsInline
+                  preload="none"
+                  poster={project.video.poster}
+                  aria-label={project.video.label}
+                >
+                  <source src={project.video.src} type="video/mp4" />
+                </video>
+                <figcaption>{project.video.caption}</figcaption>
+              </figure>
+            </div>
+          ) : (
+            gallery
+          )}
 
           <div className="case-details">
             <p className="case-description">{project.description}</p>

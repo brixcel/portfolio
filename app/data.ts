@@ -177,6 +177,8 @@ export type Project = {
   /** CSS custom property suffix: var(--project-<tone>) */
   tone: "moss" | "clay" | "harbor" | "ink-blue" | "rose" | "circuit";
   featured?: boolean;
+  /** Optional demo clip, shown under the note. */
+  video?: { src: string; poster?: string; caption: string; label: string };
 };
 
 export const projects: Project[] = [
@@ -201,6 +203,12 @@ export const projects: Project[] = [
     aspect: "1094 / 560",
     tone: "circuit",
     featured: true,
+    video: {
+      src: "/videos/ar-duino-demo.mp4",
+      poster: "/videos/ar-duino-demo-poster.jpg",
+      caption: "Our team’s thesis introduction video. The 3D simulation I built appears from about 0:26.",
+      label: "AR-DUINO thesis introduction video",
+    },
   },
   {
     id: "synctask",

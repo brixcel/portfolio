@@ -25,7 +25,7 @@ const JSON_LD = {
   jobTitle: "Software Engineer Intern",
   worksFor: { "@type": "Organization", name: "Egoist Labs" },
   address: { "@type": "PostalAddress", addressCountry: "PH" },
-  sameAs: ["https://github.com/brixcel"],
+  sameAs: ["https://github.com/brixcel", "https://www.linkedin.com/in/brexcel-orias-6b2a28321"],
 };
 
 export const metadata: Metadata = {

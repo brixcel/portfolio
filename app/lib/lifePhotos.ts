@@ -15,8 +15,7 @@ export type LifePhoto = { src: string; caption: string; alt: string; unoptimized
 // Alt text for files whose names aren't captions. Describes only what is visible; no names.
 const ALT: Record<string, string> = {
   "0cf993b7-7755-45e7-b28a-ee90780e077f.jpg": "A selfie at home",
-  "19e5da6a-4a3d-43ed-a730-cacb5a1d6e16.jfif": "Sitting in a wicker chair at a mountain lookout at sunset",
-  "396141c2-3220-4770-97c2-4b911b966e06.jpg": "Posing in costume with a prop rifle",
+  "19e5da6a-4a3d-43ed-a730-cacb5a1d6e16.jpg": "Sitting in a wicker chair at a mountain lookout at sunset",
   "432232a7-d6d5-4eab-908e-188242f69623.jpg": "A mirror selfie at the mall",
   "48798f87-fc2c-434f-aec1-063911f28127.jpg": "A selfie at home with a ribbon flower",
   "4cf0d3b8-cdac-43be-b9a7-052799cca9db.jpg": "With friends at CPE-Yesta 2026, a campus event",
@@ -25,7 +24,7 @@ const ALT: Record<string, string> = {
   "57fdace3-1839-40f7-9178-45f7d71e1c78.jpg": "A certificate of recognition from CPE-Yesta 2026",
   "5c2f3f9f-7b61-4014-8747-d33881e5c2e9.jpg": "Receiving a certificate on stage at CPE-Yesta 2026",
   "949f24b1-8eeb-4756-a5aa-c8c78a5669a7.jpg": "Under red lanterns at a riverside market",
-  "9ad0ef2f-f330-4ecf-a8cc-d96947af8467.jfif": "Someone sitting in the wicker chair at the mountain lookout at dusk",
+  "9ad0ef2f-f330-4ecf-a8cc-d96947af8467.jpg": "Someone sitting in the wicker chair at the mountain lookout at dusk",
   "a3aabcf6-5ba0-4281-99a0-703cda5533dc.jpg": "A mirror selfie with a gym towel",
   "b0084889-652c-4535-8b66-36a482f464c3.jpg": "Flexing at a campus campout at night",
   "b2191c4f-4630-4d18-af0e-59fbd8399322.jpg": "A group photo at a padlock wall in a garden",

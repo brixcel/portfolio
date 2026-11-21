@@ -113,6 +113,14 @@ export default function Contact() {
             </a>
           </li>
           <li>
+            <a href="https://www.linkedin.com/in/brexcel-orias-6b2a28321" target="_blank" rel="noopener noreferrer">
+              <span>LinkedIn</span>
+              <span className="contact-link-value">
+                Brexcel Orias<span className="sr-only"> (opens in a new tab)</span>
+              </span>
+            </a>
+          </li>
+          <li>
             <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer">
               <span>WhatsApp</span>
               <span className="contact-link-value">
