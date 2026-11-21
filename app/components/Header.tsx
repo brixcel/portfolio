@@ -26,9 +26,10 @@ function DeskLamp() {
         ref.current?.classList.add("is-clicked");
         toggleTheme(ref.current?.querySelector<HTMLElement>(".lamp-shade"));
       }}
-      aria-label="Desk lamp: switch between light and dark"
       title="Desk lamp: switch between light and dark"
     >
+      {/* The name includes the visible "Lights on/off" so voice control can target it (WCAG 2.5.3). */}
+      <span className="sr-only">Desk lamp </span>
       <span className="lamp-figure" aria-hidden="true">
         <span className="lamp-base" />
         <span className="lamp-arm" />
@@ -42,6 +43,7 @@ function DeskLamp() {
         <span className="lamp-label-light">Lights on</span>
         <span className="lamp-label-dark">Lights off</span>
       </span>
+      <span className="sr-only"> (switch between light and dark)</span>
     </button>
   );
 }
