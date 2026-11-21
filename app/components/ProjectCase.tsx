@@ -108,6 +108,17 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
           <div className="case-details">
             <p className="case-description">{project.description}</p>
 
+            {project.story && (
+              <dl className="case-story">
+                {project.story.map((s) => (
+                  <div key={s.label} className="case-story-row">
+                    <dt>{s.label}</dt>
+                    <dd>{s.text}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+
             {project.highlights && (
               <ul className="case-highlights">
                 {project.highlights.map((h) => (

@@ -51,6 +51,7 @@ export const synctaskStack: Tech[] = [
   { name: "Tailwind CSS", slug: "tailwindcss" },
   { name: "Docker", slug: "docker" },
   { name: "Vite", slug: "vitejs" },
+  { name: "Google Gemini", slug: "gemini", noIcon: true },
 ];
 
 export const ursachubStack: Tech[] = [
@@ -167,6 +168,8 @@ export type Project = {
   description: string;
   /** Only what the real interface shows (see the screenshots) — nothing invented. */
   highlights?: string[];
+  /** Short case-study lines (problem, what he built, result). Facts from PRODUCT.md only. */
+  story?: { label: string; text: string }[];
   liveHref?: string;
   githubHref?: string;
   note?: string;
@@ -196,6 +199,20 @@ export const projects: Project[] = [
       "Mock Arduino IDE to upload code to the simulated board",
       "AR component library through printed cards",
     ],
+    story: [
+      {
+        label: "What I built",
+        text: "The 3D circuit simulation: parts that drag and snap onto the breadboard, wires that snap to Arduino pins, circuit validation and the mock IDE. 37 of its C# scripts.",
+      },
+      {
+        label: "The hard part",
+        text: "Placing a snap point for every component and pin in Unity, setting which parts can attach where, and debugging until every part landed right.",
+      },
+      {
+        label: "Result",
+        text: "Five guided projects running in the live web build. My simulation shows from 0:26 in the team video.",
+      },
+    ],
     liveHref: "https://ar-duino-m.vercel.app/",
     note: "Thesis team project. I built the 3D circuit simulation: drag-and-snap parts on the breadboard, wires that snap to Arduino pins, circuit validation and the mock IDE, writing 37 of its C# scripts.",
     stack: arduinoStack,
@@ -224,6 +241,14 @@ export const projects: Project[] = [
       "Command palette and notifications panel",
       "Task details with subtasks and properties",
     ],
+    story: [
+      { label: "Problem", text: "Small teams often can’t pay for Jira or other paid task trackers." },
+      {
+        label: "What I built",
+        text: "A free task tracker, alone and end to end. AI turns a sentence into a task, subtasks or a whole project plan, falls back to plain rules when the model fails, and is capped daily so it can’t run up costs.",
+      },
+      { label: "Result", text: "A live app and public code with 43 backend test files." },
+    ],
     liveHref: "https://synctask-proj.vercel.app/",
     githubHref: "https://github.com/brixcel/taskflow",
     note: "The repository is named taskflow — the project was renamed to SyncTask during development.",
@@ -248,7 +273,15 @@ export const projects: Project[] = [
       "Nothing deploys until the checks pass",
       "Superseded runs cancel themselves",
     ],
-    note: "Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys.",
+    story: [
+      { label: "Problem", text: "Our founder deployed both frontends by hand, 15–30 minutes each time." },
+      {
+        label: "What I built",
+        text: "GitHub Actions workflows that check each build and ship it to Cloudflare Pages: main to production, dev to the dev site, and a preview link for every pull request.",
+      },
+      { label: "Result", text: "Deploys now run automatically in 3–5 minutes." },
+    ],
+    note: "Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys. Lint, format and tests run on Learning Platform.",
     stack: cicdStack,
     slides: cicdSlides,
     aspect: "1200 / 750",

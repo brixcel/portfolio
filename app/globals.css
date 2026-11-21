@@ -1895,6 +1895,37 @@ main:focus {
   line-height: 1.5;
   text-wrap: pretty;
 }
+/* Case-study lines: a mono label beside each short answer. */
+.case-story {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+.case-story-row {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+.case-story dt {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.case-story dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@media (max-width: 560px) {
+  .case-story-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
 .case-highlights li {
   display: flex;
   align-items: baseline;
