@@ -12,14 +12,27 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = "Brexcel Joe M. Orias — Computer Engineering Student & Software Developer";
+const TITLE = "Brexcel Orias — Full-Stack Software Developer, Philippines";
 const DESCRIPTION =
-  "Building software to solve problems I actually encounter. Portfolio of Brexcel Joe M. Orias, a full-stack developer and Computer Engineering student.";
+  "I build full-stack web apps and the pipelines that ship them. Computer Engineering, URS Antipolo, Class of 2027. Open to internships and freelance.";
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Brexcel Joe M. Orias",
+  alternateName: "Brexcel Orias",
+  url: "https://brexcel.vercel.app",
+  jobTitle: "Software Engineer Intern",
+  worksFor: { "@type": "Organization", name: "Egoist Labs" },
+  address: { "@type": "PostalAddress", addressCountry: "PH" },
+  sameAs: ["https://github.com/brixcel"],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://brexcel.vercel.app"),
   title: TITLE,
   description: DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -28,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
   },
@@ -59,6 +72,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${interTight.variable} ${jetbrainsMono.variable}`}>
       <body suppressHydrationWarning>
         <script id="theme-init" dangerouslySetInnerHTML={{ __html: INIT_SCRIPT }} suppressHydrationWarning />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD).replace(/</g, "\\u003c") }}
+        />
         {children}
       </body>
     </html>

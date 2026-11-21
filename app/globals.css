@@ -190,6 +190,10 @@ button {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
+/* <main tabindex="-1"> is the skip-link target: it takes focus to move the caret, not to be outlined */
+main:focus {
+  outline: none;
+}
 
 .sr-only {
   position: absolute;
@@ -2492,7 +2496,7 @@ button {
    Responsive
    ===================================================================== */
 @media (max-width: 900px) {
-  /* Phones/tablets: he stands on top (face on the first screen), the copy follows */
+  /* Phones/tablets: the copy, CTAs and status come first so the CV and availability fit the first screen; the photo follows */
   .hero {
     display: flex;
     flex-direction: column;
@@ -2500,10 +2504,9 @@ button {
   .hero-scene {
     position: relative;
     right: auto;
-    order: -1;
+    order: 1;
     align-self: center;
     height: min(60svh, 520px);
-    margin-bottom: 8px;
   }
   .header-logo {
     padding-right: 0;
@@ -2530,7 +2533,8 @@ button {
   }
   .hero-grid {
     min-height: 0;
-    padding-top: 0;
+    padding-top: clamp(28px, 5svh, 48px);
+    padding-bottom: 24px;
   }
   .hero .hero-status li {
     max-width: none;

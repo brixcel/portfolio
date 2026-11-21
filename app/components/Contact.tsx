@@ -69,6 +69,9 @@ export default function Contact() {
           ))}
         </h2>
         <p className="contact-lede contact-rise">Have a project, a role or a question? My inbox is open.</p>
+        <p className="contact-lede contact-rise">
+          Freelance: I build websites. Tell me what you need through the form or by email, and I&rsquo;ll reply.
+        </p>
 
         <div className="contact-rise">
           <ContactForm />

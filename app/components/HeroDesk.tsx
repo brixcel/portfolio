@@ -10,7 +10,7 @@ import { toggleTheme } from "../lib/theme";
 const DeskScene = dynamic(() => import("./DeskScene"), { ssr: false });
 
 const LINKS = [
-  { label: "Synctask", href: "#synctask" },
+  { label: "SyncTask", href: "#synctask" },
   { label: "Egoist Labs CI/CD", href: "#egoist-cicd" },
   { label: "IoT RC car and other projects", href: "#projects" },
 ];
@@ -40,7 +40,7 @@ export default function HeroDesk() {
       <div
         className="desk3d-poster"
         role="img"
-        aria-label="My desk: a laptop showing Synctask, a notebook with the Egoist Labs CI/CD diagram, my IoT RC car, a breadboard with a lit LED, a mug, the desk lamp, and a framed portrait of me"
+        aria-label="My desk: a laptop showing SyncTask, a notebook with the Egoist Labs CI/CD diagram, my IoT RC car, a breadboard with a lit LED, a mug, the desk lamp, and a framed portrait of me"
       >
         {(["light", "dark"] as const).map((t) => (
           <Image

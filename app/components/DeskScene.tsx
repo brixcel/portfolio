@@ -18,7 +18,7 @@ const FOV = 30; // vertical; Blender poster lens = 12 / tan(FOV / 2) mm on a 24 
 const PORTRAIT_KEY = new THREE.Vector3(4.15, 2.0, 0.75);
 
 export const HOTSPOTS = {
-  Laptop: { label: "Synctask", href: "#synctask" },
+  Laptop: { label: "SyncTask", href: "#synctask" },
   Notebook: { label: "Egoist Labs CI/CD", href: "#egoist-cicd" },
   RC_car: { label: "IoT RC car", href: "#projects" },
 } as const;

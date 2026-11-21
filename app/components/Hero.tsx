@@ -112,7 +112,7 @@ export default function Hero() {
                 <rect x="4" y="3" width="16" height="18" rx="1" />
                 <path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4" />
               </svg>
-              Software Engineer Trainee at Egoist Labs
+              Software Engineer Intern at Egoist Labs
             </li>
             <li>
               <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">

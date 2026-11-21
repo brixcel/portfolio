@@ -4,7 +4,7 @@ import SectionHead from "./SectionHead";
 const STEPS = [
   {
     when: "Now",
-    title: "Software Engineer Trainee",
+    title: "Software Engineer Intern",
     org: "Egoist Labs",
     text: "Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys on Cloudflare Pages.",
     stat: "3–5 min",

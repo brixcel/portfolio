@@ -120,7 +120,7 @@ export default function Life({ photos }: { photos: LifePhoto[] }) {
                   <div className="life-photo">
                     <Image
                       src={p.src}
-                      alt={p.caption || "Brexcel outside software engineering"}
+                      alt={p.alt || p.caption || "Brexcel outside software engineering"}
                       fill
                       unoptimized={p.unoptimized}
                       sizes="(max-width: 640px) 78vw, 320px"

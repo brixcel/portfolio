@@ -3,11 +3,13 @@ import SectionHead from "./SectionHead";
 import { TechChip } from "./TechChip";
 
 // Only technologies already in his stack data. "Used in" is derived from each project's stack, never typed in.
-const GROUPS: { title: string; note: string; slugs: string[] }[] = [
+// alsoIn: places outside the project list that use the group (this portfolio is Next.js + TypeScript).
+const GROUPS: { title: string; note: string; slugs: string[]; alsoIn?: string[] }[] = [
   {
     title: "Frontend Engineering",
     note: "Interfaces, app shells and the views people actually click.",
     slugs: ["react", "nextjs", "typescript", "javascript", "tailwindcss", "vitejs", "html5", "css3", "bootstrap"],
+    alsoIn: ["this site"],
   },
   {
     title: "Backend Engineering",
@@ -53,7 +55,7 @@ export default function Capabilities() {
         <ol className="cap-list">
           {GROUPS.map((g, i) => {
             const techs = g.slugs.map((s) => bySlug.get(s)).filter((t): t is Tech => !!t);
-            const usedIn = projects.filter((p) => p.stack.some((t) => g.slugs.includes(t.slug))).map((p) => p.title);
+            const usedIn = projects.filter((p) => p.stack.some((t) => g.slugs.includes(t.slug))).map((p) => p.title).concat(g.alsoIn ?? []);
             return (
               <li key={g.title} className="cap-row">
                 <span className="cap-n">{String(i + 1).padStart(2, "0")}</span>

@@ -6,9 +6,9 @@ import { getGsap, prefersReducedMotion } from "../lib/motion";
 
 // Each fact is something an interviewer can check (PRODUCT.md).
 const FACTS = [
-  { value: "2027", label: "Graduating Year" },
-  { value: "Egoist Labs", label: "Software Engineer Trainee" },
-  { value: "Philippines", label: "Location" },
+  { value: "37", label: "C# scripts in AR-DUINO" },
+  { value: "3–5 min", label: "Deploys, down from 15–30 manual" },
+  { value: "5", label: "Person team led" },
 ];
 
 const FOCUS = [
@@ -77,13 +77,11 @@ export default function About() {
           <div className="about-text about-reveal">
             <p>
               I&rsquo;m <strong>Brexcel Orias</strong>, a Computer Engineering
-              student passionate about building software, exploring technology,
-              and solving real-world problems through code.
+              student at URS Antipolo and a Software Engineer Intern at Egoist
+              Labs, where I write the GitHub Actions workflows that deploy our
+              frontends.
             </p>
-            <p>
-              From web development to 3D simulation, I enjoy working across
-              different technologies and turning ideas into working products.
-            </p>
+            <p>On our AR-DUINO thesis I built the 3D circuit simulation.</p>
           </div>
           <a className="about-journey about-reveal" href="#journey">
             My Journey

@@ -17,7 +17,7 @@ Personal portfolio of Brexcel Joe M. Orias at brexcel.vercel.app. Success is a r
 
 ## Positioning
 
-A Computer Engineering student who ships real, team-used software and the pipelines that deploy it: Software Engineer Trainee at Egoist Labs building CI/CD workflows, plus full-stack projects with real users.
+A Computer Engineering student who ships real, team-used software and the pipelines that deploy it: Software Engineer Intern at Egoist Labs building CI/CD workflows, plus full-stack projects with real users.
 
 ## Operating Context
 
@@ -29,21 +29,31 @@ A Computer Engineering student who ships real, team-used software and the pipeli
 - Next.js app, deployed on Vercel. GSAP is used for motion. No MDX.
 - Three.js (React Three Fiber + drei) is allowed for the hero desk only, loaded after the text. Reduced motion and no-WebGL visitors get the Blender poster render instead.
 - Hero title text is exactly "software developer". Loading screen text is "brexcel". The phrase "Computer Engineering" appears in the hero world.
-- Confirmed status line: "Software Engineer Trainee at Egoist Labs · Computer Engineering, URS Antipolo, Class of 2027 · Open to internships and freelance".
+- Confirmed status line: "Software Engineer Intern at Egoist Labs · Computer Engineering, URS Antipolo, Class of 2027 · Open to internships and freelance".
 - The Robinsons Mall RFID Parking System is not shown anywhere yet.
 - Do not show TaskFlow as a separate project, AWS, or n8n.
-- The AR-DUINO thesis (team project; he built the 3D circuit simulation) is shown first and ranked above Synctask, on the site and the CV.
+- The AR-DUINO thesis (team project; he built the 3D circuit simulation) is shown first and ranked above SyncTask, on the site and the CV.
 
 ## Brand Commitments
 
 - Owner-confirmed direction (Nov 19, 2026): monochrome "developer" look: grey paper, black ink, Inter Tight (heavy) with JetBrains Mono labels, a giant "//" brand mark, terminal-prompt details and a dark tech strip. Green is used only for the open-to-work status. The desk lamp in the header stays the light/dark switch ("Lights on" / "Lights off"). Replaces the cream / olive / Caprasimo identity.
-- Project names are spelled Synctask and UrsacHub.
+- Project names are spelled SyncTask and UrsacHub (owner-confirmed Nov 21, 2026: "SyncTask", matching the app title and the CV).
+- SyncTask's stack is React + Vite (JavaScript), Node.js/Express, PostgreSQL/Prisma, Tailwind and Docker, as verified in its repo on Nov 21, 2026. It uses no TypeScript and no Next.js.
+- UrsacHub is a team repo. He worked on the front end: the login/register pages, the product and news pages, the admin add-news/add-product forms, and styling in the shared stylesheet. That is 17 of about 206 commits. Teammates created those files, so never say he "built the front end".
+- Owner answers, Nov 21, 2026:
+  - **SyncTask** is solo; he built it alone. It is a Jira-style task tracker with AI, made for small teams. "Team" on the CV refers to its users, not to who built it.
+  - **UrsacHub Social:** the 5-person team he led includes the analyst who made the full Figma design.
+  - **AR-DUINO** stays first. The team repo is private; he'll raise making it public with the team and will record a demo clip.
+  - **UrsacHub:** the live link stays, even though Render takes up to about 90 s to wake.
+  - **Photo Booth** supports layouts of 1–9 photos.
+  - **Freelance offer** for now: website development.
+  - **Look:** grey paper confirmed, not warm off-white.
 
 ## Evidence on Hand
 
-- Real project screenshots in `public/assets/` for AR-DUINO, Synctask, UrsacHub, UrsacHub Social, DSA Workbench, Photo Booth, and the Egoist Labs pipelines.
+- Real project screenshots in `public/assets/` for AR-DUINO, SyncTask, UrsacHub, UrsacHub Social, DSA Workbench, Photo Booth, and the Egoist Labs pipelines.
 - Photos of him: `public/assets/profile.jpg` (formal portrait, in the 3D desk frame) and his lookout photo (side profile, hands in pockets), used in the hero as `hero-me.webp` (his own cut-out outline applied to the full-res original) over `hero-vista-fade.webp` (the same photo, B/W and faded). Sources in `design/hero/`.
-- Confirmed numbers: authored 37 C# scripts in the AR-DUINO repository (github.com/Yiizer/Arduino-Ar-App); Egoist Labs deploys went from 15–30 minutes manual to 3–5 minutes automated; 5 automated quality gates; 13 workflow runs since his changes merged; led a 5-person team on UrsacHub Social; DSA Workbench used in a class of about 40 students.
+- Confirmed numbers: authored 37 C# scripts in the AR-DUINO repository (github.com/Yiizer/Arduino-Ar-App, private: 404 to the public, so it is not linked on the site); Egoist Labs deploys went from 15–30 minutes manual to 3–5 minutes automated; 5 automated quality gates; 13 workflow runs since his changes merged; led a 5-person team on UrsacHub Social; DSA Workbench used in a class of about 40 students.
 - Not yet on hand: photos of his desk, the IoT RC car, or his laptop. Never fabricate users, clients, testimonials, metrics, or photos.
 
 ## Product Principles

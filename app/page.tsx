@@ -14,12 +14,12 @@ export default async function Home() {
   const photos = await lifePhotos();
   return (
     <>
-      <a href="#about" className="skip-link">
+      <a href="#main" className="skip-link">
         Skip to content
       </a>
       <LoadingScreen />
       <Header />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <Marquee />
         <About />

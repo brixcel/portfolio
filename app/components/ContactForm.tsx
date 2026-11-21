@@ -30,7 +30,9 @@ export default function ContactForm() {
     setErrors(found);
     setTouched({ name: true, email: true, message: true });
     if (Object.keys(found).length) {
-      e.currentTarget.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
+      // aria-invalid isn't rendered yet, so pick the field from `found` directly.
+      const first = (["name", "email", "message"] as const).find((f) => found[f]);
+      document.getElementById(`cf-${first}`)?.focus();
       return;
     }
     setStatus({ kind: "sending" });
@@ -111,7 +113,7 @@ export default function ContactForm() {
           </svg>
         </button>
         <p className={`cf-status${status.kind === "error" ? " is-error" : ""}`} role="status" aria-live="polite">
-          {status.kind === "sent" && "Thanks! Your message is on its way. I’ll reply to your email."}
+          {status.kind === "sent" && "Thanks. Your message is on its way, and I’ll reply to your email."}
           {status.kind === "error" && status.message}
         </p>
       </div>

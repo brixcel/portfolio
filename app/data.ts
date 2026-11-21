@@ -104,13 +104,13 @@ export const cicdSlides = [
 ];
 
 export const synctaskSlides = [
-  { src: "/assets/synctask-1.png", alt: "Synctask landing and sign-in" },
-  { src: "/assets/synctask-2.png", alt: "Synctask all-tasks board" },
-  { src: "/assets/synctask-4.png", alt: "Synctask task detail with subtasks and properties" },
-  { src: "/assets/synctask-7.png", alt: "Synctask new-task dialog with Create with AI" },
-  { src: "/assets/synctask-5.png", alt: "Synctask command palette" },
-  { src: "/assets/synctask-6.png", alt: "Synctask notifications panel" },
-  { src: "/assets/synctask-3.png", alt: "Synctask empty My Tasks board" },
+  { src: "/assets/synctask-1.png", alt: "SyncTask landing and sign-in" },
+  { src: "/assets/synctask-2.png", alt: "SyncTask all-tasks board" },
+  { src: "/assets/synctask-4.png", alt: "SyncTask task detail with subtasks and properties" },
+  { src: "/assets/synctask-7.png", alt: "SyncTask new-task dialog with Create with AI" },
+  { src: "/assets/synctask-5.png", alt: "SyncTask command palette" },
+  { src: "/assets/synctask-6.png", alt: "SyncTask notifications panel" },
+  { src: "/assets/synctask-3.png", alt: "SyncTask empty My Tasks board" },
 ];
 
 export const arduinoSlides = [
@@ -205,7 +205,7 @@ export const projects: Project[] = [
   {
     id: "synctask",
     number: "02",
-    title: "Synctask",
+    title: "SyncTask",
     kind: "Full-stack web application",
     role: "Full-Stack Developer",
     description:
@@ -218,7 +218,7 @@ export const projects: Project[] = [
     ],
     liveHref: "https://synctask-proj.vercel.app/",
     githubHref: "https://github.com/brixcel/taskflow",
-    note: "The repository is named taskflow — the project was renamed to Synctask during development.",
+    note: "The repository is named taskflow — the project was renamed to SyncTask during development.",
     stack: synctaskStack,
     slides: synctaskSlides,
     aspect: "1439 / 782",
@@ -234,6 +234,7 @@ export const projects: Project[] = [
     description:
       "GitHub Actions workflows that build the Capability Studio and Learning Platform frontends and deploy them to Cloudflare Pages with Wrangler.",
     highlights: [
+      "Deploys cut from 15–30 min manual to 3–5 min automated",
       "main ships to production, dev to the dev site",
       "Every pull request gets its own preview URL",
       "Nothing deploys until the checks pass",
@@ -262,7 +263,7 @@ export const projects: Project[] = [
     ],
     liveHref: "https://ursachub.onrender.com/student/home",
     githubHref: "https://github.com/markPie29/ursachub",
-    note: "Team project. I worked on the front end: the login and register pages, the product and news pages, the admin forms for adding news and products, and styling in the shared stylesheet.",
+    note: "Team project. I worked on the front end: the login and register pages, the product and news pages, the admin forms for adding news and products, and styling in the shared stylesheet. The live site is on free hosting, so the first load can take up to a minute.",
     stack: ursachubStack,
     slides: ursachubSlides,
     aspect: "1430 / 782",
@@ -319,7 +320,7 @@ export const projects: Project[] = [
       "A browser photobooth: pick a strip layout, shoot with a countdown, decorate with theme stickers and download the finished strip in high resolution.",
     liveHref: "https://simple-photobooth.vercel.app/",
     githubHref: "https://github.com/brixcel/photo-booth",
-    note: "Layouts adapt automatically to the chosen photo count (3, 4 or 6).",
+    note: "Layouts adapt automatically to the chosen photo count, from 1 to 9.",
     stack: photoboothStack,
     slides: photoboothSlides,
     aspect: "1024 / 557",
