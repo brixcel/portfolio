@@ -7,6 +7,17 @@ export type ContactErrors = Partial<Record<keyof ContactInput, string>>;
 const EMAIL_RE =
   /^(?!\.)(?!.*\.\.)[A-Za-z0-9._%+'-]+(?<!\.)@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,24}$/;
 
+// What the visitor is writing about. It only shapes the email subject, so an unknown value falls back to "other".
+export const TOPICS = [
+  { value: "job", label: "A job or internship", subject: "job or internship" },
+  { value: "website", label: "A website project", subject: "website project" },
+  { value: "other", label: "Something else", subject: "message" },
+] as const;
+export type Topic = (typeof TOPICS)[number]["value"];
+export function topicSubject(topic: unknown) {
+  return (TOPICS.find((t) => t.value === topic) ?? TOPICS[2]).subject;
+}
+
 export const LIMITS = { name: 100, email: 254, message: 5000, messageMin: 10 };
 
 export function isValidEmail(email: string) {

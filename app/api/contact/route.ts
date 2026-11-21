@@ -1,5 +1,5 @@
 import { resolveMx } from "node:dns/promises";
-import { validateContact, type ContactErrors } from "../../lib/contact";
+import { topicSubject, validateContact, type ContactErrors } from "../../lib/contact";
 
 // Delivers contact form messages to the owner's inbox through Resend (https://resend.com/docs/api-reference/emails/send-email).
 // Needs RESEND_API_KEY. CONTACT_TO / CONTACT_FROM are optional overrides; see .env.example.
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
       from: FROM,
       to: [TO],
       reply_to: input.email,
-      subject: `Portfolio message from ${name}`,
+      subject: `Portfolio: ${topicSubject(body.topic)} from ${name}`,
       text: `From: ${name} <${input.email}>\n\n${input.message}`,
     }),
   });

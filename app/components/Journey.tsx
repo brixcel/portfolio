@@ -1,19 +1,32 @@
 import SectionHead from "./SectionHead";
 
-// No dates here that his existing content doesn't already state. Every number is from PRODUCT.md "Confirmed numbers".
+// No dates: Brexcel chose type labels over years (Nov 21, 2026). Every number is from PRODUCT.md "Confirmed numbers".
+// `kind` keeps paid work, personal projects, school work and education visibly apart.
 const STEPS = [
   {
-    when: "Now",
+    kind: "Work",
+    scope: "Now",
     title: "Software Engineer Intern",
     org: "Egoist Labs",
-    text: "Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys on Cloudflare Pages.",
+    text: "Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys on Cloudflare Pages: production, dev, and a preview for every pull request.",
     stat: "3–5 min",
     statLabel: "deploys, down from 15–30 min manual",
     href: "#egoist-cicd",
     live: true,
   },
   {
-    when: "Thesis",
+    kind: "Personal project",
+    scope: "Solo",
+    title: "Full-Stack Developer",
+    org: "SyncTask",
+    text: "Built a free, Jira-style task tracker on my own: React front end, Express API, PostgreSQL, and AI that turns a sentence into tasks.",
+    stat: "43",
+    statLabel: "backend test files",
+    href: "#synctask",
+  },
+  {
+    kind: "Thesis",
+    scope: "Team",
     title: "3D Simulation Developer",
     org: "AR-DUINO",
     text: "Built the 3D circuit simulation for our team's AR Arduino learning app: drag-and-snap parts, wires that snap to pins, circuit checks and a mock IDE.",
@@ -22,7 +35,8 @@ const STEPS = [
     href: "#ar-duino",
   },
   {
-    when: "Team lead",
+    kind: "School project",
+    scope: "Team lead",
     title: "Lead Developer",
     org: "UrsacHub Social",
     text: "Led the architecture, the full-stack implementation and the real-time chat of a campus social platform.",
@@ -31,7 +45,8 @@ const STEPS = [
     href: "#ursachub-social",
   },
   {
-    when: "Campus",
+    kind: "School project",
+    scope: "Team lead",
     title: "Lead Developer",
     org: "DSA Workbench",
     text: "A teaching tool for URS Antipolo that shows data structures working in memory as you push, pop, insert and rotate.",
@@ -40,7 +55,8 @@ const STEPS = [
     href: "#ursac-dsa",
   },
   {
-    when: "Class of 2027",
+    kind: "Education",
+    scope: "Class of 2027",
     title: "BS Computer Engineering",
     org: "URS Antipolo",
     text: "Where the hardware side comes from: circuits, microcontrollers, and the systems thinking behind the rest of this page.",
@@ -53,18 +69,21 @@ export default function Journey() {
       <div className="container">
         <SectionHead
           id="journey-title"
-          index="05 — Journey"
+          index="03 — Experience"
           prompt="git log --oneline"
           title="the journey"
-          sub="Where I've been building, most recent first."
+          sub="Paid work first, then my own projects, school projects and education."
         />
         <ol className="tl">
           {STEPS.map((s) => (
             <li key={s.org} className="tl-item">
-              <span className="tl-when">
-                {s.live && <span className="status-dot" aria-hidden="true" />}
-                {s.when}
-              </span>
+              <p className="tl-when">
+                <span className="tl-kind">
+                  {s.live && <span className="status-dot" aria-hidden="true" />}
+                  {s.kind}
+                </span>
+                <span className="tl-scope">{s.scope}</span>
+              </p>
               <div className="tl-main">
                 <h3>
                   {s.title}

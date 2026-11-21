@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { LIMITS, validateContact, type ContactErrors, type ContactInput } from "../lib/contact";
+import { LIMITS, TOPICS, validateContact, type ContactErrors, type ContactInput, type Topic } from "../lib/contact";
 
 type Status = { kind: "idle" | "sending" | "sent" } | { kind: "error"; message: string };
 
@@ -12,6 +12,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof ContactInput, boolean>>>({});
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [topic, setTopic] = useState<Topic>("other");
 
   // Errors show once a field has been left (or on submit), then update as the visitor types.
   const set = (field: keyof ContactInput, value: string) => {
@@ -41,12 +42,13 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, company }),
+        body: JSON.stringify({ ...values, topic, company }),
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok) {
         setStatus({ kind: "sent" });
         setValues(EMPTY);
+        setTopic("other");
         setTouched({});
         return;
       }
@@ -75,6 +77,23 @@ export default function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={submit} noValidate>
+      <fieldset className="cf-topics">
+        <legend>What&rsquo;s this about?</legend>
+        <div className="cf-topic-list">
+          {TOPICS.map((t) => (
+            <label key={t.value} className="cf-topic">
+              <input
+                type="radio"
+                name="topic"
+                value={t.value}
+                checked={topic === t.value}
+                onChange={() => setTopic(t.value)}
+              />
+              <span>{t.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <div className="cf-row">
         <div className="cf-field">
           <label htmlFor="cf-name">Name</label>
@@ -97,7 +116,19 @@ export default function ContactForm() {
       </div>
       <div className="cf-field">
         <label htmlFor="cf-message">Message</label>
-        <textarea {...field("message")} rows={5} maxLength={LIMITS.message} required />
+        <textarea
+          {...field("message")}
+          rows={5}
+          maxLength={LIMITS.message}
+          placeholder={
+            topic === "website"
+              ? "What’s the site for, and when do you need it?"
+              : topic === "job"
+                ? "The role, the team, and how to reach you."
+                : undefined
+          }
+          required
+        />
         {error("message")}
       </div>
       {/* Honeypot for bots; hidden from people and assistive tech */}

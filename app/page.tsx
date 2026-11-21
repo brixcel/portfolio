@@ -24,9 +24,9 @@ export default async function Home() {
         <Marquee />
         <About />
         <Projects />
-        <Life photos={photos} />
-        <Capabilities />
         <Journey />
+        <Capabilities />
+        <Life photos={photos} />
         {/* The 3D desk section (HeroDesk) is paused for now; its code and model stay in the repo. */}
         <Contact />
       </main>
