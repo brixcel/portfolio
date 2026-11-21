@@ -41,7 +41,8 @@ A Computer Engineering student who ships real, team-used software and the pipeli
 - SyncTask's stack is React + Vite (JavaScript), Node.js/Express, PostgreSQL/Prisma, Tailwind and Docker, as verified in its repo on Nov 21, 2026. It uses no TypeScript and no Next.js.
 - UrsacHub is a team repo. He worked on the front end: the login/register pages, the product and news pages, the admin add-news/add-product forms, and styling in the shared stylesheet. That is 17 of about 206 commits. Teammates created those files, so never say he "built the front end".
 - Owner answers, Nov 21, 2026:
-  - **SyncTask** is solo; he built it alone. It is a Jira-style task tracker with AI, made for small teams. "Team" on the CV refers to its users, not to who built it.
+  - **SyncTask** is solo; he built it alone. It is a Jira-style task tracker with AI, made for small teams that can't afford Jira or other paid trackers. "For small teams" on the CV describes who it is for. It has no users yet (Nov 21, 2026), so never imply users, teams or adoption.
+  - **DSA Workbench** is a team project that he led. Its code is the public repo github.com/brixcel/conditional.
   - **UrsacHub Social:** the 5-person team he led includes the analyst who made the full Figma design.
   - **AR-DUINO** stays first. The team repo is private; he'll raise making it public with the team and will record a demo clip.
   - **UrsacHub:** the live link stays, even though Render takes up to about 90 s to wake.
