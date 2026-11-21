@@ -61,7 +61,7 @@ export const viewport: Viewport = {
 
 // Runs before first paint: restores the saved theme and flags that motion is
 // allowed, so entrance states can be hidden in CSS without a flash.
-const INIT_SCRIPT = `(function(){var d=document.documentElement;try{var t=localStorage.getItem("bjo-portfolio-theme");if(t)d.setAttribute("data-theme",t)}catch(e){}d.style.setProperty("--icon-invert",d.getAttribute("data-theme")==="dark"?"1":"0");if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches)d.setAttribute("data-motion","on")})()`;
+const INIT_SCRIPT = `(function(){var d=document.documentElement;try{var t=localStorage.getItem("bjo-portfolio-theme");if(t)d.setAttribute("data-theme",t)}catch(e){}d.style.setProperty("--icon-invert",d.getAttribute("data-theme")==="dark"?"1":"0");if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches)d.setAttribute("data-motion","on");try{if(sessionStorage.getItem("bjo-portfolio-visited")==="1")d.setAttribute("data-intro-seen","")}catch(e){}})()`;
 
 export default function RootLayout({
   children,

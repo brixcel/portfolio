@@ -214,7 +214,7 @@ export const projects: Project[] = [
       },
     ],
     liveHref: "https://ar-duino-m.vercel.app/",
-    note: "Thesis team project. I built the 3D circuit simulation: drag-and-snap parts on the breadboard, wires that snap to Arduino pins, circuit validation and the mock IDE, writing 37 of its C# scripts.",
+    note: "Thesis team project.",
     stack: arduinoStack,
     slides: arduinoSlides,
     aspect: "1094 / 560",

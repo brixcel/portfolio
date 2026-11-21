@@ -31,6 +31,8 @@ export function MarqueeItem({ tech }: { tech: Tech }) {
         alt=""
         width={30}
         height={30}
+        loading="lazy"
+        decoding="async"
         className={iconClass(tech)}
       />
       <span>{tech.name}</span>

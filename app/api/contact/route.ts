@@ -32,6 +32,8 @@ export async function POST(request: Request) {
   } catch {
     return json(400, { error: "Invalid request." });
   }
+  // `null`, arrays and plain values are valid JSON but not a message.
+  if (!body || typeof body !== "object" || Array.isArray(body)) return json(400, { error: "Invalid request." });
 
   // Honeypot: people never see this field, bots fill it. Pretend it worked.
   if (typeof body.company === "string" && body.company.trim()) return json(200, { ok: true });

@@ -372,6 +372,12 @@ main:focus {
 /* =====================================================================
    Loading screen
    ===================================================================== */
+/* The loader only exists for a first visit with JS and motion on. Without JS (no data-motion),
+   with reduced motion, or after the intro has played this session, the page shows at once. */
+html:not([data-motion="on"]) .loader,
+html[data-intro-seen] .loader {
+  display: none;
+}
 .loader {
   position: fixed;
   inset: 0;
@@ -1095,8 +1101,13 @@ main:focus {
   color: #eaeaea;
 }
 :root[data-theme="dark"] .marquee {
-  background: #0b0b0b;
-  border-top: 1px solid var(--color-divider);
+  /* A step lighter than the dark page so the strip still reads as a strip. */
+  background: #1b1b1b;
+  border-top: 1px solid #2c2c2c;
+  border-bottom: 1px solid #2c2c2c;
+}
+:root[data-theme="dark"] .marquee .marq-item img {
+  filter: grayscale(1) brightness(1.6) contrast(0.95);
 }
 .marq-label,
 .marq-cta {
@@ -2610,6 +2621,20 @@ main:focus {
 .to-top:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
+}
+/* On phones it sat on top of body text and links; the header and the footer's
+   "Back to top" link already cover the job there. */
+@media (max-width: 768px) {
+  .to-top {
+    display: none;
+  }
+}
+/* Desktop: a short gallery stays beside its longer write-up instead of leaving an empty column. */
+@media (min-width: 901px) {
+  .case--featured .case-body > .gallery {
+    position: sticky;
+    top: 96px;
+  }
 }
 
 /* =====================================================================

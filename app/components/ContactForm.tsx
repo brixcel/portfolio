@@ -12,7 +12,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof ContactInput, boolean>>>({});
   const [status, setStatus] = useState<Status>({ kind: "idle" });
-  const [topic, setTopic] = useState<Topic>("other");
+  const [topic, setTopic] = useState<Topic | null>(null);
 
   // Errors show once a field has been left (or on submit), then update as the visitor types.
   const set = (field: keyof ContactInput, value: string) => {
@@ -42,13 +42,13 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, topic, company }),
+        body: JSON.stringify({ ...values, topic: topic ?? "other", company }),
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok) {
         setStatus({ kind: "sent" });
         setValues(EMPTY);
-        setTopic("other");
+        setTopic(null);
         setTouched({});
         return;
       }
@@ -78,7 +78,7 @@ export default function ContactForm() {
   return (
     <form className="contact-form" onSubmit={submit} noValidate>
       <fieldset className="cf-topics">
-        <legend>What&rsquo;s this about?</legend>
+        <legend>What&rsquo;s this about? (optional)</legend>
         <div className="cf-topic-list">
           {TOPICS.map((t) => (
             <label key={t.value} className="cf-topic">
