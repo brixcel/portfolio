@@ -42,6 +42,7 @@ A Computer Engineering student who ships real, team-used software and the pipeli
 - UrsacHub is a team repo. He worked on the front end: the login/register pages, the product and news pages, the admin add-news/add-product forms, and styling in the shared stylesheet. That is 17 of about 206 commits. Teammates created those files, so never say he "built the front end".
 - Owner answers, Nov 21, 2026:
   - **SyncTask** is solo; he built it alone. It is a Jira-style task tracker with AI, made for small teams that can't afford Jira or other paid trackers. "For small teams" on the CV describes who it is for. It has no users yet (Nov 21, 2026), so never imply users, teams or adoption.
+  - **SyncTask lessons** (owner, Nov 22, 2026): using GET/POST/PATCH properly so data isn't over-exposed; fixing notifications pinging the console; limiting the AI integration; row-level security on the backend.
   - **DSA Workbench** is a team project that he led. Its code is the public repo github.com/brixcel/conditional.
   - **UrsacHub Social:** the 5-person team he led includes the analyst who made the full Figma design.
   - **AR-DUINO** stays first. The team repo is private; he'll raise making it public with the team and will record a demo clip.

@@ -6,18 +6,19 @@ import { getGsap, prefersReducedMotion } from "../lib/motion";
 
 // The checkable numbers (37 scripts, 3–5 min deploys, 5-person team) live in Experience,
 // next to the role each one proves, instead of being repeated here.
+// Each card rests on something he did (PRODUCT.md), not a generic value.
 const FOCUS = [
   {
-    title: "Reliable software",
-    text: "Code that keeps working after the demo, shipped through a pipeline instead of by hand.",
+    title: "Nothing ships unchecked",
+    text: "On Egoist Labs’ Learning Platform, formatting, linting, type checks, tests and a production build all have to pass before anything deploys.",
   },
   {
-    title: "Understanding systems",
-    text: "How the database, the API, the interface and the deploy fit together, so a fix lands in the right layer.",
+    title: "Getting the connections right",
+    text: "In AR-DUINO I placed a snap point on every component and Arduino pin, set which parts can attach where, and debugged until every part landed right.",
   },
   {
-    title: "Getting better each build",
-    text: "Every project teaches the next one. I would rather understand why something broke than patch around it.",
+    title: "What SyncTask taught me",
+    text: "Use GET, POST and PATCH for what they’re for and send only what a screen needs, stop notifications pinging the console, cap the AI features, and lock each team’s data down with row-level security on the backend.",
   },
 ];
 
