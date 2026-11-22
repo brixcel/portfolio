@@ -181,7 +181,16 @@ export type Project = {
   tone: "moss" | "clay" | "harbor" | "ink-blue" | "rose" | "circuit";
   featured?: boolean;
   /** Optional demo clip, shown under the note. */
-  video?: { src: string; poster?: string; caption: string; label: string };
+  video?: {
+    src: string;
+    poster?: string;
+    caption: string;
+    label: string;
+    /** Seconds where his own part starts; shows a "Jump to my part" button. */
+    jumpTo?: number;
+    /** Width / height of the clip. */
+    aspect?: string;
+  };
 };
 
 export const projects: Project[] = [
@@ -225,6 +234,8 @@ export const projects: Project[] = [
       poster: "/videos/ar-duino-demo-poster.jpg",
       caption: "Our team’s thesis introduction video. The 3D simulation I built appears from about 0:26.",
       label: "AR-DUINO thesis introduction video",
+      jumpTo: 26,
+      aspect: "576 / 320",
     },
   },
   {

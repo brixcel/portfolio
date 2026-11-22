@@ -9,6 +9,22 @@ import Barcode from "./Barcode";
 
 export default function ProjectCase({ project, flip }: { project: Project; flip: boolean }) {
   const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const jumpToMyPart = () => {
+    const v = videoRef.current;
+    if (!v || project.video?.jumpTo === undefined) return;
+    const go = () => {
+      v.currentTime = project.video!.jumpTo!;
+      v.play().catch(() => {});
+    };
+    // preload="none" means no metadata yet; seek once the browser knows the duration.
+    if (v.readyState >= 1) go();
+    else {
+      v.addEventListener("loadedmetadata", go, { once: true });
+      v.load();
+    }
+    v.focus({ preventScroll: true });
+  };
   const { featured } = project;
 
   useEffect(() => {
@@ -89,6 +105,8 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
               {gallery}
               <figure className="case-video">
                 <video
+                  ref={videoRef}
+                  style={project.video.aspect ? { aspectRatio: project.video.aspect } : undefined}
                   controls
                   muted
                   playsInline
@@ -98,7 +116,17 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
                 >
                   <source src={project.video.src} type="video/mp4" />
                 </video>
-                <figcaption>{project.video.caption}</figcaption>
+                <figcaption>
+                  <span>{project.video.caption}</span>
+                  {project.video.jumpTo !== undefined && (
+                    <button type="button" className="video-jump" onClick={jumpToMyPart}>
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
+                        <path d="M7 4.5v15l12-7.5z" />
+                      </svg>
+                      Jump to my part (0:{String(project.video.jumpTo).padStart(2, "0")})
+                    </button>
+                  )}
+                </figcaption>
               </figure>
             </div>
           ) : (
