@@ -10,15 +10,15 @@ import { getGsap, prefersReducedMotion } from "../lib/motion";
 const FOCUS = [
   {
     title: "Nothing ships unchecked",
-    text: "On Egoist Labs’ Learning Platform, formatting, linting, type checks, tests and a production build all have to pass before anything deploys.",
+    text: "On Egoist Labs’ Learning Platform, every deployment is gated behind automated formatting, linting, type-checking, tests, and a production build before anything goes live.",
   },
   {
-    title: "Getting the connections right",
-    text: "In AR-DUINO I placed a snap point on every component and Arduino pin, set which parts can attach where, and debugged until every part landed right.",
+    title: "Deterministic state & validation (AR-DUINO)",
+    text: "Modeled snap points and attachment rules across components and Arduino pins, debugging edge cases until every hardware connection validated reliably at runtime.",
   },
   {
-    title: "What SyncTask taught me",
-    text: "Use GET, POST and PATCH for what they’re for and send only what a screen needs, stop notifications pinging the console, cap the AI features, and lock each team’s data down with row-level security on the backend.",
+    title: "API & data discipline (SyncTask)",
+    text: "Enforce strict REST semantics and minimal payloads, eliminate client-side noise, rate-limit AI endpoints to control cost, and isolate multi-tenant data at the database layer with PostgreSQL Row-Level Security.",
   },
 ];
 

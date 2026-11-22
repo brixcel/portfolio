@@ -6,35 +6,21 @@ import { TechChip } from "./TechChip";
 // alsoIn: places outside the project list that use the group (this portfolio is Next.js + TypeScript).
 const GROUPS: { title: string; note: string; slugs: string[]; alsoIn?: string[] }[] = [
   {
-    title: "Frontend engineering",
-    note: "Interfaces, app shells and the views people actually click.",
-    slugs: ["react", "nextjs", "typescript", "javascript", "tailwindcss", "vitejs", "html5", "css3", "bootstrap"],
+    title: "Core full-stack",
+    note: "Typed interfaces, APIs and the data behind them.",
+    slugs: ["typescript", "react", "nextjs", "nodejs", "express", "postgresql", "prisma", "tailwindcss", "vitejs"],
     alsoIn: ["this site"],
   },
   {
-    title: "Backend engineering",
-    note: "APIs, auth and the server logic behind the screens.",
-    slugs: ["nodejs", "express", "laravel", "php"],
-  },
-  {
-    title: "Databases",
-    note: "Schemas, queries and the ORM layer in between.",
-    slugs: ["postgresql", "mysql", "prisma", "firebase"],
-  },
-  {
-    title: "DevOps & infrastructure",
+    title: "CI/CD & infra",
     note: "Builds, checks and deploys that run without someone watching.",
-    slugs: ["githubactions", "cloudflare", "docker", "pnpm"],
+    slugs: ["docker", "githubactions", "cloudflare", "git"],
   },
   {
-    title: "Creative engineering",
-    note: "3D simulation and augmented reality.",
-    slugs: ["unity", "csharp", "blender", "vuforia", "arfoundation"],
-  },
-  {
-    title: "Other tools",
-    note: "Version control and collaboration.",
-    slugs: ["git", "github"],
+    // Unity and C# stay listed: they are AR-DUINO's stack, the first project on the page.
+    title: "Additional",
+    note: "Team projects on Laravel and Firebase, and the AR-DUINO simulation in Unity and C#.",
+    slugs: ["laravel", "php", "mysql", "firebase", "unity", "csharp"],
   },
 ];
 

@@ -66,7 +66,7 @@ export default function Hero() {
             <circle cx="62" cy="6" r="3.5" fill="currentColor" />
           </svg>
           <strong>BREXCEL ORIAS</strong>
-          <em>{"// SOFTWARE DEVELOPER"}</em>
+          <em>{"// SOFTWARE ENGINEER"}</em>
         </p>
       </div>
 
@@ -81,7 +81,7 @@ export default function Hero() {
             </span>{" "}
             <span className="hero-line mask">
               <span>
-                developer<span aria-hidden="true">.</span>
+                engineer<span aria-hidden="true">.</span>
               </span>
             </span>
           </h1>
@@ -123,7 +123,7 @@ export default function Hero() {
             </li>
             <li className="hero-status-open">
               <span className="status-dot" aria-hidden="true" />
-              Open to internships and freelance
+              Open to Software Engineering internships &amp; junior roles
             </li>
           </ul>
         </div>

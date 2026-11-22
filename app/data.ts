@@ -8,7 +8,6 @@ export type Tech = {
 export const techStack: Tech[] = [
   { name: "React", slug: "react" },
   { name: "TypeScript", slug: "typescript" },
-  { name: "JavaScript", slug: "javascript" },
   { name: "Node.js", slug: "nodejs" },
   { name: "Express", slug: "express" },
   { name: "PostgreSQL", slug: "postgresql" },
@@ -20,14 +19,10 @@ export const techStack: Tech[] = [
   { name: "PHP", slug: "php" },
   { name: "MySQL", slug: "mysql" },
   { name: "Firebase", slug: "firebase" },
-  { name: "Bootstrap", slug: "bootstrap" },
-  { name: "HTML", slug: "html5" },
-  { name: "CSS", slug: "css3" },
   { name: "Docker", slug: "docker" },
   { name: "GitHub Actions", slug: "githubactions" },
   { name: "Cloudflare", slug: "cloudflare" },
   { name: "Git", slug: "git" },
-  { name: "GitHub", slug: "github" },
 ];
 
 export const arduinoStack: Tech[] = [
@@ -178,6 +173,10 @@ export type Project = {
   /** CSS custom property suffix: var(--project-<tone>) */
   tone: "moss" | "clay" | "harbor" | "ink-blue" | "rose" | "circuit";
   featured?: boolean;
+  /** The code is in a private repository: show a "Private repo" label instead of a link. */
+  privateRepo?: boolean;
+  /** A short pipeline/flow shown as inline steps (Egoist Labs CI/CD). */
+  flow?: { label: string; steps: string[] };
   /** Optional demo clip, shown under the note. */
   video?: {
     src: string;
@@ -198,7 +197,7 @@ export const projects: Project[] = [
     id: "ar-duino",
     number: "01",
     title: "AR-DUINO",
-    kind: "AR Arduino learning app, thesis",
+    kind: "3D circuit simulation & AR app (Thesis)",
     role: "3D Simulation Developer",
     description:
       "An app that teaches Arduino basics: pick a project, follow step-by-step lessons, build the circuit in a 3D simulation, then point your camera at a component card to see the part in AR.",
@@ -223,6 +222,7 @@ export const projects: Project[] = [
       },
     ],
     liveHref: "https://ar-duino-m.vercel.app/",
+    privateRepo: true,
     note: "Thesis team project.",
     stack: arduinoStack,
     slides: arduinoSlides,
@@ -259,6 +259,10 @@ export const projects: Project[] = [
         label: "What I built",
         text: "A free task tracker, alone and end to end. AI turns a sentence into a task, subtasks or a whole project plan, falls back to plain rules when the model fails, and is capped daily so it can’t run up costs.",
       },
+      {
+        label: "Trade-off",
+        text: "One shared database scoped by team instead of a database per team: cheap on free hosting, but every query must carry the team, so PostgreSQL row-level security and isolation tests back it up.",
+      },
       { label: "Result", text: "A live app and public code with 43 backend test files." },
     ],
     liveHref: "https://synctask-proj.vercel.app/",
@@ -291,8 +295,17 @@ export const projects: Project[] = [
         label: "What I built",
         text: "GitHub Actions workflows that check each build and ship it to Cloudflare Pages: main to production, dev to the dev site, and a preview link for every pull request.",
       },
+      {
+        label: "Trade-off",
+        text: "A newer push cancels the run already in progress: it saves CI minutes and stops an older build from deploying over a newer one.",
+      },
       { label: "Result", text: "Deploys now run automatically in 3–5 minutes." },
     ],
+    privateRepo: true,
+    flow: {
+      label: "Learning Platform pipeline",
+      steps: ["PR", "Format & lint", "Typecheck", "Test", "Production build", "Deploy"],
+    },
     note: "Wrote Learning Platform's deploy workflow and reworked Capability Studio's into per-environment deploys. Lint, format and tests run on Learning Platform.",
     stack: cicdStack,
     slides: cicdSlides,

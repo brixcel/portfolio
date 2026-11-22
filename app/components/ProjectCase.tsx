@@ -152,6 +152,17 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
               </dl>
             )}
 
+            {project.flow && (
+              <figure className="case-flow">
+                <figcaption className="case-flow-label">{project.flow.label}</figcaption>
+                <ol>
+                  {project.flow.steps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </figure>
+            )}
+
             {project.highlights && (
               <ul className="case-highlights">
                 {project.highlights.map((h) => (
@@ -160,7 +171,7 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
               </ul>
             )}
 
-            {(project.liveHref || project.githubHref) && (
+            {(project.liveHref || project.githubHref || project.privateRepo) && (
               <div className="case-actions">
                 {project.liveHref && (
                   <a href={project.liveHref} target="_blank" rel="noopener noreferrer" className="btn btn-tone">
@@ -175,6 +186,15 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
                     View code
                     <span className="sr-only"> on GitHub (opens in a new tab)</span>
                   </a>
+                )}
+                {project.privateRepo && !project.githubHref && (
+                  <span className="repo-private" title="The code lives in a private repository">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <rect x="5" y="11" width="14" height="10" rx="2" />
+                      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                    </svg>
+                    Private repo
+                  </span>
                 )}
               </div>
             )}

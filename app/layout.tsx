@@ -12,9 +12,9 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = "Brexcel Orias — Full-Stack Software Developer, Philippines";
+const TITLE = "Brexcel Orias — Software Engineer, Philippines";
 const DESCRIPTION =
-  "I build full-stack web apps and the pipelines that ship them. Computer Engineering, URS Antipolo, Class of 2027. Open to internships and freelance.";
+  "I build full-stack web apps and the pipelines that ship them. Computer Engineering, URS Antipolo, Class of 2027. Open to software engineering internships and junior roles.";
 
 const JSON_LD = {
   "@context": "https://schema.org",

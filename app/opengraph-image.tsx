@@ -1,11 +1,11 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Brexcel Orias, software developer. Software Engineer Intern at Egoist Labs, Computer Engineering at URS Antipolo.";
+export const alt = "Brexcel Orias, software engineer. Software Engineer Intern at Egoist Labs, Computer Engineering at URS Antipolo.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const NAME = "Brexcel Orias";
-const ROLE = "software developer";
+const ROLE = "software engineer";
 const LINE = "Software Engineer Intern at Egoist Labs · Computer Engineering, URS Antipolo";
 const MARK = "//";
 

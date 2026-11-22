@@ -173,7 +173,7 @@ export default function ProjectGallery({
                 {slide.darkSrc && (
                   <Image
                     src={slide.darkSrc}
-                    alt=""
+                    alt={slide.alt}
                     fill
                     sizes={sizes}
                     draggable={false}

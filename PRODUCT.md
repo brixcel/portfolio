@@ -28,8 +28,8 @@ A Computer Engineering student who ships real, team-used software and the pipeli
 
 - Next.js app, deployed on Vercel. GSAP is used for motion. No MDX.
 - Three.js (React Three Fiber + drei) is allowed for the hero desk only, loaded after the text. Reduced motion and no-WebGL visitors get the Blender poster render instead.
-- Hero title text is exactly "software developer". Loading screen text is "Brexl" (owner, Nov 22, 2026: "use Brexl for now"). The phrase "Computer Engineering" appears in the hero world.
-- Confirmed status line: "Software Engineer Intern at Egoist Labs · Computer Engineering, URS Antipolo, Class of 2027 · Open to internships and freelance".
+- Hero title text is exactly "Software engineer." (owner, Nov 22, 2026; was "software developer"). Hero availability: "Open to Software Engineering internships & junior roles". Loading screen text is "Brexl" (owner, Nov 22, 2026: "use Brexl for now"). The phrase "Computer Engineering" appears in the hero world.
+- Confirmed status line: "Software Engineer Intern at Egoist Labs · Computer Engineering, URS Antipolo, Class of 2027 · Open to Software Engineering internships & junior roles" (updated Nov 22, 2026).
 - The Robinsons Mall RFID Parking System is not shown anywhere yet.
 - Do not show TaskFlow as a separate project, AWS, or n8n.
 - The AR-DUINO thesis (team project; he built the 3D circuit simulation) is shown first and ranked above SyncTask, on the site and the CV.

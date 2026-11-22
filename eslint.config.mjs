@@ -16,6 +16,8 @@ const eslintConfig = defineConfig([
     ".claude/**",
     // Vendored Draco decoder (third-party, minified) used by the paused 3D desk
     "public/draco/**",
+    // Local-only showcase video tooling (excluded from git)
+    "showcase-video/**",
   ]),
 ]);
 
