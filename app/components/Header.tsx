@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { toggleTheme } from "../lib/theme";
+import BrandMark from "./BrandMark";
 
 const LINKS = [
   { id: "home", label: "Home" },
@@ -125,7 +126,8 @@ export default function Header() {
     <header className="site-header">
       <div className="header-inner">
         <a href="#home" className="header-logo">
-          BREXCEL<span className="dot">.</span>
+          <BrandMark className="header-mark" />
+          <span>brexl</span>
         </a>
 
         <nav ref={navRef} className="desktop-nav" aria-label="Sections">

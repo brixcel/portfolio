@@ -467,13 +467,20 @@ html[data-intro-seen] .loader {
   line-height: 34px;
   text-decoration: none;
 }
-.header-logo .dot {
-  display: inline-block;
-  color: var(--color-accent-700);
+.header-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+}
+.header-mark {
+  flex: none;
   transition: transform 0.5s var(--ease-out);
 }
-.header-logo:hover .dot {
-  transform: translateY(-5px);
+.header-logo:hover .header-mark {
+  transform: rotate(-8deg);
 }
 
 .desktop-nav {
