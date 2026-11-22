@@ -47,17 +47,16 @@ export default function Capabilities() {
       <div className="container">
         <SectionHead
           id="capabilities-title"
-          index="04 — Skills"
-          title="engineering capabilities"
+          index="Skills"
+          title="Engineering capabilities"
           sub="What I build with, grouped by layer, and where each one shows up in my projects."
         />
         <ol className="cap-list">
-          {GROUPS.map((g, i) => {
+          {GROUPS.map((g) => {
             const techs = g.slugs.map((s) => bySlug.get(s)).filter((t): t is Tech => !!t);
             const usedIn = projects.filter((p) => p.stack.some((t) => g.slugs.includes(t.slug))).map((p) => p.title).concat(g.alsoIn ?? []);
             return (
               <li key={g.title} className="cap-row">
-                <span className="cap-n">{String(i + 1).padStart(2, "0")}</span>
                 <div className="cap-head">
                   <h3>{g.title}</h3>
                   <p>{g.note}</p>

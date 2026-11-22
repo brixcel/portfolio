@@ -7,6 +7,10 @@ import { getGsap } from "../lib/motion";
 import ProjectCase from "./ProjectCase";
 import SectionHead from "./SectionHead";
 
+// The index lists the full write-ups; the other projects follow under "Also built".
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
+
 /**
  * Project index (doubles as in-page navigation) followed by each case study.
  * On fine pointers, hovering a row floats that project's first screenshot
@@ -40,19 +44,13 @@ export default function Projects() {
       <div className="container">
         <SectionHead
           id="projects-title"
-          index="02 — Projects"
-          title="selected work"
-          sub="Projects I’ve built and learned from. The first three are told in full; open the rest for their details."
-          aside={
-            <>
-              <span className="sec-count">{String(projects.length).padStart(2, "0")}</span>
-              <span className="mono-label">projects // built</span>
-            </>
-          }
+          index="Projects"
+          title="Selected work"
+          sub="Three projects told in full, then four more I’ve built and learned from."
         />
         <div className="projects-index-wrap">
           <ol ref={listRef} className="projects-index" onPointerLeave={() => setHovered(null)}>
-            {projects.map((p, i) => (
+            {featured.map((p, i) => (
               <li key={p.id} style={{ ["--tone" as string]: `var(--project-${p.tone})` }}>
                 <a
                   href={`#${p.id}`}
@@ -63,7 +61,6 @@ export default function Projects() {
                   <span className="pi-title">{p.title}</span>
                   <span className="pi-kind">
                     {p.kind}
-                    <span className="pi-depth">{p.featured ? "Full write-up" : "Summary"}</span>
                   </span>
                   <svg className="pi-arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
                     <path d="M10 4v12M5 11l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -73,7 +70,7 @@ export default function Projects() {
             ))}
           </ol>
           <div ref={previewRef} className={`pi-preview${hovered !== null ? " is-visible" : ""}`} aria-hidden="true">
-            {projects.map((p, i) => (
+            {featured.map((p, i) => (
               <div key={p.id} className={`pi-preview-img${hovered === i ? " is-active" : ""}`}>
                 <Image
                   src={p.slides[0].src}
@@ -88,8 +85,16 @@ export default function Projects() {
         </div>
       </div>
 
-      {projects.map((p, i) => (
+      {featured.map((p, i) => (
         <ProjectCase key={p.id} project={p} flip={i % 2 === 1} />
+      ))}
+
+      <div className="container also-built-head">
+        <h3 id="also-built" className="also-built-title">Also built</h3>
+        <p className="also-built-sub">Shorter write-ups. Open one for screenshots, links and what I did.</p>
+      </div>
+      {others.map((p) => (
+        <ProjectCase key={p.id} project={p} flip={false} />
       ))}
     </section>
   );

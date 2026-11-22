@@ -12,7 +12,6 @@ const STEPS = [
     stat: "3–5 min",
     statLabel: "deploys, down from 15–30 min manual",
     href: "#egoist-cicd",
-    live: true,
   },
   {
     kind: "Personal project",
@@ -69,8 +68,8 @@ export default function Journey() {
       <div className="container">
         <SectionHead
           id="journey-title"
-          index="03 — Experience"
-          title="the journey"
+          index="Experience"
+          title="The journey"
           sub="Paid work first, then my own projects, school projects and education."
         />
         <ol className="tl">
@@ -78,7 +77,6 @@ export default function Journey() {
             <li key={s.org} className="tl-item">
               <p className="tl-when">
                 <span className="tl-kind">
-                  {s.live && <span className="status-dot" aria-hidden="true" />}
                   {s.kind}
                 </span>
                 <span className="tl-scope">{s.scope}</span>

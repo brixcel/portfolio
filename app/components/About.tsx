@@ -126,11 +126,8 @@ export default function About() {
         <div className="about-focus">
           <h3 className="mono-label">What I care about</h3>
           <ol>
-            {FOCUS.map((f, i) => (
+            {FOCUS.map((f) => (
               <li key={f.title} className="about-reveal">
-                <span className="about-focus-n">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
                 <h4>{f.title}</h4>
                 <p>{f.text}</p>
               </li>

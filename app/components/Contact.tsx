@@ -57,7 +57,7 @@ export default function Contact() {
         <span className="sec-mark contact-mark" aria-hidden="true">
           {"//"}
         </span>
-        <p className="sec-index">06 — Contact</p>
+        <p className="sec-index">Contact</p>
         <p className="sec-prompt" aria-hidden="true">
           &gt; contact --open
         </p>
@@ -73,9 +73,11 @@ export default function Contact() {
           Freelance: I build websites. Tell me what you need through the form or by email, and I&rsquo;ll reply.
         </p>
 
+        <div className="contact-grid">
         <div className="contact-rise">
           <ContactForm />
         </div>
+        <div className="contact-side">
 
         <div className="contact-actions contact-rise">
           <a href={`mailto:${EMAIL}`} className="contact-email">
@@ -138,6 +140,8 @@ export default function Contact() {
             </button>
           </li>
         </ul>
+        </div>
+        </div>
 
         <footer className="site-footer">
           <span>&copy; {new Date().getFullYear()} Brexcel Joe M. Orias</span>

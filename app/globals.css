@@ -245,6 +245,19 @@ main:focus {
 .icon-invert {
   filter: invert(var(--icon-invert, 0));
 }
+/* Dark mode, keyed to the theme attribute itself: black logos flip, grey ones brighten. */
+:root[data-theme="dark"] .chip img {
+  filter: grayscale(1) brightness(1.9);
+}
+:root[data-theme="dark"] .chip img.icon-invert {
+  filter: grayscale(1) invert(1);
+}
+:root[data-theme="dark"] .chip img.icon-lift {
+  filter: grayscale(1) brightness(2.4);
+}
+:root[data-theme="dark"] .marquee .marq-item img.icon-lift {
+  filter: grayscale(1) brightness(2.6);
+}
 /* Dark-coloured brand marks (e.g. MySQL's teal) brighten in dark mode instead of inverting */
 .icon-lift {
   filter: brightness(var(--icon-lift, 1));
@@ -1462,13 +1475,8 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   padding-left: 22px;
   border-left: 1px solid var(--color-divider);
 }
-.about-focus-n {
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-}
 .about-focus h4 {
-  margin: 10px 0 8px;
+  margin: 0 0 8px;
   font-size: 21px;
 }
 .about-focus p {
@@ -1500,7 +1508,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 }
 .cap-row {
   display: grid;
-  grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
   gap: 16px clamp(20px, 3vw, 48px);
   padding: clamp(22px, 3vw, 32px) 0;
   border-bottom: 1px solid var(--color-divider);
@@ -1510,12 +1518,6 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   background: color-mix(in srgb, var(--color-text) 4%, transparent);
   box-shadow: -16px 0 0 color-mix(in srgb, var(--color-text) 4%, transparent),
     16px 0 0 color-mix(in srgb, var(--color-text) 4%, transparent);
-}
-.cap-n {
-  padding-top: 8px;
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 13px;
 }
 .cap-head h3 {
   font-size: clamp(24px, 2.6vw, 36px);
@@ -1648,10 +1650,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
     border-bottom: 1px solid var(--color-divider);
   }
   .cap-row {
-    grid-template-columns: 40px minmax(0, 1fr);
-  }
-  .cap-body {
-    grid-column: 2;
+    grid-template-columns: minmax(0, 1fr);
   }
   .tl-item {
     grid-template-columns: 1fr;
@@ -2621,6 +2620,21 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
     grid-template-columns: 1fr;
   }
 }
+/* Desktop: the form on the left, email and links on the right, so the card has no empty half. */
+@media (min-width: 1024px) {
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+  .contact-side .contact-actions {
+    margin-top: clamp(32px, 4.5vw, 56px);
+  }
+  .contact-side .contact-links {
+    margin-top: 40px;
+  }
+}
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
@@ -3109,4 +3123,22 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
     width: 96px;
     height: 60px;
   }
+}
+
+/* "Also built": a quiet label between the full write-ups and the shorter ones. */
+.also-built-head {
+  padding-top: clamp(56px, 8vw, 112px);
+  padding-bottom: 8px;
+}
+.also-built-title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.also-built-sub {
+  margin-top: 10px;
+  color: var(--color-muted);
+  font-size: 15px;
 }
