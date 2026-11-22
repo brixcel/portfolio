@@ -433,9 +433,6 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 .loader-word .dot {
   color: var(--color-accent-700);
 }
-[data-motion="on"] .loader-word .ch {
-  transform: translateY(110%);
-}
 .loader-meta {
   display: flex;
   flex-direction: column;

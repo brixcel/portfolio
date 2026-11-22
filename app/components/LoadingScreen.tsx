@@ -56,8 +56,8 @@ export default function LoadingScreen() {
     const letters = loader.querySelectorAll(".loader-word .ch");
 
     const tl = gsap.timeline();
-    tl.fromTo(letters, { y: 0, yPercent: 110 }, { yPercent: 0, duration: 0.7, ease: "expo.out", stagger: 0.04 }, 0)
-      .to(
+    // "Brexl." is already on screen from the first frame (server-rendered, no entrance); only the bar fills.
+    tl.to(
         progress,
         {
           value: 100,

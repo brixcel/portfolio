@@ -35,6 +35,15 @@ const ALT: Record<string, string> = {
   "fa792df0-f46a-475b-aa19-9ab18f78b035.jpg": "The AR-DUINO team with faculty in front of the project display",
 };
 
+// The carousel opens on these (recruiters see the first photo): the CPE-Yesta certificate,
+// the AR-DUINO team with faculty, then CPE-Yesta with friends. Everything else follows by name.
+const LEAD = [
+  "5c2f3f9f-7b61-4014-8747-d33881e5c2e9.jpg",
+  "fa792df0-f46a-475b-aa19-9ab18f78b035.jpg",
+  "4cf0d3b8-cdac-43be-b9a7-052799cca9db.jpg",
+];
+const leadRank = (f: string) => (LEAD.includes(f) ? LEAD.indexOf(f) : LEAD.length);
+
 function captionOf(file: string) {
   if (NO_CAPTION.test(file)) return "";
   const words = file.replace(IMAGE, "").replace(/^\d+[-_ ]*/, "").replace(/[-_]+/g, " ").trim();
@@ -45,6 +54,6 @@ export async function lifePhotos(): Promise<LifePhoto[]> {
   const files = await readdir(path.join(process.cwd(), "public", DIR)).catch(() => [] as string[]);
   return files
     .filter((f) => IMAGE.test(f))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+    .sort((a, b) => leadRank(a) - leadRank(b) || a.localeCompare(b, undefined, { numeric: true }))
     .map((f) => ({ src: `/${DIR}/${encodeURIComponent(f)}`, caption: captionOf(f), alt: ALT[f] ?? "", unoptimized: /\.jfif$/i.test(f) }));
 }
