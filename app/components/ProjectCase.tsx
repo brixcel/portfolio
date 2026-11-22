@@ -5,7 +5,6 @@ import type { Project } from "../data";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
 import ProjectGallery from "./ProjectGallery";
 import { TechChip } from "./TechChip";
-import Barcode from "./Barcode";
 
 export default function ProjectCase({ project, flip }: { project: Project; flip: boolean }) {
   const ref = useRef<HTMLElement>(null);
@@ -115,6 +114,9 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
                   aria-label={project.video.label}
                 >
                   <source src={project.video.src} type="video/mp4" />
+                  {project.video.captions && (
+                    <track kind="captions" src={project.video.captions} srcLang="en" label="English (on-screen text)" />
+                  )}
                 </video>
                 <figcaption>
                   <span>{project.video.caption}</span>
@@ -179,7 +181,6 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
             <div className="case-stack">
               <div className="case-stack-head">
                 <h4>Built with</h4>
-                <Barcode height={11} opacity={0.32} />
               </div>
               <ul className="chips">
                 {project.stack.map((tech) => (
@@ -208,6 +209,8 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
         ) : (
           <details className="case-fold">
             <summary className="case-head case-summary">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="case-thumb" src={project.slides[0].src} alt="" width={112} height={70} loading="lazy" decoding="async" />
               {head}
               <span className="case-toggle" aria-hidden="true" />
             </summary>

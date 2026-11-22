@@ -190,6 +190,8 @@ export type Project = {
     jumpTo?: number;
     /** Width / height of the clip. */
     aspect?: string;
+    /** WebVTT captions (on-screen text, translated). */
+    captions?: string;
   };
 };
 
@@ -235,6 +237,7 @@ export const projects: Project[] = [
       caption: "Our team’s thesis introduction video. The 3D simulation I built appears from about 0:26.",
       label: "AR-DUINO thesis introduction video",
       jumpTo: 26,
+      captions: "/videos/ar-duino-demo.vtt",
       aspect: "576 / 320",
     },
   },

@@ -70,7 +70,6 @@ export default function Journey() {
         <SectionHead
           id="journey-title"
           index="03 — Experience"
-          prompt="git log --oneline"
           title="the journey"
           sub="Paid work first, then my own projects, school projects and education."
         />

@@ -41,7 +41,6 @@ export default function Projects() {
         <SectionHead
           id="projects-title"
           index="02 — Projects"
-          prompt="ls ~/projects --all"
           title="selected work"
           sub="Projects I’ve built and learned from. The first three are told in full; open the rest for their details."
           aside={
@@ -62,7 +61,10 @@ export default function Projects() {
                 >
                   <span className="pi-number">{p.number}</span>
                   <span className="pi-title">{p.title}</span>
-                  <span className="pi-kind">{p.kind}</span>
+                  <span className="pi-kind">
+                    {p.kind}
+                    <span className="pi-depth">{p.featured ? "Full write-up" : "Summary"}</span>
+                  </span>
                   <svg className="pi-arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
                     <path d="M10 4v12M5 11l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

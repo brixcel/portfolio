@@ -1,17 +1,15 @@
 import type { ReactNode } from "react";
 
-/** The shared section opener: index label, terminal prompt, giant title with its full stop, short lede. */
+/** The shared section opener: index label, title, short lede. (Terminal prompts stay in the hero and Contact only.) */
 export default function SectionHead({
   id,
   index,
-  prompt,
   title,
   sub,
   aside,
 }: {
   id: string;
   index: string;
-  prompt: string;
   title: ReactNode;
   sub?: ReactNode;
   aside?: ReactNode;
@@ -20,12 +18,8 @@ export default function SectionHead({
     <header className="sec-head">
       <div>
         <p className="sec-index">{index}</p>
-        <p className="sec-prompt" aria-hidden="true">
-          &gt; {prompt}
-        </p>
         <h2 id={id} className="sec-title">
           {title}
-          <span aria-hidden="true">.</span>
         </h2>
         {sub && <p className="sec-sub">{sub}</p>}
       </div>

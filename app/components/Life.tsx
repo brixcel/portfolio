@@ -99,7 +99,6 @@ export default function Life({ photos }: { photos: LifePhoto[] }) {
         <SectionHead
           id="life-title"
           index="05 — Life"
-          prompt="ls ~/life"
           title="Life beyond the code"
           sub="Photos from outside software engineering."
           aside={controls}

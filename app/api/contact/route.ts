@@ -1,5 +1,10 @@
 import { resolveMx } from "node:dns/promises";
 import { topicSubject, validateContact, type ContactErrors } from "../../lib/contact";
+import { clientIp, createRateLimiter } from "../../lib/rateLimit";
+
+// 5 messages per visitor per 10 minutes, and 40 per hour overall, per function instance.
+const perVisitor = createRateLimiter({ limit: 5, windowMs: 10 * 60_000 });
+const overall = createRateLimiter({ limit: 40, windowMs: 60 * 60_000 });
 
 // Delivers contact form messages to the owner's inbox through Resend (https://resend.com/docs/api-reference/emails/send-email).
 // Needs RESEND_API_KEY. CONTACT_TO / CONTACT_FROM are optional overrides; see .env.example.
@@ -26,6 +31,13 @@ async function domainTakesMail(email: string) {
 }
 
 export async function POST(request: Request) {
+  const wait = perVisitor.hit(clientIp(request.headers)) || overall.hit("all");
+  if (wait) {
+    return Response.json(
+      { error: "That's a lot of messages in a short time. Please try again later, or email me directly." },
+      { status: 429, headers: { "Retry-After": String(wait) } }
+    );
+  }
   let body: Record<string, unknown>;
   try {
     body = await request.json();

@@ -48,7 +48,6 @@ export default function Capabilities() {
         <SectionHead
           id="capabilities-title"
           index="04 — Skills"
-          prompt="cat ~/stack.md"
           title="engineering capabilities"
           sub="What I build with, grouped by layer, and where each one shows up in my projects."
         />

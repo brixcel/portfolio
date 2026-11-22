@@ -68,11 +68,8 @@ export default function About() {
       {/* Full-width grid: copy sits on the container's left edge, the portrait frame runs to the screen edge. */}
       <div className="about-top">
         <div className="about-copy">
-          <p className="sec-prompt" aria-hidden="true">
-            &gt; whoami
-          </p>
           <h2 id="about-title" className="about-title">
-            About me<span aria-hidden="true">.</span>
+            About me
           </h2>
           <div className="about-text about-reveal">
             <p>
