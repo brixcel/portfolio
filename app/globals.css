@@ -378,6 +378,28 @@ html:not([data-motion="on"]) .loader,
 html[data-intro-seen] .loader {
   display: none;
 }
+/* Failsafe: if the page's scripts never run (blocked or failed download), html never gets
+   .js-ready, so after 4 s the loader gets out of the way and the hero shows without them. */
+@keyframes failsafe-hide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes failsafe-show {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+html[data-motion="on"]:not(.js-ready) .loader {
+  animation: failsafe-hide 0.4s 4s forwards;
+}
+html[data-motion="on"]:not(.js-ready) .hero-line > span,
+html[data-motion="on"]:not(.js-ready) .hero-rise,
+html[data-motion="on"]:not(.js-ready) .hero-scene {
+  animation: failsafe-show 0.5s 4s forwards;
+}
 .loader {
   position: fixed;
   inset: 0;
@@ -1114,7 +1136,11 @@ html[data-intro-seen] .loader {
   border-bottom: 1px solid #2c2c2c;
 }
 :root[data-theme="dark"] .marquee .marq-item img {
-  filter: grayscale(1) brightness(1.6) contrast(0.95);
+  filter: grayscale(1) brightness(2.2) contrast(0.9);
+}
+/* Black logos (Express, Next.js, Prisma) still need flipping, or they vanish on the dark strip. */
+:root[data-theme="dark"] .marquee .marq-item img.icon-invert {
+  filter: grayscale(1) invert(1) brightness(1.1);
 }
 .marq-label,
 .marq-cta {

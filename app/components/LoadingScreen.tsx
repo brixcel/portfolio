@@ -18,6 +18,10 @@ export default function LoadingScreen() {
     const num = numRef.current;
     if (!loader || !bar || !num) return;
 
+    // Scripts are running: switch off the CSS failsafe in globals.css.
+    document.documentElement.classList.add("js-ready");
+    // On a very slow load the failsafe has already revealed the page, so don't cover it again.
+    const late = performance.now() > 3800;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const notifyReady = () => {
@@ -33,7 +37,7 @@ export default function LoadingScreen() {
       // sessionStorage unavailable — fall through to the full intro
     }
 
-    if (reduced || alreadyVisited) {
+    if (reduced || alreadyVisited || late) {
       // Next frame, so sibling effects listening for "portfolio:ready" have mounted.
       const frame = requestAnimationFrame(() => {
         notifyReady();
