@@ -1,7 +1,13 @@
+import type { CSSProperties } from "react";
 import type { Tech } from "../data";
+import { logoFilters } from "../lib/logoTone";
 
 const iconUrl = (slug: string) => `/icons/${slug}.svg`;
-const iconClass = (tech: Tech) => (tech.invert ? "icon-invert" : tech.lift ? "icon-lift" : undefined);
+// Per-logo filters as CSS variables; globals.css picks --logo-light or --logo-dark by context.
+const toneVars = (tech: Tech) => {
+  const { light, dark } = logoFilters(tech.slug);
+  return { "--logo-light": light, "--logo-dark": dark } as CSSProperties;
+};
 
 export function TechChip({ tech, size = 18 }: { tech: Tech; size?: number }) {
   return (
@@ -14,7 +20,8 @@ export function TechChip({ tech, size = 18 }: { tech: Tech; size?: number }) {
           width={size}
           height={size}
           loading="lazy"
-          className={iconClass(tech)}
+          className="logo"
+          style={toneVars(tech)}
         />
       )}
       {tech.name}
@@ -33,7 +40,8 @@ export function MarqueeItem({ tech }: { tech: Tech }) {
         height={30}
         loading="lazy"
         decoding="async"
-        className={iconClass(tech)}
+        className="logo"
+        style={toneVars(tech)}
       />
       <span>{tech.name}</span>
     </span>

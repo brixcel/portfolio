@@ -4,13 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
 
-// Each fact is something an interviewer can check (PRODUCT.md).
-const FACTS = [
-  { value: "37", label: "C# scripts in AR-DUINO" },
-  { value: "3–5 min", label: "Deploys, down from 15–30 manual" },
-  { value: "5", label: "Person team led" },
-];
-
+// The checkable numbers (37 scripts, 3–5 min deploys, 5-person team) live in Experience,
+// next to the role each one proves, instead of being repeated here.
 const FOCUS = [
   {
     title: "Reliable software",
@@ -81,7 +76,7 @@ export default function About() {
             <p>On our AR-DUINO thesis I built the 3D circuit simulation.</p>
           </div>
           <a className="about-journey about-reveal" href="#journey">
-            My Journey
+            My journey
             <svg
               width="14"
               height="14"
@@ -112,14 +107,6 @@ export default function About() {
           <span className="about-stage-line" aria-hidden="true" />
           <span className="about-stage-block" aria-hidden="true" />
         </figure>
-        <dl className="about-facts about-reveal">
-          {FACTS.map((f) => (
-            <div key={f.value}>
-              <dt>{f.value}</dt>
-              <dd>{f.label}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
 
       <div className="container">

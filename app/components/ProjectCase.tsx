@@ -77,12 +77,14 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
     return () => window.removeEventListener("hashchange", open);
   }, [featured, project.id]);
 
+  const TitleTag = featured ? "h3" : "h4";
   const head = (
     <>
-          <span className="case-number">{project.number}</span>
-          <h3 id={`${project.id}-title`} className="case-title mask">
+          {/* Numbers only for the three full write-ups; "Also built" rows sit under their own h3. */}
+          {featured && <span className="case-number">{project.number}</span>}
+          <TitleTag id={`${project.id}-title`} className="case-title mask">
             <span>{project.title}</span>
-          </h3>
+          </TitleTag>
           <p className="case-kind">
             {project.kind}
             <span className="case-role">{project.role}</span>
@@ -210,7 +212,7 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
         ) : (
           <details className="case-fold">
             <summary className="case-head case-summary">
-              <Image className="case-thumb" src={project.slides[0].src} alt="" width={112} height={70} sizes="112px" />
+              <Image className="case-thumb" src={project.slides[0].src} alt="" width={112} height={70} />
               {head}
               <span className="case-toggle" aria-hidden="true" />
             </summary>

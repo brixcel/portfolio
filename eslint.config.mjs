@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Claude Code skills (third-party agent tooling, not site code)
     ".claude/**",
+    // Vendored Draco decoder (third-party, minified) used by the paused 3D desk
+    "public/draco/**",
   ]),
 ]);
 

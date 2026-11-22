@@ -6,13 +6,13 @@ import { TechChip } from "./TechChip";
 // alsoIn: places outside the project list that use the group (this portfolio is Next.js + TypeScript).
 const GROUPS: { title: string; note: string; slugs: string[]; alsoIn?: string[] }[] = [
   {
-    title: "Frontend Engineering",
+    title: "Frontend engineering",
     note: "Interfaces, app shells and the views people actually click.",
     slugs: ["react", "nextjs", "typescript", "javascript", "tailwindcss", "vitejs", "html5", "css3", "bootstrap"],
     alsoIn: ["this site"],
   },
   {
-    title: "Backend Engineering",
+    title: "Backend engineering",
     note: "APIs, auth and the server logic behind the screens.",
     slugs: ["nodejs", "express", "laravel", "php"],
   },
@@ -22,17 +22,17 @@ const GROUPS: { title: string; note: string; slugs: string[]; alsoIn?: string[] 
     slugs: ["postgresql", "mysql", "prisma", "firebase"],
   },
   {
-    title: "DevOps & Infrastructure",
+    title: "DevOps & infrastructure",
     note: "Builds, checks and deploys that run without someone watching.",
     slugs: ["githubactions", "cloudflare", "docker", "pnpm"],
   },
   {
-    title: "Creative Engineering",
+    title: "Creative engineering",
     note: "3D simulation and augmented reality.",
     slugs: ["unity", "csharp", "blender", "vuforia", "arfoundation"],
   },
   {
-    title: "Other Tools",
+    title: "Other tools",
     note: "Version control and collaboration.",
     slugs: ["git", "github"],
   },

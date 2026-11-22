@@ -233,30 +233,17 @@ main:focus {
 }
 
 /* Monochrome system: chip logos are grayscale; black logos still flip in the dark */
-.chip img {
-  filter: grayscale(1);
-}
-.chip img.icon-invert {
-  filter: grayscale(1) invert(var(--icon-invert, 0));
-}
-.chip img.icon-lift {
-  filter: grayscale(1) brightness(var(--icon-lift, 1));
-}
 .icon-invert {
   filter: invert(var(--icon-invert, 0));
 }
-/* Dark mode, keyed to the theme attribute itself: black logos flip, grey ones brighten. */
-:root[data-theme="dark"] .chip img {
-  filter: grayscale(1) brightness(1.9);
+/* Logos: one ink tone per context. Each icon carries its own filters (app/lib/logoTone.ts):
+   dark ink on light backgrounds, light ink on dark ones. The tech strip is dark in both themes. */
+.chip img.logo {
+  filter: var(--logo-light);
 }
-:root[data-theme="dark"] .chip img.icon-invert {
-  filter: grayscale(1) invert(1);
-}
-:root[data-theme="dark"] .chip img.icon-lift {
-  filter: grayscale(1) brightness(2.4);
-}
-:root[data-theme="dark"] .marquee .marq-item img.icon-lift {
-  filter: grayscale(1) brightness(2.6);
+:root[data-theme="dark"] .chip img.logo,
+.marquee .marq-item img.logo {
+  filter: var(--logo-dark);
 }
 /* Dark-coloured brand marks (e.g. MySQL's teal) brighten in dark mode instead of inverting */
 .icon-lift {
@@ -1148,13 +1135,6 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   border-top: 1px solid #2c2c2c;
   border-bottom: 1px solid #2c2c2c;
 }
-:root[data-theme="dark"] .marquee .marq-item img {
-  filter: grayscale(1) brightness(2.2) contrast(0.9);
-}
-/* Black logos (Express, Next.js, Prisma) still need flipping, or they vanish on the dark strip. */
-:root[data-theme="dark"] .marquee .marq-item img.icon-invert {
-  filter: grayscale(1) invert(1) brightness(1.1);
-}
 .marq-label,
 .marq-cta {
   flex: none;
@@ -1190,12 +1170,6 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 .marquee .marq-item span {
   /* logos only, like the mockup; names are in the sr-only list */
   display: none;
-}
-.marquee .marq-item img {
-  filter: grayscale(1) brightness(1.25) contrast(0.95);
-}
-.marquee .marq-item img.icon-invert {
-  filter: grayscale(1) invert(0.9);
 }
 .marq-wrap {
   overflow: hidden;
@@ -1305,33 +1279,6 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 .about-journey:hover svg {
   transform: translate(2px, -2px);
 }
-.about-facts {
-  grid-column: 2 / -1;
-  grid-row: 2;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  width: fit-content;
-  padding: clamp(20px, 4svh, 40px) 0 clamp(28px, 6svh, 64px);
-}
-.about-facts > div {
-  padding: 2px clamp(18px, 2.6vw, 40px);
-  border-left: 1px solid var(--color-divider);
-}
-.about-facts > div:first-child {
-  padding-left: 0;
-  border-left: 0;
-}
-.about-facts dt {
-  font-size: clamp(19px, 1.8vw, 26px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-.about-facts dd {
-  margin-top: 2px;
-  color: color-mix(in srgb, var(--color-text) 70%, transparent);
-  font-size: clamp(13.5px, 1.05vw, 15px);
-}
 
 /* Portrait frame */
 .about-stage {
@@ -1434,27 +1381,10 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
     grid-row: 2;
     aspect-ratio: 0.82;
   }
-  .about-facts {
-    grid-column: 2;
-    grid-row: 3;
-    width: auto;
-    padding-bottom: 0;
-  }
 }
 @media (min-width: 561px) and (max-width: 860px) {
   .about-stage {
     aspect-ratio: 1.05;
-  }
-}
-@media (max-width: 560px) {
-  .about-facts {
-    flex-direction: column;
-  }
-  .about-facts > div,
-  .about-facts > div:first-child {
-    padding: 14px 0;
-    border-left: 0;
-    border-bottom: 1px solid var(--color-divider);
   }
 }
 .about-focus {
@@ -2252,7 +2182,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   border-top: 1.5px solid var(--color-text);
 }
 .case-summary {
-  grid-template-columns: 112px auto minmax(0, 1fr) auto 36px;
+  grid-template-columns: 112px minmax(0, 1fr) auto 36px;
   align-items: center;
   margin: 0;
   padding: clamp(22px, 3vw, 34px) 0;
@@ -2392,7 +2322,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 }
 @media (max-width: 760px) {
   .case-head.case-summary {
-    grid-template-columns: 72px auto minmax(0, 1fr) 36px;
+    grid-template-columns: 72px minmax(0, 1fr) 36px;
     gap: 8px 14px;
   }
   .case-thumb {
@@ -2750,6 +2680,9 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   font-size: 13.5px;
 }
 .back-top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px; /* tap target */
   color: var(--panel-text);
   font-weight: 600;
   text-decoration: none;
@@ -3112,7 +3045,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 /* Tablets: folded projects keep one row (thumbnail, number, name, role, toggle). */
 @media (min-width: 761px) and (max-width: 900px) {
   .case-head.case-summary {
-    grid-template-columns: 96px auto minmax(0, 1fr) auto 36px;
+    grid-template-columns: 96px minmax(0, 1fr) auto 36px;
   }
   .case-summary .case-kind {
     grid-column: auto;
