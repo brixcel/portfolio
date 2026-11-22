@@ -1,9 +1,6 @@
 export type Tech = {
   name: string;
   slug: string;
-  invert?: boolean;
-  /** Dark-coloured logo that needs brightening (not inverting) in dark mode. */
-  lift?: boolean;
   /** No logo available: render the name alone rather than a made-up mark. */
   noIcon?: boolean;
 };
@@ -13,15 +10,15 @@ export const techStack: Tech[] = [
   { name: "TypeScript", slug: "typescript" },
   { name: "JavaScript", slug: "javascript" },
   { name: "Node.js", slug: "nodejs" },
-  { name: "Express", slug: "express", invert: true },
+  { name: "Express", slug: "express" },
   { name: "PostgreSQL", slug: "postgresql" },
-  { name: "Prisma", slug: "prisma", invert: true },
+  { name: "Prisma", slug: "prisma" },
   { name: "Tailwind CSS", slug: "tailwindcss" },
-  { name: "Next.js", slug: "nextjs", invert: true },
+  { name: "Next.js", slug: "nextjs" },
   { name: "Vite", slug: "vitejs" },
   { name: "Laravel", slug: "laravel" },
   { name: "PHP", slug: "php" },
-  { name: "MySQL", slug: "mysql", lift: true },
+  { name: "MySQL", slug: "mysql" },
   { name: "Firebase", slug: "firebase" },
   { name: "Bootstrap", slug: "bootstrap" },
   { name: "HTML", slug: "html5" },
@@ -30,11 +27,11 @@ export const techStack: Tech[] = [
   { name: "GitHub Actions", slug: "githubactions" },
   { name: "Cloudflare", slug: "cloudflare" },
   { name: "Git", slug: "git" },
-  { name: "GitHub", slug: "github", invert: true },
+  { name: "GitHub", slug: "github" },
 ];
 
 export const arduinoStack: Tech[] = [
-  { name: "Unity", slug: "unity", invert: true },
+  { name: "Unity", slug: "unity" },
   { name: "C#", slug: "csharp" },
   { name: "Vuforia", slug: "vuforia", noIcon: true },
   { name: "AR Foundation", slug: "arfoundation", noIcon: true },
@@ -45,9 +42,9 @@ export const synctaskStack: Tech[] = [
   { name: "React", slug: "react" },
   { name: "JavaScript", slug: "javascript" },
   { name: "Node.js", slug: "nodejs" },
-  { name: "Express", slug: "express", invert: true },
+  { name: "Express", slug: "express" },
   { name: "PostgreSQL", slug: "postgresql" },
-  { name: "Prisma", slug: "prisma", invert: true },
+  { name: "Prisma", slug: "prisma" },
   { name: "Tailwind CSS", slug: "tailwindcss" },
   { name: "Docker", slug: "docker" },
   { name: "Vite", slug: "vitejs" },
@@ -57,7 +54,7 @@ export const synctaskStack: Tech[] = [
 export const ursachubStack: Tech[] = [
   { name: "Laravel", slug: "laravel" },
   { name: "PHP", slug: "php" },
-  { name: "MySQL", slug: "mysql", lift: true },
+  { name: "MySQL", slug: "mysql" },
   { name: "Bootstrap", slug: "bootstrap" },
   { name: "Tailwind CSS", slug: "tailwindcss" },
   { name: "JavaScript", slug: "javascript" },
@@ -101,7 +98,7 @@ export const cicdStack: Tech[] = [
 ];
 
 export const cicdSlides = [
-  { src: "/assets/cicd-1.svg", alt: "Deploy pipeline: main, dev and pull requests each land in their own Cloudflare Pages environment" },
+  { src: "/assets/cicd-1.svg", darkSrc: "/assets/cicd-1-dark.svg", alt: "Deploy pipeline: main, dev and pull requests each land in their own Cloudflare Pages environment" },
 ];
 
 export const synctaskSlides = [
@@ -157,7 +154,8 @@ export const ursacdsaSlides = [
   { src: "/assets/ursacdsa-5.svg", alt: "Doubly Linked List bidirectional pointer chain and dynamic memory heap addresses" },
 ];
 
-export type Slide = { src: string; alt: string };
+/** darkSrc: an optional dark-mode version of the same image (shown when the lamp is off). */
+export type Slide = { src: string; alt: string; darkSrc?: string };
 
 export type Project = {
   id: string;

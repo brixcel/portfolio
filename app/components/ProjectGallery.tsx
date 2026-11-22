@@ -168,7 +168,19 @@ export default function ProjectGallery({
                   sizes={sizes}
                   draggable={false}
                   unoptimized={isSvg(slide.src)}
+                  className={slide.darkSrc ? "slide-light" : undefined}
                 />
+                {slide.darkSrc && (
+                  <Image
+                    src={slide.darkSrc}
+                    alt=""
+                    fill
+                    sizes={sizes}
+                    draggable={false}
+                    unoptimized={isSvg(slide.darkSrc)}
+                    className="slide-dark"
+                  />
+                )}
               </div>
             </div>
           ) : null

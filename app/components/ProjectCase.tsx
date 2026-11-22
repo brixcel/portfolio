@@ -183,7 +183,7 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
 
             <div className="case-stack">
               <div className="case-stack-head">
-                <h4>Built with</h4>
+                <p className="case-stack-title">Built with</p>
               </div>
               <ul className="chips">
                 {project.stack.map((tech) => (

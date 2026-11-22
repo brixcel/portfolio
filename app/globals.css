@@ -107,7 +107,6 @@
 
   --btn-primary: #ecece8;
   --on-tone: #131312;
-  --icon-lift: 2.4;
 
   --panel-bg: #0b0b0b;
   --panel-text: #ecece8;
@@ -245,9 +244,15 @@ main:focus {
 .marquee .marq-item img.logo {
   filter: var(--logo-dark);
 }
-/* Dark-coloured brand marks (e.g. MySQL's teal) brighten in dark mode instead of inverting */
-.icon-lift {
-  filter: brightness(var(--icon-lift, 1));
+/* Single-colour logos are drawn in ink; dark contexts flip them to light ink. */
+.chip img.logo.logo-mono {
+  filter: none;
+  opacity: 0.88;
+}
+:root[data-theme="dark"] .chip img.logo.logo-mono,
+.marquee .marq-item img.logo.logo-mono {
+  filter: invert(0.9);
+  opacity: 1;
 }
 
 /* Masked line: children rise into view from below the clip edge */
@@ -1388,11 +1393,11 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
     aspect-ratio: 1.05;
   }
 }
+/* Labels sit above their content, so there's no empty label column beside the cards. */
 .about-focus {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-  gap: clamp(24px, 4vw, 64px);
-  margin-top: clamp(72px, 9vw, 120px);
+  gap: 18px;
+  margin-top: clamp(40px, 5vw, 72px);
 }
 .about-focus ol {
   display: grid;
@@ -1409,6 +1414,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 .about-focus h4 {
   margin: 0 0 8px;
   font-size: 21px;
+  text-wrap: balance;
 }
 .about-focus p {
   color: var(--color-muted);
@@ -1417,9 +1423,8 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 }
 .about-interests {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-  gap: clamp(24px, 4vw, 64px);
-  margin-top: clamp(48px, 6vw, 72px);
+  gap: 18px;
+  margin-top: clamp(36px, 4.5vw, 56px);
 }
 .about-interests ul {
   display: flex;
@@ -1801,7 +1806,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 /* Case study */
 .case {
   position: relative;
-  padding: clamp(56px, 7vw, 96px) 0;
+  padding: clamp(44px, 5vw, 72px) 0;
 }
 .case--clay {
   background: transparent;
@@ -2005,7 +2010,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   justify-content: space-between;
   margin-bottom: 12px;
 }
-.case-stack h4 {
+.case-stack-title {
   font-family: var(--font-body);
   font-size: 13.5px;
   font-weight: 600;
@@ -2161,7 +2166,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   font-family: var(--font-mono);
   transform: none;
 }
-.case-stack h4 {
+.case-stack .case-stack-title {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
@@ -3061,7 +3066,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
 
 /* "Also built": a quiet label between the full write-ups and the shorter ones. */
 .also-built-head {
-  padding-top: clamp(56px, 8vw, 112px);
+  padding-top: clamp(40px, 5vw, 72px);
   padding-bottom: 8px;
 }
 .also-built-title {
@@ -3075,4 +3080,15 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   margin-top: 10px;
   color: var(--color-muted);
   font-size: 15px;
+}
+
+/* Slides with a dark version (the CI/CD diagram) swap with the theme. */
+.slide-dark {
+  display: none;
+}
+:root[data-theme="dark"] .slide-light {
+  display: none;
+}
+:root[data-theme="dark"] .slide-dark {
+  display: block;
 }
