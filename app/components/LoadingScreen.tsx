@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const VISITED_KEY = "bjo-portfolio-visited";
-const WORD = "BREXCEL";
+const WORD = "Brexl";
 
 export default function LoadingScreen() {
   const loaderRef = useRef<HTMLDivElement>(null);
