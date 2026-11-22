@@ -2,7 +2,9 @@ import { resolveMx } from "node:dns/promises";
 import { topicSubject, validateContact, type ContactErrors } from "../../lib/contact";
 import { clientIp, createRateLimiter } from "../../lib/rateLimit";
 
-// 5 messages per visitor per 10 minutes, and 40 per hour overall, per function instance.
+// 5 attempts per visitor per 10 minutes, and 40 delivered messages per hour overall, per function
+// instance. Only messages that passed every check count toward the overall cap, so bots and bad
+// requests can't use it to lock real visitors out.
 const perVisitor = createRateLimiter({ limit: 5, windowMs: 10 * 60_000 });
 const overall = createRateLimiter({ limit: 40, windowMs: 60 * 60_000 });
 
@@ -13,6 +15,11 @@ const TO = process.env.CONTACT_TO || "brexcel14@gmail.com";
 const FROM = process.env.CONTACT_FROM || "Portfolio contact <onboarding@resend.dev>";
 
 const json = (status: number, body: object) => Response.json(body, { status });
+const tooMany = (wait: number) =>
+  Response.json(
+    { error: `That's a lot of messages in a short time. Please try again later, or email me at ${TO}.` },
+    { status: 429, headers: { "Retry-After": String(wait) } }
+  );
 
 // A well-formed address can still point at a domain that takes no mail (gmial.com, test.invalid).
 // Only a definite "no such domain / no mail records" rejects; a DNS hiccup on our side lets the message through.
@@ -31,13 +38,8 @@ async function domainTakesMail(email: string) {
 }
 
 export async function POST(request: Request) {
-  const wait = perVisitor.hit(clientIp(request.headers)) || overall.hit("all");
-  if (wait) {
-    return Response.json(
-      { error: "That's a lot of messages in a short time. Please try again later, or email me directly." },
-      { status: 429, headers: { "Retry-After": String(wait) } }
-    );
-  }
+  const wait = perVisitor.hit(clientIp(request.headers));
+  if (wait) return tooMany(wait);
   let body: Record<string, unknown>;
   try {
     body = await request.json();
@@ -60,6 +62,9 @@ export async function POST(request: Request) {
     errors.email = "That email domain can’t receive mail. Please check the address.";
   }
   if (Object.keys(errors).length) return json(400, { errors });
+
+  const overallWait = overall.hit("all");
+  if (overallWait) return tooMany(overallWait);
 
   const key = process.env.RESEND_API_KEY;
   if (!key) {

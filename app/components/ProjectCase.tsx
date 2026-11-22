@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import type { Project } from "../data";
 import { getGsap, prefersReducedMotion } from "../lib/motion";
 import ProjectGallery from "./ProjectGallery";
@@ -209,8 +210,7 @@ export default function ProjectCase({ project, flip }: { project: Project; flip:
         ) : (
           <details className="case-fold">
             <summary className="case-head case-summary">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="case-thumb" src={project.slides[0].src} alt="" width={112} height={70} loading="lazy" decoding="async" />
+              <Image className="case-thumb" src={project.slides[0].src} alt="" width={112} height={70} sizes="112px" />
               {head}
               <span className="case-toggle" aria-hidden="true" />
             </summary>
