@@ -427,7 +427,7 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   font-family: var(--font-heading);
   font-size: clamp(40px, 7vw, 68px);
   font-weight: 900;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.035em;
   line-height: 1;
 }
 .loader-word .ch {
@@ -499,9 +499,9 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 900;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.035em; /* caps need a little more air than the lowercase wordmark did */
 }
 .header-mark {
   flex: none;

@@ -127,7 +127,7 @@ export default function Header() {
       <div className="header-inner">
         <a href="#home" className="header-logo">
           <BrandMark className="header-mark" />
-          <span>brexl</span>
+          <span>BREXL</span>
         </a>
 
         <nav ref={navRef} className="desktop-nav" aria-label="Sections">

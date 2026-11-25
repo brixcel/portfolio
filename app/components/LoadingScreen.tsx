@@ -5,7 +5,7 @@ import gsap from "gsap";
 import BrandMark from "./BrandMark";
 
 const VISITED_KEY = "bjo-portfolio-visited";
-const WORD = "Brexl";
+const WORD = "BREXL";
 
 export default function LoadingScreen() {
   const loaderRef = useRef<HTMLDivElement>(null);
