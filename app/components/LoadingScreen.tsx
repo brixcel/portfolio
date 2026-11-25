@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import BrandMark from "./BrandMark";
 
 const VISITED_KEY = "bjo-portfolio-visited";
 const WORD = "Brexl";
@@ -76,6 +77,7 @@ export default function LoadingScreen() {
       }, "+=0.1")
       // Letters lift away a beat ahead of the curtain
       .to(letters, { yPercent: -110, duration: 0.5, ease: "power3.in", stagger: 0.025 }, "<")
+      .to(".loader-mark", { y: -18, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, "<")
       .to(".loader-meta", { autoAlpha: 0, duration: 0.3 }, "<")
       .to(loader, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.7, ease: "expo.inOut" }, "<0.15")
       .add(() => setRemoved(true));
@@ -89,6 +91,8 @@ export default function LoadingScreen() {
 
   return (
     <div ref={loaderRef} className="loader" aria-hidden="true">
+      {/* The chip mark sits above the name, as in the video's title and end cards. */}
+      <BrandMark className="loader-mark" size={56} />
       <p className="loader-word mask">
         {WORD.split("").map((ch, i) => (
           <span key={i} className="ch">

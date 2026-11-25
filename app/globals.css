@@ -419,6 +419,9 @@ html[data-motion="on"]:not(.js-ready) .hero-scene {
   user-select: none;
   clip-path: inset(0 0 0 0);
 }
+.loader-mark {
+  margin-bottom: -6px; /* tighter to the name than the gap to the progress bar */
+}
 .loader-word {
   display: flex;
   font-family: var(--font-heading);
